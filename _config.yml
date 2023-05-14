@@ -3,5 +3,5 @@ plugins:
 - jekyll-remote-theme # add this line to the plugins list if you already have one
 
 title: Self-centering of a Kinematic body
-description: calculating self-centering of a kinematic body suspended on a 6DOF mount
+description: calculating self-centering of a 6DOF kinematic suspended body
 
