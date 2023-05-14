@@ -1,0 +1,9 @@
+# Site settings
+title: My Awesome Site
+description: This is an awesome website.
+theme: jekyll-theme-slate
+
+# Build settings
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
