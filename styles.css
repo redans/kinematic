@@ -1,0 +1,57 @@
+textarea {
+  text-indent: 0;
+}
+
+
+h1 {
+    text-align: center;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .matrix-container {
+    display: flex;
+    justify-content: center;
+    margin: 0 5px;
+    margin-bottom: 20px;
+  }
+
+  .matrix-input {
+    margin: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #matrix-input1,
+  #matrix-input2,
+  #matrix-input3,
+  #matrix-input4 {
+    display: block;
+    margin-top: 3px;
+    margin-bottom: 10px;
+    
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 40%;
+  }
+  
+  th, td {
+    border: 2px solid black;
+    padding: 2px;
+    text-align: center;
+  }
+  
+  th {
+    background-color: #dddddd;
+  }
+  body {
+    background-color: darkgrey;
+  }
+  
