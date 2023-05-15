@@ -1,197 +1,98 @@
 <!DOCTYPE html>
 <html>
-
+ 
 <head>
     <title>Kinematics</title>
-    <!-- <link rel="stylesheet" href="styles.css"> -->
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-      }
-      header {
-        background-color: #333;
-        color: #fff;
-        padding: 10px;
-        text-align: center;
-      }
-      nav {
-        background-color: #ccc;
-        padding: 10px;
-      }
-      main {
-        margin: 0 auto;
-        max-width: 800px;
-        padding: 20px;
-        background-color: #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-      }
-      footer {
-        background-color: #333;
-        color: #fff;
-        padding: 10px;
-        text-align: center;
-      }
-
-      .resultbar {
-        background-color: #858585;
-        color: #f5ecec;
-        padding: 10px;
-        text-align: center;
-      }
-      .content {
-        margin-left: 20px;
-        columns: 2;
-        column-gap: 20px;
-      }
-
-      h4 {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-table {
-  border-collapse: collapse;
-  border: 1px solid #ddd;
-  margin-bottom: 20px;
-}
-
-th, td {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
-  <body>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js"></script>
+ 
+<body>
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js></script>
     <script src='./kynLib.js'></script>
-    <header>
-      <h1>Self-centering of a Kinematic body</h1>
-    </header>
-    <nav>
-      <ul>
-<!--         <li><a href="#">Link 1</a></li>
-        <li><a href="#">Link 2</a></li>
-        <li><a href="#">Link 3</a></li> -->
-      </ul>
-    </nav>
-    <main>
-        <div class="introduction" >
-            <h2>Calculation tool functionality</h2>
-            <p>This tools enables you to calculate the self centering properties of a kinematic body (constraint in 6 degrees of freedom).
-The tool expects as input the 6 interface normals of the interface points [nx, ny, nz] and the 6 interface positions [Px,Py,Pz]. The body needs a closing force [Fx, Fy, Fz] and a location where this force is attached [X Y Z]. 
-Several cases are investigated when hitting the calculate button:<br>
-<br>
-      
-1) the reaction force on the interface without any Friction<br>
-2) the reaction forces with a given Friction<br>
-3) the maximum friction force to ensure the body is still self-centering<br>
-<br>
-The condition of selfcentering is broken when the interface points get loose which in this tool means the force on the interface becomes negative; the interface needs to pull (gives red numbers in the table). The case numbers are the force situations when that one interface is retracted. {pending explanatory image of preloaded numbers } </p>
-        </div>
-<!--         </div>
-            <h2>Main Content1</h2>
-            <p>This is the main content of the page.</p>
-            <p>You can use the <code>columns</code> property to display your content in multiple columns. The <code>column-gap</code> property controls the space between the columns.</p>
-          </div> -->
-          <div class="resultbar">INPUTS</div>
-          <div class="content">
-            <table>
-                <div class="textarea-container">
-                    <label for="matrix-input1">normals of interfaces [nx ny nz]</label>
-                    <textarea id="matrix-input1" name="textarea1" rows="7" cols="32"></textarea>        
-                </div>
-            </table>
-            <table>
-                <div class="textarea-container">
-                    <label for="matrix-input2">normals of interfaces [px py pz]</label>
-                    <textarea id="matrix-input2" name="textarea2" rows="7" cols="32"></textarea>
-                </div>
-            </table> 
-        </div>
-        
-        <p></p>
-        <div class="content">
-            <table>
-                <div class="textarea-container">
-                    <label for="matrix-input3">closing force [Fx Fy Fz]</label>
-                    <textarea id="matrix-input3" name="textarea3" rows="2" cols="32"></textarea>        
-                </div>
-            </table>
-            <table>
-                <div class="textarea-container">
-                    
-                    <label for="matrix-input4">closing force location [x y z]</label>
-                    <textarea id="matrix-input4" name="textarea4" rows="2" cols="32"></textarea>
-                </div>
-            </table> 
-        </div>
-        
-         <div class="content">
-            <table>
-                <div class="textarea-container">
-                    <label for="matrix-input5">Friction coefficient</label>
-                    <textarea id="matrix-input5" name="textarea5" rows="2" cols="32"></textarea>        
-                </div>
-            </table>
-            <table>
-                <div class="textarea-container">
-                  <br>
-                  <button type="submit" onclick="processMatrixInputs()">Press to calculate</button>
-                    <p id="output"></p>
-                </div>
-            </table> 
-        </div>
-        <br>
-
-        
-        <div class="resultbar">RESULTS</div>
-
-       
-        <div class="content">
-          <table>
-            <div>
-              <h4>Maximum allowed friction coefficient :  <span id="negative-mu"></span></h4>
-              
-            </div>
-          </table>
-           
-        </div>
+ 
+    <h1>Self-centering of a Kinematic body</h1>
+   
+    <div class="wrapper">
+        <div class="sidebar">Sidebar content</div>
+        <div class="main">
+            This tools enables you to calculate the self centering properties of a kinematic body (constraint in 6 degrees of freedom).
+            The tool expects as input the 6 interface normals of the interface points [nx, ny, nz] and the 6 interface positions [Px,Py,Pz]. The body needs a closing force [Fx, Fy, Fz] and a location where the force attaches [X Y Z].
+            Several cases are investigated when hitting the calculate button:
+        This tools enables you to calculate the self centering properties of a kinematic body (constraint in 6 degrees of freedom).
+The tool expects as input the 6 interface normals of the interface points [nx, ny, nz] and the 6 interface positions [Px,Py,Pz]. The body needs a closing force [Fx, Fy, Fz] and a location where the force attaches [X Y Z].
+Several cases are investigated when hitting the calculate button:
      
-        <p></p>
-        
+1) the maximum allowed friction ensure the body is still self-centering
+2) the reaction force on the interface without any Friction
+3) the reaction forces with a given Friction
+ 
 
-
-        <div class="content">
-          <h4>Forces on interfaces (no Friction):</h4>
-          <table id="result-table"></table></p>
-          <p></p>
-          <h4>Forces on interfaces (with Friction):</h4>
-          <table id="result-table2"></table></p>
+The condition of selfcentering is broken when the interface points get loose which in this tool means the force of the interface become negative (it needs to start pulling).</div>
+    <!--     <div class="sidebar">Sidebar content</div>
       </div>
+     
+    <div>
+        <textarea
+          rows="16"
+          cols="80"
+          readonly
+          style="border: none; text-indent: 0px; font-size: 15px;"
+          wrap="hard"
+        >
+This tools enables you to calculate the self centering properties of a kinematic body (constraint in 6 degrees of freedom).
+The tool expects as input the 6 interface normals of the interface points [nx, ny, nz] and the 6 interface positions [Px,Py,Pz]. The body needs a closing force [Fx, Fy, Fz] and a location where the force attaches [X Y Z].
+Several cases are investigated when hitting the calculate button:
+     
+1) the maximum allowed friction ensure the body is still self-centering
+2) the reaction force on the interface without any Friction
+3) the reaction forces with a given Friction
+ 
 
-
-    </main>
-
-  </body>
-
-
-
-
-
-          
+The condition of selfcentering is broken when the interface points get loose which in this tool means the force of the interface become negative (it needs to start pulling).
+        </textarea>
+        </div>
+ -->
+        <div>
+            <label for="matrix-input1">Interface normals:</label>
+            <span style="display:block;">nx   ny   nz</span>
+            <textarea id="matrix-input1" name="n" rows="7" cols="20"></textarea>
+            <br>
+ 
+            <label for="matrix-input2">Interface points:</label>
+            <span style="display:block;">Px   Py   Pz</span>
+            <textarea id="matrix-input2" name="p" rows="7" cols="20"></textarea>
+            <br>
+ 
+            <label for="matrix-input3">Closing force :</label>
+            <span style="display:block;">Fx Fy Fz</span>
+            <textarea id="matrix-input3" name="Fc" rows="2" cols="20"></textarea>
+            <br>
+ 
+            <label for="matrix-input4">Closing force location :</label>
+            <span style="display:block;">X Y Z</span>
+            <textarea id="matrix-input4" name="coordFc" rows="2" cols="20"></textarea>
+            <br>
+ 
+            <label for="matrix-input5">Friction coefficient</label>
+            <span style="display:block;">between 0 and 1</span>
+            <textarea id="matrix-input5" name="mu" rows="2" cols="15"></textarea>
+            <br>
+ 
+            <br>
+            <button onclick="processMatrixInputs()">Press to calculate</button>
+            <p id="output"></p>
+          </div>
+         
           <script>
             const predefinedNormals= [
-                [0,	1,	0,],
-                [0,	1,	0,],
-                [1,	0,	0,],
-                [0,	0,	1,],
-                [0,	0,	1,],
-                [0,	0,	1,]
+                [0, 1,  0,],
+                [0, 1,  0,],
+                [1, 0,  0,],
+                [0, 0,  1,],
+                [0, 0,  1,],
+                [0, 0,  1,]
           ];
-
+ 
             const predefinedPoints= [
               [1, 0, 0],
               [5, 0, 0],
@@ -200,92 +101,92 @@ The condition of selfcentering is broken when the interface points get loose whi
               [5, 1, 0],
               [3, 2, 0]
             ];
-            
+           
             const predefinedForce= [
               [-1, -1, -1]
             ];
-
+ 
             const predefinedCoord= [
               [3, 1.5, 0]];
-
+ 
             const predefinedFriction= 0.1;
-
+ 
             const textareaNormals = document.getElementById("matrix-input1");
             const textareaPoints = document.getElementById("matrix-input2");
             const textareaForce = document.getElementById("matrix-input3");
             const textareaCoord = document.getElementById("matrix-input4");
             const textareaFriction = document.getElementById("matrix-input5");
-          
+         
             textareaNormals.value = predefinedNormals.map(row => row.join("\t")).join("\n");
             textareaPoints.value = predefinedPoints.map(row => row.join("\t")).join("\n");
             textareaForce.value = predefinedForce.map(row => row.join("\t")).join("\n");
             textareaCoord.value = predefinedCoord.map(row => row.join("\t")).join("\n");
             textareaFriction.value = predefinedFriction;
-
+ 
             //console.log(textareaFriction.value)
           </script>
    
-
-<!--         <div>
+ 
+        <div>
             <table id="output-table">
                 <tr>
                 <h3>Maximum friction coefficient for self centerering:</h3>
                 <td id="negative-mu"></td>
                 </tr>
           </table>
-
+ 
 
             <h3>Forces on interfaces (no Friction):</h3>
             <table id="result-table"></table>
-    
+   
             <h3>Forces on interfaces (with Friction):</h3>
             <table id="result-table2"></table>
-        </div> -->
-
+        </div>
+ 
 
     <script>
         document.getElementById("negative-mu").textContent = "0"; // set starting value
         let nn, pp, Fcc, coordFcc; // declare the variables outside the function
-
+ 
 
         function processMatrixInputs() {
-
+ 
             // Get the values of the matrix input fields
             const matrixInput1 = document.getElementById("matrix-input1");
             const matrixValue1 = matrixInput1.value;
-
+ 
             const matrixInput2 = document.getElementById("matrix-input2");
             const matrixValue2 = matrixInput2.value;
-
+ 
             const matrixInput3 = document.getElementById("matrix-input3");
             const matrixValue3 = matrixInput3.value;
-
+ 
             const matrixInput4 = document.getElementById("matrix-input4");
             const matrixValue4 = matrixInput4.value;
-
+ 
             const matrixInput5 = document.getElementById("matrix-input5");
             const matrixValue5 = matrixInput5.value;
-
+ 
             // Convert the matrix values to arrays
             const matrixArray1 = matrixValue1.trim().split(/\s*\n\s*/).map(row => row.trim().split(/\s+/).map(Number));
             const matrixArray2 = matrixValue2.trim().split(/\s*\n\s*/).map(row => row.trim().split(/\s+/).map(Number));
             const matrixArray3 = matrixValue3.trim().split(/\s+/).map(Number);
             const matrixArray4 = matrixValue4.trim().split(/\s+/).map(Number);
             //const matrixArray5 = matrixValue5.trim().split(/\s+/).map(Number);
-
+ 
             // Check that the matrix arrays have the correct dimensions and contain only numbers
             const isMatrixValid1 = matrixArray1.length === 6 && matrixArray1.every(row => row.length === 3 && row.every(val => !isNaN(val)));
             const isMatrixValid2 = matrixArray2.length === 6 && matrixArray2.every(row => row.length === 3 && row.every(val => !isNaN(val)));
             const isMatrixValid3 = matrixArray3.length === 3 && matrixArray3.every(val => !isNaN(val));
             const isMatrixValid4 = matrixArray4.length === 3 && matrixArray4.every(val => !isNaN(val));
             //const isMatrixValid5 = matrixArray4.length === 1 && matrixArray5.every(val => !isNaN(val));
-
+ 
             // If any of the matrices are invalid, show an error message
             if (!isMatrixValid1 || !isMatrixValid2 || !isMatrixValid3 || !isMatrixValid4) {
                 alert("One or more matrices are invalid. Please check your input and try again.");
                 return;
             }
-
+ 
             // assign the values of the variables
             nn = matrixArray1;
             pp = matrixArray2;
@@ -293,10 +194,10 @@ The condition of selfcentering is broken when the interface points get loose whi
             coordFcc = matrixArray4;
             mu = matrixValue5;
             //console.log(matrixValue5 )
-
+ 
             // calculate Finterface
             const [Finterface, WCSdeform] = kynCalc(nn, pp, 0, 0.1, Fcc, coordFcc);
-
+ 
             {
                 const table = document.getElementById("result-table");
                 table.innerHTML = ""; // clear the table
@@ -318,7 +219,7 @@ The condition of selfcentering is broken when the interface points get loose whi
                     row.appendChild(document.createElement("td")).appendChild(document.createTextNode("case " + (i + 1)));
                     for (let j = 0; j < Finterface[i].length; j++) {
                         const cell = document.createElement("td");
-                        cell.appendChild(document.createTextNode(Finterface[i][j].toFixed(2)));
+                        cell.appendChild(document.createTextNode(Finterface[i][j].toFixed(3)));
                         if (Finterface[i][j] < 0) {
                             cell.style.color = "red";
                         }
@@ -329,19 +230,19 @@ The condition of selfcentering is broken when the interface points get loose whi
                 table.appendChild(fragment);
  
             }
-
+ 
             const [FinterfaceF, WCSdeformF] = kynCalc(nn, pp, mu, 0.1, Fcc, coordFcc);
-
+ 
             const table = document.getElementById("result-table2");
             table.innerHTML = ""; // clear the table
-
+ 
             // create header row with IF1 to IF6 labels
             const headerRow = table.insertRow();
             headerRow.insertCell().appendChild(document.createTextNode("")); // empty cell for row labels
             for (let i = 1; i <= 6; i++) {
                 headerRow.insertCell().appendChild(document.createTextNode("IF " + i));
             }
-
+ 
             // create a row for each case with row label and Finterface values
             for (let i = 0; i < FinterfaceF.length; i++) {
                 const row = table.insertRow();
@@ -350,50 +251,47 @@ The condition of selfcentering is broken when the interface points get loose whi
                     const cell = document.createElement("td");
                     if (FinterfaceF[i][j] < 0) {
                     cell.style.color = "red";}
-                    cell.appendChild(document.createTextNode(FinterfaceF[i][j].toFixed(2)));
+                    cell.appendChild(document.createTextNode(FinterfaceF[i][j].toFixed(3)));
                     row.appendChild(cell);
                 }
                 table.appendChild(row);
             }
-
-            
+ 
             function findNegativeMu(nn, pp, Fcc, coordFcc) {
                 let mu = 0;
                 while (true) {
                     // Calculate the forces and deformations for the current mu value
                     const [FinterfaceF, WCSdeformF] = kynCalc(nn, pp, mu, 0.1, Fcc, coordFcc);
-
+ 
                     // Check if any of the FinterfaceF values are negative
                     if (FinterfaceF.some((row) => row.some((val) => val < 0))) {
                         // Negative force found, return the current mu value
                         return mu;
                     }
-
+ 
                     // Increment the mu value and continue looping
                     mu += 0.0005;
                 }
             }
-
-
-
-            
+ 
             const mumaxvalue = findNegativeMu(nn, pp, Fcc, coordFcc)
                 // update the negative-mu cell with the calculated value
-            document.getElementById("negative-mu").innerHTML = mumaxvalue.toFixed(4);
+            document.getElementById("negative-mu").innerHTML = mumaxvalue.toFixed(5);
+ 
+            //console.log(mumaxvalue)
 
-            console.log(mumaxvalue)
 
 
-
-        }
+            }
     </script>
 
-<footer>
-    <p>&copy Code by Rednas (Struycken company)</p>
-  </footer>
+
 
 </body>
 
 
 
 </html>
+ 
+ 
+-- The information contained in this communication and any attachments is confidential and may be privileged, and is for the sole use of the intended recipient(s). Any unauthorized review, use, disclosure or distribution is prohibited. Unless explicitly stated otherwise in the body of this communication or the attachment thereto (if any), the information is provided on an AS-IS basis without any express or implied warranties or liabilities. To the extent you are relying on this information, you are doing so at your own risk. If you are not the intended recipient, please notify the sender immediately by replying to this message and destroy all copies of this message and any attachments. Neither the sender nor the company/group of companies he or she represents shall be liable for the proper and complete transmission of the information contained in this communication, or for any delay in its receipt. -- The information contained in this communication and any attachments is confidential and may be privileged, and is for the sole use of the intended recipient(s). Any unauthorized review, use, disclosure or distribution is prohibited. Unless explicitly stated otherwise in the body of this communication or the attachment thereto (if any), the information is provided on an AS-IS basis without any express or implied warranties or liabilities. To the extent you are relying on this information, you are doing so at your own risk. If you are not the intended recipient, please notify the sender immediately by replying to this message and destroy all copies of this message and any attachments. Neither the sender nor the company/group of companies he or she represents shall be liable for the proper and complete transmission of the information contained in this communication, or for any delay in its receipt.
