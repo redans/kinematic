@@ -61,6 +61,7 @@ th, td {
   padding: 8px;
 }
 
+
     </style>
 </head>
 
@@ -299,6 +300,8 @@ The condition of selfcentering is broken when the interface points get loose whi
 
             {
                 const table = document.getElementById("result-table");
+                table.style.fontSize = "14px";
+                
                 table.innerHTML = ""; // clear the table
  
                 // create header row with IF1 to IF6 labels
@@ -333,6 +336,7 @@ The condition of selfcentering is broken when the interface points get loose whi
             const [FinterfaceF, WCSdeformF] = kynCalc(nn, pp, mu, 0.1, Fcc, coordFcc);
 
             const table = document.getElementById("result-table2");
+            table.style.fontSize = "14px";
             table.innerHTML = ""; // clear the table
 
             // create header row with IF1 to IF6 labels
