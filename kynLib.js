@@ -106,7 +106,7 @@ function kynCalc(n,p,mu,scale, Fc, coordFc) {
   
   
   const F=normrP(math.add(math.multiply(normFw,mu),n)) // normalized force vectors 
-  console.table('stop')
+  //console.table('stop')
   // calculate all 6 force matrices a
   const CC = [];
   for (var i = 0; i <= 5; i++) {
@@ -127,3 +127,137 @@ function kynCalc(n,p,mu,scale, Fc, coordFc) {
 }
 
 
+function populateTable(tableId, data, fontSize, numberFormat, rowNames, columnNames) {
+  const table = document.getElementById(tableId);
+  table.style.fontSize = fontSize;
+  table.innerHTML = ""; // Clear the table
+
+  // Create header row with column names
+  const headerRow = document.createElement("tr");
+  headerRow.appendChild(document.createElement("td")); // Empty cell for row labels
+  for (let i = 0; i < columnNames.length; i++) {
+    const cell = document.createElement("td");
+    cell.appendChild(document.createTextNode(columnNames[i]));
+    headerRow.appendChild(cell);
+  }
+  table.appendChild(headerRow);
+
+  // Create rows for each case with row label and data values
+  for (let i = 0; i < data.length; i++) {
+    const row = document.createElement("tr");
+
+    // Add row name as the first cell
+    const rowNameCell = document.createElement("td");
+    rowNameCell.appendChild(document.createTextNode(rowNames[i]));
+    row.appendChild(rowNameCell);
+
+    for (let j = 0; j < data[i].length; j++) {
+      const cell = document.createElement("td");
+      if (data[i][j] < 0) {
+        cell.style.color = "red";
+      }
+
+      // Format the number based on the specified format
+      if (numberFormat === "exponential") {
+        cell.appendChild(document.createTextNode(data[i][j].toExponential(1)));
+      } else if (numberFormat === "fixed") {
+        cell.appendChild(document.createTextNode(data[i][j].toFixed(2)));
+      } else {
+        // Default: No specific format, use the number as is
+        cell.appendChild(document.createTextNode(data[i][j]));
+      }
+
+      row.appendChild(cell);
+    }
+    table.appendChild(row);
+  }
+
+  // Create a style element and append the CSS rules
+  const style = document.createElement("style");
+  style.innerHTML = `
+    #${tableId} th,
+    #${tableId} td {
+      border: 1px solid black;
+      padding: 6px;
+      text-align: center;
+    }
+  `;
+
+  // Append the style element to the head section of the document
+  document.head.appendChild(style);
+}
+
+
+
+
+
+
+function findNegativeForceMuPlus(nn, pp, Fcc, coordFcc) {
+  let mu = 0;
+  while (true) {
+      // Calculate the forces and deformations for the current mu value
+      const [FinterfaceF, WCSdeformF] = kynCalc(nn, pp, mu, 0.1, Fcc, coordFcc);
+
+      // Check if any of the FinterfaceF values are negative
+      if (FinterfaceF.some((row) => row.some((val) => val < 0))) {
+          // Negative force found, return the current mu value
+          return mu;
+      }
+
+      // Increment the mu value and continue looping
+      mu += 0.0005;
+  }
+}
+
+function findNegativeForceMuMin(nn, pp, Fcc, coordFcc) {
+  let mu = 0;
+  while (true) {
+      // Calculate the forces and deformations for the current mu value
+      const [FinterfaceF, WCSdeformF] = kynCalc(nn, pp, mu, 0.1, Fcc, coordFcc);
+
+      // Check if any of the FinterfaceF values are negative
+      if (FinterfaceF.some((row) => row.some((val) => val < 0))) {
+          // Negative force found, return the current mu value
+          return mu;
+      }
+
+      // Increment the mu value and continue looping
+      mu -= 0.0005;
+  }
+}
+
+function findLargestNumbers(array) {
+  const largestPositiveNumbers = [];
+  const largestNegativeNumbers = [];
+
+  for (let i = 0; i < array.length; i++) {
+    let maxPositive = -Infinity;
+    let maxNegative = -Infinity;
+
+    for (let j = 0; j < array[i].length; j++) {
+      const value = array[i][j];
+
+      if (value > 0 && value > maxPositive) {
+        maxPositive = value;
+      } else if (value < 0 && value > maxNegative) {
+        maxNegative = value;
+      }
+    }
+
+    largestPositiveNumbers.push(maxPositive);
+    largestNegativeNumbers.push(maxNegative);
+  }
+
+  return [largestPositiveNumbers, largestNegativeNumbers];
+}
+
+
+function flipLR(matrix) {
+  const flippedMatrix = [];
+  
+  for (let i = 0; i < matrix.length; i++) {
+    flippedMatrix.push(matrix[i].reverse());
+  }
+  
+  return flippedMatrix;
+}
