@@ -721,6 +721,70 @@
             populateTable("result-table4", errorRange, "12px", "exponential", rowNames, columnNames)
 
 
+            function perturbFcCoordFc(nn, pp, Fcc, coordFcc, perturbationRange, xn) {
+                const mumaxvaluePlusValues = [];
+
+                // Perturb Fcc variables
+                for (let i = 0; i < Fcc.length; i++) {
+                    const perturbedFcc = [...Fcc];
+
+                    const columnValues = [];
+
+                    const perturbationStart = Fcc[i] - perturbationRange[i];
+                    const perturbationEnd = Fcc[i] + perturbationRange[i];
+                    const perturbationStep = (perturbationEnd - perturbationStart) / xn;
+
+                    for (let j = 0; j <= xn; j++) {
+                        const perturbationValue = perturbationStart + j * perturbationStep;
+                        perturbedFcc[i] = perturbationValue;
+
+                        const perturbedCoordFcc = [...coordFcc];
+                        const mumaxvaluePlus = findNegativeForceMuPlus(nn, pp, perturbedFcc, perturbedCoordFcc);
+                        columnValues.push(mumaxvaluePlus);
+                    }
+
+                    mumaxvaluePlusValues.push(columnValues);
+                }
+
+                // Perturb coordFcc variables
+                for (let i = 0; i < coordFcc.length; i++) {
+                    const perturbedCoordFcc = [...coordFcc];
+
+                    const columnValues = [];
+
+                    const perturbationStart = coordFcc[i] - perturbationRange[Fcc.length + i];
+                    const perturbationEnd = coordFcc[i] + perturbationRange[Fcc.length + i];
+                    const perturbationStep = (perturbationEnd - perturbationStart) / xn;
+
+                    for (let j = 0; j <= xn; j++) {
+                        const perturbationValue = perturbationStart + j * perturbationStep;
+                        perturbedCoordFcc[i] = perturbationValue;
+
+                        const perturbedFcc = [...Fcc];
+                        const mumaxvaluePlus = findNegativeForceMuPlus(nn, pp, perturbedFcc, perturbedCoordFcc);
+                        columnValues.push(mumaxvaluePlus);
+                    }
+
+                    mumaxvaluePlusValues.push(columnValues);
+                }
+
+                return mumaxvaluePlusValues;
+            }
+
+
+
+
+
+
+
+            const perturbationRange = [2, 0.5, 0.5, 1, 1, 0.4]; // Specify the range for Fcc variable
+            //const coordFccRange = [[-3, 0, 0], [5, 3, 1]]; // Specify the range for coordFcc variable
+            const xn = 11; // Specify the number of steps
+         
+
+            const mumaxvaluePlusValues = perturbFcCoordFc(nn, pp, Fcc, coordFcc, perturbationRange, xn);
+
+            console.log(mumaxvaluePlusValues);
 
 
 

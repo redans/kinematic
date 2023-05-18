@@ -205,7 +205,7 @@ function findNegativeForceMuPlus(nn, pp, Fcc, coordFcc) {
       }
 
       // Increment the mu value and continue looping
-      mu += 0.0005;
+      mu += 0.01;
   }
 }
 
@@ -222,7 +222,7 @@ function findNegativeForceMuMin(nn, pp, Fcc, coordFcc) {
       }
 
       // Increment the mu value and continue looping
-      mu -= 0.0005;
+      mu -= 0.01;
   }
 }
 
