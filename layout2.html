@@ -27,7 +27,7 @@
 
         th,
         td {
-            border: 1px solid rgb(235, 235, 235);
+            border: 1px solid rgb(243, 243, 243);
             padding: 10px;
             text-align: left;
         }
@@ -81,7 +81,10 @@
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js"></script>
+<script src="https://cdn.plot.ly/plotly-2.20.0.min.js" charset="utf-8"></script>
 <script src='./kynLib.js'></script>
+
+
 <header>
     <h1>Self-centering of a Kinematic body</h1>
 </header>
@@ -152,203 +155,398 @@
                     <h3>example of pre-loaded kinematic body</h3>
                     <!-- image of gholder -->
 
-                    <svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-                        xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-                        xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" width="61mm"
-                        height="42mm" viewBox="0 0 41 22" version="1.1" id="svg5"
-                        inkscape:version="1.2.2 (732a01da63, 2022-12-09)" sodipodi:docname="gholder.svg">
-                        <sodipodi:namedview id="namedview7" pagecolor="#ffffff" bordercolor="#666666"
-                            borderopacity="1.0" inkscape:showpageshadow="2" inkscape:pageopacity="0.0"
-                            inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" inkscape:document-units="mm"
-                            showgrid="true" inkscape:zoom="6.2217172" inkscape:cx="-63.406932" inkscape:cy="14.304733"
-                            inkscape:window-width="3072" inkscape:window-height="1675" inkscape:window-x="1912"
-                            inkscape:window-y="-8" inkscape:window-maximized="1" inkscape:current-layer="layer1">
-                            <inkscape:grid type="xygrid" id="grid63" originx="0" originy="0" />
-                        </sodipodi:namedview>
-                        <defs id="defs2">
-                            <marker style="overflow:visible" id="marker2144" refX="0" refY="0"
-                                orient="auto-start-reverse" inkscape:stockid="Arrow2" markerWidth="7.6999998"
-                                markerHeight="5.5999999" viewBox="0 0 7.7 5.6" inkscape:isstock="true"
-                                inkscape:collect="always" preserveAspectRatio="xMidYMid">
-                                <path transform="scale(0.7)" d="M -2,-4 9,0 -2,4 c 2,-2.33 2,-5.66 0,-8 z"
-                                    style="fill:context-stroke;fill-rule:evenodd;stroke:none" id="path2142" />
-                            </marker>
-                            <marker style="overflow:visible" id="Arrow2" refX="0" refY="0" orient="auto-start-reverse"
-                                inkscape:stockid="Arrow2" markerWidth="7.6999998" markerHeight="5.5999999"
-                                viewBox="0 0 7.7 5.6" inkscape:isstock="true" inkscape:collect="always"
-                                preserveAspectRatio="xMidYMid">
-                                <path transform="scale(0.7)" d="M -2,-4 9,0 -2,4 c 2,-2.33 2,-5.66 0,-8 z"
-                                    style="fill:context-stroke;fill-rule:evenodd;stroke:none" id="arrow2L" />
-                            </marker>
-                            <marker style="overflow:visible" id="Arrow2-5" refX="0" refY="0" orient="auto-start-reverse"
-                                inkscape:stockid="Arrow2" markerWidth="7.6999998" markerHeight="5.5999999"
-                                viewBox="0 0 7.7 5.6" inkscape:isstock="true" inkscape:collect="always"
-                                preserveAspectRatio="xMidYMid">
-                                <path transform="scale(0.7)" d="M -2,-4 9,0 -2,4 c 2,-2.33 2,-5.66 0,-8 z"
-                                    style="fill:context-stroke;fill-rule:evenodd;stroke:none" id="arrow2L-5" />
-                            </marker>
-                        </defs>
-                        <g inkscape:label="Layer 1" inkscape:groupmode="layer" id="layer1">
-                            <path
-                                style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker2144)"
-                                d="M 12.878179,20.593592 V 17.154009" id="path440" sodipodi:nodetypes="cc" />
-                            <path
-                                style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker2144)"
-                                d="M 34.044846,20.593592 V 17.154009" id="path442" sodipodi:nodetypes="cc" />
-                            <path
-                                style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker2144)"
-                                d="m 2.2948456,10.01026 h 3.439583" id="path444" sodipodi:nodetypes="cc" />
-                            <path
-                                style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow2)"
-                                d="m 23.461512,7.364425 -7.9375,5.291667" id="path504" />
-                            <g id="g2283-8-2" transform="matrix(0.65338111,0,0,0.63210521,-10.902329,-20.136224)"
-                                style="stroke-width:0.4;stroke-dasharray:none">
-                                <g id="g2278-3-1" style="stroke-width:0.4;stroke-dasharray:none">
-                                    <circle style="fill:none;stroke:#000000;stroke-width:0.4;stroke-dasharray:none"
-                                        id="path2200-6-0" cx="68.791664" cy="47.625" r="1.3229166" />
-                                    <circle style="fill:#000000;stroke:none;stroke-width:0.4;stroke-dasharray:none"
-                                        id="path2200-8-2-5" cx="68.762497" cy="47.625" r="0.5" />
-                                </g>
-                            </g>
-                            <g id="g2283-8-2-2" transform="matrix(0.65338111,0,0,0.63210521,-21.485662,-25.427891)"
-                                style="stroke-width:0.4;stroke-dasharray:none">
-                                <g id="g2278-3-1-5" style="stroke-width:0.4;stroke-dasharray:none">
-                                    <circle style="fill:none;stroke:#000000;stroke-width:0.4;stroke-dasharray:none"
-                                        id="path2200-6-0-5" cx="68.791664" cy="47.625" r="1.3229166" />
-                                    <circle style="fill:#000000;stroke:none;stroke-width:0.4;stroke-dasharray:none"
-                                        id="path2200-8-2-5-7" cx="68.762497" cy="47.625" r="0.5" />
-                                </g>
-                            </g>
-                            <g id="g2283-8-2-2-0" transform="matrix(0.65338111,0,0,0.63210521,-32.049938,-20.145221)"
-                                style="stroke-width:0.4;stroke-dasharray:none">
-                                <g id="g2278-3-1-5-5" style="stroke-width:0.4;stroke-dasharray:none">
-                                    <circle style="fill:none;stroke:#000000;stroke-width:0.4;stroke-dasharray:none"
-                                        id="path2200-6-0-5-1" cx="68.791664" cy="47.625" r="1.3229166" />
-                                    <circle style="fill:#000000;stroke:none;stroke-width:0.4;stroke-dasharray:none"
-                                        id="path2200-8-2-5-7-2" cx="68.762497" cy="47.625" r="0.5" />
-                                </g>
-                            </g>
-                            <rect style="fill:none;stroke:#000000;stroke-width:0.4;stroke-dasharray:none" id="rect3235"
-                                width="31.75" height="13.49375" x="7.5865126" y="2.0727627" />
-                            <text xml:space="preserve"
-                                style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
-                                x="1.0670061" y="18.233013" id="text3297">
-                                <tspan sodipodi:role="line" id="tspan3295"
-                                    style="font-size:2.11667px;stroke-width:0.264583" x="1.0670061" y="18.233013">(0,0)
-                                </tspan>
-                            </text>
-                            <path
-                                style="fill:none;stroke:#000000;stroke-width:0.0942868;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
-                                d="m 7.3073696,15.814646 c -0.01719,3.56e-4 -0.02122,-0.02189 -0.03628,-0.025 -0.004,-7.77e-4 -0.0081,0 -0.0121,0 -0.0054,0 -0.01076,0 -0.01612,0 -0.0054,0 -0.0108,-6.8e-4 -0.01613,0 -0.0055,6.8e-4 -0.01069,0.0031 -0.01612,0.0042 -0.008,0.0017 -0.01633,0.0018 -0.0242,0.0041 -0.0018,5.34e-4 -0.0022,0.0035 -0.0041,0.0042 -0.0025,9.23e-4 -0.0054,-3.91e-4 -0.0081,0 -0.01619,0.0024 -0.03226,0.0056 -0.04838,0.0083 -0.0081,0.0014 -0.01627,0.0021 -0.0242,0.0042 -0.0029,7.28e-4 -0.0053,0.003 -0.0081,0.0042 -0.06976,0.02884 0.01605,-0.0083 -0.03226,0.01667 -0.01877,0.0097 -0.0085,-0.0029 -0.03226,0.0125 -0.0049,0.0031 -0.0071,0.0096 -0.0121,0.0125 -0.0048,0.0029 -0.01143,0.0011 -0.01612,0.0042 -0.0065,0.0042 -0.0104,0.0115 -0.01612,0.01667 -0.0051,0.0046 -0.01138,0.0076 -0.01613,0.0125 -0.0021,0.0022 -0.0021,0.0059 -0.0041,0.0083 -0.01755,0.02268 -0.0067,0.0028 -0.02822,0.025 -0.0048,0.0049 -0.0078,0.01133 -0.0121,0.01667 -0.0024,0.003 -0.0061,0.005 -0.0081,0.0083 -0.0022,0.0037 -0.0019,0.0087 -0.0041,0.0125 -0.0033,0.006 -0.0082,0.01102 -0.0121,0.01667 -0.0028,0.004 -0.0051,0.0086 -0.0081,0.01251 -0.0023,0.0031 -0.0067,0.0047 -0.0081,0.0083 -0.0028,0.0079 -0.0016,0.01692 -0.0041,0.025 -0.003,0.01011 -0.0086,0.01921 -0.0121,0.02917 -0.0032,0.0095 -0.0052,0.01951 -0.0081,0.02917 -0.0025,0.0084 -0.006,0.01648 -0.0081,0.025 -0.002,0.0082 -0.0017,0.01691 -0.0041,0.025 -0.0017,0.006 -0.0062,0.01078 -0.0081,0.01667 -0.0077,0.02405 -0.0016,0.01728 -0.0041,0.04167 -6.97e-4,0.0071 -0.0028,0.01387 -0.0041,0.02084 -0.0015,0.0083 -0.0016,0.01692 -0.0041,0.025 -0.003,0.01011 -0.0084,0.0193 -0.0121,0.02917 -0.0074,0.0199 -0.01143,0.0373 -0.01612,0.05834 -0.01049,0.04698 9.98e-4,-0.0052 -0.0041,0.04167 -0.0018,0.01693 -0.0072,0.02048 -0.0121,0.03751 -0.002,0.0068 -0.0018,0.01412 -0.0041,0.02084 -0.0019,0.0059 -0.0064,0.0107 -0.0081,0.01667 -0.01383,0.05003 0.01585,-0.02637 -0.0041,0.025 -0.0011,0.0029 -0.0023,0.0057 -0.0041,0.0083 -9.98e-4,0.0017 -0.0036,0.0022 -0.0041,0.0042 -9.48e-4,0.004 0.0016,0.0087 0,0.0125 -0.0058,0.01393 -0.01562,0.01808 -0.0242,0.02917 -0.0073,0.0095 -3.55e-4,0.0065 -0.0081,0.0125 -0.0094,0.0073 -0.01727,0.01164 -0.02822,0.01667 -0.0066,0.0031 -0.01369,0.005 -0.02016,0.0083 -0.0044,0.0022 -0.0077,0.0063 -0.0121,0.0083 -0.0078,0.0035 -0.01685,0.0039 -0.0242,0.0083 -0.09907,0.05973 0.05362,-0.01729 -0.05242,0.03751 -0.08818,0.04557 0.03835,-0.02531 -0.06048,0.02917 -0.0095,0.0053 -0.01829,0.01218 -0.02822,0.01667 -0.01168,0.0053 -0.02445,0.0076 -0.03628,0.0125 -0.0084,0.0034 -0.01587,0.0089 -0.02419,0.0125 -0.0078,0.0034 -0.01602,0.0059 -0.0242,0.0083 -0.0026,7.77e-4 -0.0091,0 -0.0121,0 -0.0094,0 -0.01881,0 -0.02822,0 -0.01881,0 -0.03763,0 -0.05645,0 -0.0027,0 0.0054,0 0.0081,0"
-                                id="path3422" />
-                            <g id="g5164" transform="translate(-2.4568724,-43.86603)">
-                                <g id="g2283-8-2-2-0-7"
-                                    transform="matrix(0.32262727,0,0,0.30820284,-8.0815079,35.655461)"
-                                    style="stroke-width:0.4;stroke-dasharray:none">
-                                    <g id="g2278-3-1-5-5-4" style="stroke-width:0.4;stroke-dasharray:none">
-                                        <circle style="fill:none;stroke:#000000;stroke-width:0.4;stroke-dasharray:none"
-                                            id="path2200-6-0-5-1-3" cx="68.791664" cy="47.625" r="1.3229166" />
-                                        <circle style="fill:#000000;stroke:none;stroke-width:0.4;stroke-dasharray:none"
-                                            id="path2200-8-2-5-7-2-8" cx="68.762497" cy="47.625" r="0.5" />
-                                    </g>
-                                </g>
-                                <path
-                                    style="fill:none;stroke:#000000;stroke-width:0.109458px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow2)"
-                                    d="M 14.106026,50.425811 V 49.293547" id="path4210" />
-                                <path
-                                    style="fill:none;stroke:#000000;stroke-width:0.109458px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow2-5)"
-                                    d="m 14.063508,50.368941 h 1.058156" id="path4210-7" />
-                                <text xml:space="preserve"
-                                    style="font-size:1.4218px;line-height:1.25;font-family:sans-serif;stroke-width:0.106635"
-                                    x="16.019234" y="50.746288" id="text5117">
-                                    <tspan sodipodi:role="line" id="tspan5115" style="stroke-width:0.106635"
-                                        x="16.019234" y="50.746288">x</tspan>
-                                </text>
-                                <text xml:space="preserve"
-                                    style="font-size:1.4218px;line-height:1.25;font-family:sans-serif;stroke-width:0.106635"
-                                    x="13.145014" y="51.652554" id="text5117-4">
-                                    <tspan sodipodi:role="line" id="tspan5115-8" style="stroke-width:0.106635"
-                                        x="13.145014" y="51.652554">z</tspan>
-                                </text>
-                                <text xml:space="preserve"
-                                    style="font-size:1.4218px;line-height:1.25;font-family:sans-serif;stroke-width:0.106635"
-                                    x="13.458346" y="48.181278" id="text5121">
-                                    <tspan sodipodi:role="line" id="tspan5119" style="stroke-width:0.106635"
-                                        x="13.458346" y="48.181278">y</tspan>
-                                </text>
-                            </g>
-                            <text xml:space="preserve"
-                                style="font-size:2.06036px;line-height:1.25;font-family:sans-serif;stroke-width:0.154527"
-                                x="18.183853" y="12.64699" id="text5192">
-                                <tspan sodipodi:role="line" id="tspan5190" style="stroke-width:0.154527" x="18.183853"
-                                    y="12.64699">Fc</tspan>
-                            </text>
-                            <text xml:space="preserve"
-                                style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
-                                x="13.447762" y="20.116402" id="text7486">
-                                <tspan sodipodi:role="line" id="tspan7484"
-                                    style="font-size:2.11667px;stroke-width:0.264583" x="13.447762" y="20.116402">n
-                                    <tspan style="font-size:65%;baseline-shift:sub" id="tspan7517">1</tspan>
-                                </tspan>
-                            </text>
-                            <text xml:space="preserve"
-                                style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
-                                x="34.788502" y="19.971741" id="text7486-7">
-                                <tspan sodipodi:role="line" id="tspan7484-7"
-                                    style="font-size:2.11667px;stroke-width:0.264583" x="34.788502" y="19.971741">n
-                                    <tspan style="font-size:65%;baseline-shift:sub" id="tspan7515">2</tspan>
-                                </tspan>
-                            </text>
-                            <text xml:space="preserve"
-                                style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
-                                x="2.1686392" y="8.5482397" id="text7486-7-9">
-                                <tspan sodipodi:role="line" id="tspan7484-7-6"
-                                    style="font-size:2.11667px;stroke-width:0.264583" x="2.1686392" y="8.5482397">n
-                                    <tspan style="font-size:65%;baseline-shift:sub" id="tspan7551">3</tspan>
-                                </tspan>
-                            </text>
-                            <text xml:space="preserve"
-                                style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
-                                x="35.059917" y="12.07788" id="text7486-7-1">
-                                <tspan sodipodi:role="line" id="tspan7484-7-1"
-                                    style="font-size:2.11667px;stroke-width:0.264583" x="35.059917" y="12.07788">n<tspan
-                                        style="font-size:65%;baseline-shift:sub" id="tspan7515-2">5</tspan>
-                                </tspan>
-                            </text>
-                            <text xml:space="preserve"
-                                style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
-                                x="10.229679" y="12.26684" id="text7486-7-15">
-                                <tspan sodipodi:role="line" id="tspan7484-7-0"
-                                    style="font-size:2.11667px;stroke-width:0.264583" x="10.229679" y="12.26684">n<tspan
-                                        style="font-size:65%;baseline-shift:sub" id="tspan7515-9">4</tspan>
-                                </tspan>
-                            </text>
-                            <text xml:space="preserve"
-                                style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
-                                x="25.151413" y="4.3807125" id="text7486-7-0">
-                                <tspan sodipodi:role="line" id="tspan7484-7-4"
-                                    style="font-size:2.11667px;stroke-width:0.264583" x="25.151413" y="4.3807125">n
-                                    <tspan style="font-size:65%;baseline-shift:sub" id="tspan7515-8">6</tspan>
-                                </tspan>
-                            </text>
-                            <path
-                                style="fill:none;stroke:#0000ff;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.8, 0.2, 0.1, 0.2;stroke-dashoffset:0;stroke-opacity:1"
-                                d="m 10.420882,10.010259 26.008438,0" id="path19868" sodipodi:nodetypes="cc" />
-                            <path
-                                style="fill:none;stroke:#0000ff;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.8, 0.2, 0.1, 0.2;stroke-dashoffset:0;stroke-opacity:1"
-                                d="m 21.182109,4.7199742 h 4.904124" id="path19868-3" sodipodi:nodetypes="cc" />
-                            <path
-                                style="fill:none;stroke:#0000ff;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.8, 0.2, 0.1, 0.2;stroke-dashoffset:0;stroke-opacity:1"
-                                d="m 12.878179,13.236228 0,-5.298728" id="path19870" sodipodi:nodetypes="cc" />
-                            <path
-                                style="fill:none;stroke:#0000ff;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.8, 0.2, 0.1, 0.2;stroke-dashoffset:0;stroke-opacity:1"
-                                d="m 23.452234,6.6251374 0,-4.0867439" id="path19870-0" sodipodi:nodetypes="cc" />
-                            <path
-                                style="fill:none;stroke:#0000ff;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.8, 0.2, 0.1, 0.2;stroke-dashoffset:0;stroke-opacity:1"
-                                d="m 34.044845,13.23327 c 0,0 -0.05452,0.349922 0.0056,-5.2732173" id="path19872"
-                                sodipodi:nodetypes="cc" />
+                    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+                    <!-- Created with Inkscape (http://www.inkscape.org/) -->
+                    
+                    <svg
+                       width="61mm"
+                       height="42mm"
+                       viewBox="0 0 41 22"
+                       version="1.1"
+                       id="svg5"
+                       inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+                       sodipodi:docname="gholder.svg"
+                       xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+                       xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                       xmlns="http://www.w3.org/2000/svg"
+                       xmlns:svg="http://www.w3.org/2000/svg">
+                      <sodipodi:namedview
+                         id="namedview7"
+                         pagecolor="#ffffff"
+                         bordercolor="#666666"
+                         borderopacity="1.0"
+                         inkscape:showpageshadow="2"
+                         inkscape:pageopacity="0.0"
+                         inkscape:pagecheckerboard="0"
+                         inkscape:deskcolor="#d1d1d1"
+                         inkscape:document-units="mm"
+                         showgrid="true"
+                         inkscape:zoom="6.2217172"
+                         inkscape:cx="-63.406932"
+                         inkscape:cy="14.304733"
+                         inkscape:window-width="3072"
+                         inkscape:window-height="1675"
+                         inkscape:window-x="1912"
+                         inkscape:window-y="-8"
+                         inkscape:window-maximized="1"
+                         inkscape:current-layer="layer1">
+                        <inkscape:grid
+                           type="xygrid"
+                           id="grid63"
+                           originx="0"
+                           originy="0" />
+                      </sodipodi:namedview>
+                      <defs
+                         id="defs2">
+                        <marker
+                           style="overflow:visible"
+                           id="marker2144"
+                           refX="0"
+                           refY="0"
+                           orient="auto-start-reverse"
+                           inkscape:stockid="Arrow2"
+                           markerWidth="7.6999998"
+                           markerHeight="5.5999999"
+                           viewBox="0 0 7.7 5.6"
+                           inkscape:isstock="true"
+                           inkscape:collect="always"
+                           preserveAspectRatio="xMidYMid">
+                          <path
+                             transform="scale(0.7)"
+                             d="M -2,-4 9,0 -2,4 c 2,-2.33 2,-5.66 0,-8 z"
+                             style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+                             id="path2142" />
+                        </marker>
+                        <marker
+                           style="overflow:visible"
+                           id="Arrow2"
+                           refX="0"
+                           refY="0"
+                           orient="auto-start-reverse"
+                           inkscape:stockid="Arrow2"
+                           markerWidth="7.6999998"
+                           markerHeight="5.5999999"
+                           viewBox="0 0 7.7 5.6"
+                           inkscape:isstock="true"
+                           inkscape:collect="always"
+                           preserveAspectRatio="xMidYMid">
+                          <path
+                             transform="scale(0.7)"
+                             d="M -2,-4 9,0 -2,4 c 2,-2.33 2,-5.66 0,-8 z"
+                             style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+                             id="arrow2L" />
+                        </marker>
+                        <marker
+                           style="overflow:visible"
+                           id="Arrow2-5"
+                           refX="0"
+                           refY="0"
+                           orient="auto-start-reverse"
+                           inkscape:stockid="Arrow2"
+                           markerWidth="7.6999998"
+                           markerHeight="5.5999999"
+                           viewBox="0 0 7.7 5.6"
+                           inkscape:isstock="true"
+                           inkscape:collect="always"
+                           preserveAspectRatio="xMidYMid">
+                          <path
+                             transform="scale(0.7)"
+                             d="M -2,-4 9,0 -2,4 c 2,-2.33 2,-5.66 0,-8 z"
+                             style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+                             id="arrow2L-5" />
+                        </marker>
+                      </defs>
+                      <g
+                         inkscape:label="Layer 1"
+                         inkscape:groupmode="layer"
+                         id="layer1">
+                        <path
+                           style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker2144)"
+                           d="M 12.878179,20.593592 V 17.154009"
+                           id="path440"
+                           sodipodi:nodetypes="cc" />
+                        <path
+                           style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker2144)"
+                           d="M 34.044846,20.593592 V 17.154009"
+                           id="path442"
+                           sodipodi:nodetypes="cc" />
+                        <path
+                           style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker2144)"
+                           d="m 2.2948456,10.01026 h 3.439583"
+                           id="path444"
+                           sodipodi:nodetypes="cc" />
+                        <path
+                           style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow2)"
+                           d="m 23.461512,7.364425 -7.9375,5.291667"
+                           id="path504" />
+                        <g
+                           id="g2283-8-2"
+                           transform="matrix(0.65338111,0,0,0.63210521,-10.902329,-20.136224)"
+                           style="stroke-width:0.4;stroke-dasharray:none">
+                          <g
+                             id="g2278-3-1"
+                             style="stroke-width:0.4;stroke-dasharray:none">
+                            <circle
+                               style="fill:none;stroke:#000000;stroke-width:0.4;stroke-dasharray:none"
+                               id="path2200-6-0"
+                               cx="68.791664"
+                               cy="47.625"
+                               r="1.3229166" />
+                            <circle
+                               style="fill:#000000;stroke:none;stroke-width:0.4;stroke-dasharray:none"
+                               id="path2200-8-2-5"
+                               cx="68.762497"
+                               cy="47.625"
+                               r="0.5" />
+                          </g>
                         </g>
+                        <g
+                           id="g2283-8-2-2"
+                           transform="matrix(0.65338111,0,0,0.63210521,-21.485662,-25.427891)"
+                           style="stroke-width:0.4;stroke-dasharray:none">
+                          <g
+                             id="g2278-3-1-5"
+                             style="stroke-width:0.4;stroke-dasharray:none">
+                            <circle
+                               style="fill:none;stroke:#000000;stroke-width:0.4;stroke-dasharray:none"
+                               id="path2200-6-0-5"
+                               cx="68.791664"
+                               cy="47.625"
+                               r="1.3229166" />
+                            <circle
+                               style="fill:#000000;stroke:none;stroke-width:0.4;stroke-dasharray:none"
+                               id="path2200-8-2-5-7"
+                               cx="68.762497"
+                               cy="47.625"
+                               r="0.5" />
+                          </g>
+                        </g>
+                        <g
+                           id="g2283-8-2-2-0"
+                           transform="matrix(0.65338111,0,0,0.63210521,-32.049938,-20.145221)"
+                           style="stroke-width:0.4;stroke-dasharray:none">
+                          <g
+                             id="g2278-3-1-5-5"
+                             style="stroke-width:0.4;stroke-dasharray:none">
+                            <circle
+                               style="fill:none;stroke:#000000;stroke-width:0.4;stroke-dasharray:none"
+                               id="path2200-6-0-5-1"
+                               cx="68.791664"
+                               cy="47.625"
+                               r="1.3229166" />
+                            <circle
+                               style="fill:#000000;stroke:none;stroke-width:0.4;stroke-dasharray:none"
+                               id="path2200-8-2-5-7-2"
+                               cx="68.762497"
+                               cy="47.625"
+                               r="0.5" />
+                          </g>
+                        </g>
+                        <rect
+                           style="fill:none;stroke:#000000;stroke-width:0.4;stroke-dasharray:none"
+                           id="rect3235"
+                           width="31.75"
+                           height="13.49375"
+                           x="7.5865126"
+                           y="2.0727627" />
+                        <text
+                           xml:space="preserve"
+                           style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+                           x="1.0670061"
+                           y="18.233013"
+                           id="text3297"><tspan
+                             sodipodi:role="line"
+                             id="tspan3295"
+                             style="font-size:2.11667px;stroke-width:0.264583"
+                             x="1.0670061"
+                             y="18.233013">(0,0)</tspan></text>
+                        <path
+                           style="fill:none;stroke:#000000;stroke-width:0.0942868;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+                           d="m 7.3073696,15.814646 c -0.01719,3.56e-4 -0.02122,-0.02189 -0.03628,-0.025 -0.004,-7.77e-4 -0.0081,0 -0.0121,0 -0.0054,0 -0.01076,0 -0.01612,0 -0.0054,0 -0.0108,-6.8e-4 -0.01613,0 -0.0055,6.8e-4 -0.01069,0.0031 -0.01612,0.0042 -0.008,0.0017 -0.01633,0.0018 -0.0242,0.0041 -0.0018,5.34e-4 -0.0022,0.0035 -0.0041,0.0042 -0.0025,9.23e-4 -0.0054,-3.91e-4 -0.0081,0 -0.01619,0.0024 -0.03226,0.0056 -0.04838,0.0083 -0.0081,0.0014 -0.01627,0.0021 -0.0242,0.0042 -0.0029,7.28e-4 -0.0053,0.003 -0.0081,0.0042 -0.06976,0.02884 0.01605,-0.0083 -0.03226,0.01667 -0.01877,0.0097 -0.0085,-0.0029 -0.03226,0.0125 -0.0049,0.0031 -0.0071,0.0096 -0.0121,0.0125 -0.0048,0.0029 -0.01143,0.0011 -0.01612,0.0042 -0.0065,0.0042 -0.0104,0.0115 -0.01612,0.01667 -0.0051,0.0046 -0.01138,0.0076 -0.01613,0.0125 -0.0021,0.0022 -0.0021,0.0059 -0.0041,0.0083 -0.01755,0.02268 -0.0067,0.0028 -0.02822,0.025 -0.0048,0.0049 -0.0078,0.01133 -0.0121,0.01667 -0.0024,0.003 -0.0061,0.005 -0.0081,0.0083 -0.0022,0.0037 -0.0019,0.0087 -0.0041,0.0125 -0.0033,0.006 -0.0082,0.01102 -0.0121,0.01667 -0.0028,0.004 -0.0051,0.0086 -0.0081,0.01251 -0.0023,0.0031 -0.0067,0.0047 -0.0081,0.0083 -0.0028,0.0079 -0.0016,0.01692 -0.0041,0.025 -0.003,0.01011 -0.0086,0.01921 -0.0121,0.02917 -0.0032,0.0095 -0.0052,0.01951 -0.0081,0.02917 -0.0025,0.0084 -0.006,0.01648 -0.0081,0.025 -0.002,0.0082 -0.0017,0.01691 -0.0041,0.025 -0.0017,0.006 -0.0062,0.01078 -0.0081,0.01667 -0.0077,0.02405 -0.0016,0.01728 -0.0041,0.04167 -6.97e-4,0.0071 -0.0028,0.01387 -0.0041,0.02084 -0.0015,0.0083 -0.0016,0.01692 -0.0041,0.025 -0.003,0.01011 -0.0084,0.0193 -0.0121,0.02917 -0.0074,0.0199 -0.01143,0.0373 -0.01612,0.05834 -0.01049,0.04698 9.98e-4,-0.0052 -0.0041,0.04167 -0.0018,0.01693 -0.0072,0.02048 -0.0121,0.03751 -0.002,0.0068 -0.0018,0.01412 -0.0041,0.02084 -0.0019,0.0059 -0.0064,0.0107 -0.0081,0.01667 -0.01383,0.05003 0.01585,-0.02637 -0.0041,0.025 -0.0011,0.0029 -0.0023,0.0057 -0.0041,0.0083 -9.98e-4,0.0017 -0.0036,0.0022 -0.0041,0.0042 -9.48e-4,0.004 0.0016,0.0087 0,0.0125 -0.0058,0.01393 -0.01562,0.01808 -0.0242,0.02917 -0.0073,0.0095 -3.55e-4,0.0065 -0.0081,0.0125 -0.0094,0.0073 -0.01727,0.01164 -0.02822,0.01667 -0.0066,0.0031 -0.01369,0.005 -0.02016,0.0083 -0.0044,0.0022 -0.0077,0.0063 -0.0121,0.0083 -0.0078,0.0035 -0.01685,0.0039 -0.0242,0.0083 -0.09907,0.05973 0.05362,-0.01729 -0.05242,0.03751 -0.08818,0.04557 0.03835,-0.02531 -0.06048,0.02917 -0.0095,0.0053 -0.01829,0.01218 -0.02822,0.01667 -0.01168,0.0053 -0.02445,0.0076 -0.03628,0.0125 -0.0084,0.0034 -0.01587,0.0089 -0.02419,0.0125 -0.0078,0.0034 -0.01602,0.0059 -0.0242,0.0083 -0.0026,7.77e-4 -0.0091,0 -0.0121,0 -0.0094,0 -0.01881,0 -0.02822,0 -0.01881,0 -0.03763,0 -0.05645,0 -0.0027,0 0.0054,0 0.0081,0"
+                           id="path3422" />
+                        <g
+                           id="g5164"
+                           transform="translate(-2.4568724,-43.86603)">
+                          <g
+                             id="g2283-8-2-2-0-7"
+                             transform="matrix(0.32262727,0,0,0.30820284,-8.0815079,35.655461)"
+                             style="stroke-width:0.4;stroke-dasharray:none">
+                            <g
+                               id="g2278-3-1-5-5-4"
+                               style="stroke-width:0.4;stroke-dasharray:none">
+                              <circle
+                                 style="fill:none;stroke:#000000;stroke-width:0.4;stroke-dasharray:none"
+                                 id="path2200-6-0-5-1-3"
+                                 cx="68.791664"
+                                 cy="47.625"
+                                 r="1.3229166" />
+                              <circle
+                                 style="fill:#000000;stroke:none;stroke-width:0.4;stroke-dasharray:none"
+                                 id="path2200-8-2-5-7-2-8"
+                                 cx="68.762497"
+                                 cy="47.625"
+                                 r="0.5" />
+                            </g>
+                          </g>
+                          <path
+                             style="fill:none;stroke:#000000;stroke-width:0.109458px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow2)"
+                             d="M 14.106026,50.425811 V 49.293547"
+                             id="path4210" />
+                          <path
+                             style="fill:none;stroke:#000000;stroke-width:0.109458px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow2-5)"
+                             d="m 14.063508,50.368941 h 1.058156"
+                             id="path4210-7" />
+                          <text
+                             xml:space="preserve"
+                             style="font-size:1.4218px;line-height:1.25;font-family:sans-serif;stroke-width:0.106635"
+                             x="16.019234"
+                             y="50.746288"
+                             id="text5117"><tspan
+                               sodipodi:role="line"
+                               id="tspan5115"
+                               style="stroke-width:0.106635"
+                               x="16.019234"
+                               y="50.746288">x</tspan></text>
+                          <text
+                             xml:space="preserve"
+                             style="font-size:1.4218px;line-height:1.25;font-family:sans-serif;stroke-width:0.106635"
+                             x="13.145014"
+                             y="51.652554"
+                             id="text5117-4"><tspan
+                               sodipodi:role="line"
+                               id="tspan5115-8"
+                               style="stroke-width:0.106635"
+                               x="13.145014"
+                               y="51.652554">z</tspan></text>
+                          <text
+                             xml:space="preserve"
+                             style="font-size:1.4218px;line-height:1.25;font-family:sans-serif;stroke-width:0.106635"
+                             x="13.458346"
+                             y="48.181278"
+                             id="text5121"><tspan
+                               sodipodi:role="line"
+                               id="tspan5119"
+                               style="stroke-width:0.106635"
+                               x="13.458346"
+                               y="48.181278">y</tspan></text>
+                        </g>
+                        <text
+                           xml:space="preserve"
+                           style="font-size:2.06036px;line-height:1.25;font-family:sans-serif;stroke-width:0.154527"
+                           x="18.183853"
+                           y="12.64699"
+                           id="text5192"><tspan
+                             sodipodi:role="line"
+                             id="tspan5190"
+                             style="stroke-width:0.154527"
+                             x="18.183853"
+                             y="12.64699">Fc</tspan></text>
+                        <text
+                           xml:space="preserve"
+                           style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+                           x="13.447762"
+                           y="20.116402"
+                           id="text7486"><tspan
+                             sodipodi:role="line"
+                             id="tspan7484"
+                             style="font-size:2.11667px;stroke-width:0.264583"
+                             x="13.447762"
+                             y="20.116402">n<tspan
+                       style="font-size:65%;baseline-shift:sub"
+                       id="tspan7517">1</tspan></tspan></text>
+                        <text
+                           xml:space="preserve"
+                           style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+                           x="34.788502"
+                           y="19.971741"
+                           id="text7486-7"><tspan
+                             sodipodi:role="line"
+                             id="tspan7484-7"
+                             style="font-size:2.11667px;stroke-width:0.264583"
+                             x="34.788502"
+                             y="19.971741">n<tspan
+                       style="font-size:65%;baseline-shift:sub"
+                       id="tspan7515">2</tspan></tspan></text>
+                        <text
+                           xml:space="preserve"
+                           style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+                           x="2.1686392"
+                           y="8.5482397"
+                           id="text7486-7-9"><tspan
+                             sodipodi:role="line"
+                             id="tspan7484-7-6"
+                             style="font-size:2.11667px;stroke-width:0.264583"
+                             x="2.1686392"
+                             y="8.5482397">n<tspan
+                       style="font-size:65%;baseline-shift:sub"
+                       id="tspan7551">3</tspan></tspan></text>
+                        <text
+                           xml:space="preserve"
+                           style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+                           x="35.059917"
+                           y="12.07788"
+                           id="text7486-7-1"><tspan
+                             sodipodi:role="line"
+                             id="tspan7484-7-1"
+                             style="font-size:2.11667px;stroke-width:0.264583"
+                             x="35.059917"
+                             y="12.07788">n<tspan
+                       style="font-size:65%;baseline-shift:sub"
+                       id="tspan7515-2">5</tspan></tspan></text>
+                        <text
+                           xml:space="preserve"
+                           style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+                           x="10.229679"
+                           y="12.26684"
+                           id="text7486-7-15"><tspan
+                             sodipodi:role="line"
+                             id="tspan7484-7-0"
+                             style="font-size:2.11667px;stroke-width:0.264583"
+                             x="10.229679"
+                             y="12.26684">n<tspan
+                       style="font-size:65%;baseline-shift:sub"
+                       id="tspan7515-9">4</tspan></tspan></text>
+                        <text
+                           xml:space="preserve"
+                           style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+                           x="25.151413"
+                           y="4.3807125"
+                           id="text7486-7-0"><tspan
+                             sodipodi:role="line"
+                             id="tspan7484-7-4"
+                             style="font-size:2.11667px;stroke-width:0.264583"
+                             x="25.151413"
+                             y="4.3807125">n<tspan
+                       style="font-size:65%;baseline-shift:sub"
+                       id="tspan7515-8">6</tspan></tspan></text>
+                        <path
+                           style="fill:none;stroke:#0000ff;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.8, 0.2, 0.1, 0.2;stroke-dashoffset:0;stroke-opacity:1"
+                           d="m 10.420882,10.010259 26.008438,0"
+                           id="path19868"
+                           sodipodi:nodetypes="cc" />
+                        <path
+                           style="fill:none;stroke:#0000ff;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.8, 0.2, 0.1, 0.2;stroke-dashoffset:0;stroke-opacity:1"
+                           d="m 21.182109,4.7199742 h 4.904124"
+                           id="path19868-3"
+                           sodipodi:nodetypes="cc" />
+                        <path
+                           style="fill:none;stroke:#0000ff;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.8, 0.2, 0.1, 0.2;stroke-dashoffset:0;stroke-opacity:1"
+                           d="m 12.878179,13.236228 0,-5.298728"
+                           id="path19870"
+                           sodipodi:nodetypes="cc" />
+                        <path
+                           style="fill:none;stroke:#0000ff;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.8, 0.2, 0.1, 0.2;stroke-dashoffset:0;stroke-opacity:1"
+                           d="m 23.452234,6.6251374 0,-4.0867439"
+                           id="path19870-0"
+                           sodipodi:nodetypes="cc" />
+                        <path
+                           style="fill:none;stroke:#0000ff;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.8, 0.2, 0.1, 0.2;stroke-dashoffset:0;stroke-opacity:1"
+                           d="m 34.044845,13.23327 c 0,0 -0.05452,0.349922 0.0056,-5.2732173"
+                           id="path19872"
+                           sodipodi:nodetypes="cc" />
+                      </g>
                     </svg>
+                    
                 </td>
 
                 <td> <!-- empty cell --></td>
@@ -421,48 +619,61 @@
 
             <tr>
                 <td> <!-- empty cell --></td>
+                <td> <!-- empty cell --></td>
+                <td class="centered" colspan="2">
+                    <h3>advanced settings</h3>
+                </td>
+
                 <td class="centered" colspan="1">
-                    <br>
+
                     friction coefficient
                 </td>
-                <td> <!-- empty cell --></td>
+
                 <td class="centered" colspan="1">
-                    <br>
+
                     interface stiffness
                 </td>
-                <td class="centered" colspan="2">
-                    <br>
-                    <!-- empty cell -->
+                <td>
+                    plot settings
                 </td>
-                <td> <!-- empty cell --></td>
                 <td> <!-- empty cell --></td>
             </tr>
 
 
             <tr>
                 <td> <!-- empty cell --></td>
-                <td class="centered" colspan="1">
-                    <textarea id="matrix-input5" name="textarea5" rows="1" cols="8"></textarea>
-                </td>
-                <td> <!-- empty cell --></td>
-                <td class="centered" colspan="1">
-                    <textarea id="matrix-input6" name="textarea6" rows="1" cols="8"></textarea>
-                </td>
-                <td> <!-- empty cell --></td>
 
-                <td class="centered" colspan="2">
+                <td class="centered" colspan="1">
                     <button type="submit" onclick="processMatrixInputs()"
                         style="background-color: red; color: white;">Press to calculate</button>
                 </td>
 
+                <td class="centered" colspan="2">
+                    <input type="radio" name="options" id="standardOption" value="standard" checked> Standard <br>
+                    <input type="radio" name="options" id="advancedOption" value="advanced"> Advanced
+                </td>
+                <td class="centered" colspan="1">
+                    <textarea id="matrix-input5" name="textarea5" rows="1" cols="8"></textarea>
+                </td>
 
-                <td> <!-- empty cell --></td>
+
+
+
+                <td class="centered" colspan="1">
+                    <textarea id="matrix-input6" name="textarea6" rows="1" cols="8"></textarea>
+                </td>
+
+                <td class="centered" colspan="1">
+                    <textarea id="matrix-input9" name="textarea9" rows="2" cols="10"></textarea>
+                </td>
+                <td><!-- empty cell --></td>
+
             </tr>
 
             <tr>
                 <td><!-- empty cell --></td>
                 <td colspan="6">
-                    <br>
+
                     <div class="resultbar">RESULTS</div>
                 </td>
                 <td><!-- empty cell --></td>
@@ -470,13 +681,12 @@
 
             <tr>
                 <td> <!-- empty cell --></td>
-                <td class="holdright" colspan="3">
-
+                <td class="holdleft" colspan="3">
                     Maximum friction for negative pertubations of normals:<br>
                     Maximum friction for positive pertubations of normals:
                 </td>
 
-                <td class="centered">
+                <td class="holdleft">
                     <span id="negative-muMin"></span> <br>
                     <span id="negative-muPlus"></span>
                 </td>
@@ -493,15 +703,25 @@
 
             <tr>
                 <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+
+            </tr>
+            <tr>
+                <td><!-- empty cell --></td>
                 <td class="centered" colspan="3">
-                    <h4>Forces on interfaces (user input [-] friction):</h4>
+                    <table id="plotCell"></table>
                 </td>
                 <td class="centered" colspan="3">
-                    <h4>Forces on interfaces (user input [+] friction):</h4>
+                    <table id="plotCell2"></table>
                 </td>
                 <td><!-- empty cell --></td>
             </tr>
-
             <tr>
                 <td><!-- empty cell --></td>
                 <td class="centered" colspan="3">
@@ -516,13 +736,14 @@
 
             <tr>
                 <td><!-- empty cell --></td>
-                <td class="centered" colspan="3">
-                    <h4>Interface<sub>error</sub> = &Delta;force /stiffness</h4>
-                </td>
-                <td class="centered" colspan="3">
-                    <h4>WCS accuracy of body <br> due to friction and stiffness</h4>
-                </td>
                 <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+
             </tr>
 
             <tr>
@@ -541,19 +762,30 @@
 
             <tr>
                 <td><!-- empty cell --></td>
-                <td><!-- empty cell --></td>
-                <td><!-- empty cell --></td>
-                <td><!-- empty cell --></td>
-                <td><!-- empty cell --></td>
-                <td><!-- empty cell --></td>
-                <td><!-- empty cell --></td>
+                <td class="centered" colspan="3">
+                    <table id="plotCell"></table>
+                </td>
+                <td class="centered" colspan="3">
+                    <table id="plotCell2"></table>
+                </td>
                 <td><!-- empty cell --></td>
             </tr>
 
 
 
+            <tr>
+                <td><!-- empty cell --></td>
+                <td class="hold right" colspan="6">
+                    About the tool <br>
+                    <sub>This calculation tool uses the sum of Forces and sum Moments to calculate the situation where a retracted or extended interface results in contact loss of one of the 6 interfaces (Force < 0 means the interface needs to pull). Complication of this approach is that we don't know the direction of the friction forces. This is overcome by fitting the WCS motion of the object when a single interface is moved in it's normal direction. Because we now know the where the contact point has moved we know the direction of friction for this 'loadcase'. We can easily do this for all 6 interfaces. We then know the friction force direction of all 6 retraction cases and we can solve the force equations. <br>
+                    The advanced section adds some details which may help to optimize the interfaces and closing force properties. Together with the WCS motion vectors and accuracy table it gives a view on the performance of the contraption at hand. All results in this section are based on the user input friction coefficient. <br> The plot setting input needs some explanation. The first number is the range of variation and the second number the amount of data point calculated. Be carefull not to go to far with the number of point because it's all waiting time. Rows are for the first and the second plot. </sub>
+                <td><!-- empty cell --></td>
+
+
+            </tr>
+
             <!--             <tr>
-                <td>Column 1</td>
+                <td class="centered" colspan="3">
                 <td>Column 2</td>
                 <td>Column 3</td>
                 <td>Column 4</td>
@@ -600,12 +832,15 @@
         const predefinedFriction = 0.25;
         const predefinedStiffness = 2e5;
 
+        const preAdvanced = [[1, 21], [1, 21]];
+
         const textareaNormals = document.getElementById("matrix-input1");
         const textareaPoints = document.getElementById("matrix-input2");
         const textareaForce = document.getElementById("matrix-input3");
         const textareaCoord = document.getElementById("matrix-input4");
         const textareaFriction = document.getElementById("matrix-input5");
         const textareaIntStiffness = document.getElementById("matrix-input6");
+        const textareaAdvanced = document.getElementById("matrix-input9");
 
         textareaNormals.value = predefinedNormals.map(row => row.join("\t")).join("\n");
         textareaPoints.value = predefinedPoints.map(row => row.join("\t")).join("\n");
@@ -613,6 +848,7 @@
         textareaCoord.value = predefinedCoord.map(row => row.join("\t")).join("\n");
         textareaFriction.value = predefinedFriction;
         textareaIntStiffness.value = predefinedStiffness.toExponential(2);
+        textareaAdvanced.value = preAdvanced.map(row => row.join("\t")).join("\n");
 
 
     </script>
@@ -622,6 +858,10 @@
 
 
     <script>
+
+
+
+
         document.getElementById("negative-muPlus").textContent = "0"; // set starting value
         document.getElementById("negative-muMin").textContent = "0"; // set starting value
         let nn, pp, Fcc, coordFcc, stiffnessdiv; // declare the variables outside the function
@@ -629,6 +869,7 @@
 
         function processMatrixInputs() {
 
+            var advanced = document.getElementById("advancedOption").checked;
             // Get the values of the matrix input fields
             const matrixInput1 = document.getElementById("matrix-input1");
             const matrixValue1 = matrixInput1.value;
@@ -647,6 +888,11 @@
 
             const matrixInput6 = document.getElementById("matrix-input6");
             const matrixValue6 = matrixInput6.value;
+
+            const matrixInput9 = document.getElementById("matrix-input9");
+            const matrixValue9 = matrixInput9.value;
+
+
             //console.log(matrixValue6)
 
             // Convert the matrix values to arrays
@@ -654,6 +900,7 @@
             const matrixArray2 = matrixValue2.trim().split(/\s*\n\s*/).map(row => row.trim().split(/\s+/).map(Number));
             const matrixArray3 = matrixValue3.trim().split(/\s+/).map(Number);
             const matrixArray4 = matrixValue4.trim().split(/\s+/).map(Number);
+            const matrixArray9 = matrixValue9.trim().split(/\s*\n\s*/).map(row => row.trim().split(/\s+/).map(Number));
             //const matrixArray5 = matrixValue5.trim().split(/\s+/).map(Number);
 
             // Check that the matrix arrays have the correct dimensions and contain only numbers
@@ -661,6 +908,7 @@
             const isMatrixValid2 = matrixArray2.length === 6 && matrixArray2.every(row => row.length === 3 && row.every(val => !isNaN(val)));
             const isMatrixValid3 = matrixArray3.length === 3 && matrixArray3.every(val => !isNaN(val));
             const isMatrixValid4 = matrixArray4.length === 3 && matrixArray4.every(val => !isNaN(val));
+            const isMatrixValid9 = matrixArray9.length === 6 && matrixArray9.every(row => row.length === 3 && row.every(val => !isNaN(val)));
             //const isMatrixValid5 = matrixArray4.length === 1 && matrixArray5.every(val => !isNaN(val));
 
             // If any of the matrices are invalid, show an error message
@@ -676,7 +924,7 @@
             coordFcc = matrixArray4;
             mu = matrixValue5;
             stiffnesdiv = 1 / matrixValue6;
-            console.log(stiffnesdiv)
+            //console.log(stiffnesdiv)
 
             // Allowed friction coefficients for negative and positive purtubations
             const mumaxvalueMin = findNegativeForceMuMin(nn, pp, Fcc, coordFcc)
@@ -693,110 +941,124 @@
 
 
             // calculate Finterface
-            const [Finterface, WCSdeform] = kynCalc(nn, pp, -mu, 0.1, Fcc, coordFcc);
-            rowNames = ["Case 1", "Case 2", "Case 3", "Case 4", "Case 5", "Case 6"];
-            columnNames = ["IF 1", "IF 2", "IF 3", "IF 4", "IF 5", "IF 6"];
+            if (advanced) {
+                const [Finterface, WCSdeformT] = kynCalc(nn, pp, mu, 1, Fcc, coordFcc);
+                columnNames = ["Case 1", "Case 2", "Case 3", "Case 4", "Case 5", "Case 6"];
+                rowNames = ["IF 1", "IF 2", "IF 3", "IF 4", "IF 5", "IF 6"];
+                rowNames
+                populateTable("result-table", math.transpose(Finterface), "12px", "fixed", rowNames, columnNames, "Forces on interfaces after interface retraction")
 
-            populateTable("result-table", Finterface, "12px", "fixed", rowNames, columnNames)
+                const [FinterfaceMuPlus, _] = kynCalc(nn, pp, -mu, 0.1, Fcc, coordFcc);
+                populateTable("result-table2", math.transpose(FinterfaceMuPlus), "12px", "fixed", rowNames, columnNames, "Forces on interfaces after interface extension")
 
-            const [FinterfaceMuPlus, WCSdeformMuPlus] = kynCalc(nn, pp, mu, 0.1, Fcc, coordFcc);
-            populateTable("result-table2", FinterfaceMuPlus, "12px", "fixed", rowNames, columnNames)
-
-            const deltaForce = (math.subtract(math.abs(Finterface), math.abs(FinterfaceMuPlus)));
-            const deltaPos = (math.multiply(deltaForce, stiffnesdiv))
-            populateTable("result-table3", deltaPos, "12px", "exponential", rowNames, columnNames)
-
-            rowNames = ["X", "Y", "Z", "Rx", "Ry", "Rz"];
-            columnNames = ["Neg", "Pos", "Error range +/-"];
-            const A = math.multiply((motionAinv(nn, pp)), math.transpose(deltaPos))
-            //console.log(A)
+                const deltaForce = (math.subtract(math.abs(Finterface), math.abs(FinterfaceMuPlus)));
+                const deltaPos = (math.multiply(deltaForce, stiffnesdiv))
 
 
-            populateTable("result-table4", A, "12px", "exponential", rowNames, columnNames)
-            const errorRange = flipLR(math.transpose(findLargestNumbers(A)))
-            for (let i = 0; i < errorRange.length; i++) {
-                const diff = (errorRange[i][1] - errorRange[i][0]) / 2;
-                errorRange[i].push(diff);
-            }
-            populateTable("result-table4", errorRange, "12px", "exponential", rowNames, columnNames)
+                rowNames = ["X", "Y", "Z", "Rx", "Ry", "Rz"];
+                columnNames = ["Case 1", "Case 2", "Case 3", "Case 4", "Case 5", "Case 6"];
+                populateTable("result-table3", WCSdeformT, "12px", "exponential", rowNames, columnNames, "Motion Matrix of WCS")
+
+                rowNames = ["X", "Y", "Z", "Rx", "Ry", "Rz"];
+                columnNames = ["Neg", "Pos", "Error range +/-"];
+                const A = math.multiply((motionAinv(nn, pp)), math.transpose(deltaPos))
+                //console.log(A)
 
 
-            function perturbFcCoordFc(nn, pp, Fcc, coordFcc, perturbationRange, xn) {
-                const mumaxvaluePlusValues = [];
-
-                // Perturb Fcc variables
-                for (let i = 0; i < Fcc.length; i++) {
-                    const perturbedFcc = [...Fcc];
-
-                    const columnValues = [];
-
-                    const perturbationStart = Fcc[i] - perturbationRange[i];
-                    const perturbationEnd = Fcc[i] + perturbationRange[i];
-                    const perturbationStep = (perturbationEnd - perturbationStart) / xn;
-
-                    for (let j = 0; j <= xn; j++) {
-                        const perturbationValue = perturbationStart + j * perturbationStep;
-                        perturbedFcc[i] = perturbationValue;
-
-                        const perturbedCoordFcc = [...coordFcc];
-                        const mumaxvaluePlus = findNegativeForceMuPlus(nn, pp, perturbedFcc, perturbedCoordFcc);
-                        columnValues.push(mumaxvaluePlus);
-                    }
-
-                    mumaxvaluePlusValues.push(columnValues);
+                const errorRange = flipLR(math.transpose(findLargestNumbers(A)))
+                for (let i = 0; i < errorRange.length; i++) {
+                    const diff = (errorRange[i][1] - errorRange[i][0]) / 2;
+                    errorRange[i].push(diff);
                 }
+                populateTable("result-table4", errorRange, "12px", "exponential", rowNames, columnNames, "WCS accuracy of body due to friction and stiffness")
 
-                // Perturb coordFcc variables
-                for (let i = 0; i < coordFcc.length; i++) {
-                    const perturbedCoordFcc = [...coordFcc];
 
-                    const columnValues = [];
 
-                    const perturbationStart = coordFcc[i] - perturbationRange[Fcc.length + i];
-                    const perturbationEnd = coordFcc[i] + perturbationRange[Fcc.length + i];
-                    const perturbationStep = (perturbationEnd - perturbationStart) / xn;
+                function perturbFc(nn, pp, Fcc, coordFcc, perturbationRange, xn) {
+                    const mumaxvaluePlusValues = [];
 
-                    for (let j = 0; j <= xn; j++) {
-                        const perturbationValue = perturbationStart + j * perturbationStep;
-                        perturbedCoordFcc[i] = perturbationValue;
-
+                    for (let i = 0; i < Fcc.length; i++) {
                         const perturbedFcc = [...Fcc];
-                        const mumaxvaluePlus = findNegativeForceMuPlus(nn, pp, perturbedFcc, perturbedCoordFcc);
-                        columnValues.push(mumaxvaluePlus);
+                        const columnValues = [];
+
+                        const perturbationStart = Fcc[i] - perturbationRange;
+                        const perturbationEnd = Fcc[i] + perturbationRange;
+                        const perturbationStep = (perturbationEnd - perturbationStart) / xn;
+
+                        for (let j = 0; j <= xn; j++) {
+                            const perturbationValue = perturbationStart + j * perturbationStep;
+                            perturbedFcc[i] = perturbationValue;
+
+                            const mumaxvaluePlus = findNegativeForceMuPlus(nn, pp, perturbedFcc, coordFcc);
+                            columnValues.push(mumaxvaluePlus);
+                        }
+
+                        mumaxvaluePlusValues.push(columnValues);
                     }
 
-                    mumaxvaluePlusValues.push(columnValues);
+                    return mumaxvaluePlusValues;
                 }
 
-                return mumaxvaluePlusValues;
+                function perturbCoordFc(nn, pp, Fcc, coordFcc, perturbationRange, xn) {
+                    const mumaxvaluePlusValues = [];
+
+                    for (let i = 0; i < coordFcc.length; i++) {
+                        const perturbedCoordFcc = [...coordFcc];
+                        const columnValues = [];
+
+                        const perturbationStart = coordFcc[i] - perturbationRange;
+                        const perturbationEnd = coordFcc[i] + perturbationRange;
+                        const perturbationStep = (perturbationEnd - perturbationStart) / xn;
+
+                        for (let j = 0; j <= xn; j++) {
+                            const perturbationValue = perturbationStart + j * perturbationStep;
+                            perturbedCoordFcc[i] = perturbationValue;
+
+                            const mumaxvaluePlus = findNegativeForceMuPlus(nn, pp, Fcc, perturbedCoordFcc);
+                            columnValues.push(mumaxvaluePlus);
+                        }
+
+                        mumaxvaluePlusValues.push(columnValues);
+                    }
+
+                    return mumaxvaluePlusValues;
+                }
+
+
+
+                const perturbationRange = matrixArray9[0][0]; // Specify the range for Fcc variable
+                const xnF = matrixArray9[0][1]; // Specify the number of steps
+                const yValuesF = perturbFc(nn, pp, Fcc, coordFcc, perturbationRange, xnF);
+                const xValues = linspace(-perturbationRange / 2, perturbationRange / 2, xnF + 1);
+                console.log("hallo")
+                plotGraph(xValues, yValuesF, 'plotCell', "closing force sensitivity", "amplitude", "friction", ["Fx", "Fy", "Fz"])
+
+
+                //const coordFcRange = 2;
+                const perturbationRangeCoordFc = matrixArray9[1][0]; // Specify the range for Fcc variable
+                const xnCoord = matrixArray9[1][1]; // Specify the number of steps
+                const yValuesFcCoord = perturbCoordFc(nn, pp, Fcc, coordFcc, perturbationRangeCoordFc, xnCoord);
+                const xValuesCoord = linspace(-perturbationRangeCoordFc / 2, perturbationRangeCoordFc / 2, xnCoord + 1);
+                console.log("hallo")
+                plotGraph(xValuesCoord, yValuesFcCoord, 'plotCell2', "closing force location sensitivity", "amplitude", "friction", ["x", "y", "z"])
+
             }
 
 
-
-
-
-
-
-            const perturbationRange = [2, 0.5, 0.5, 1, 1, 0.4]; // Specify the range for Fcc variable
-            //const coordFccRange = [[-3, 0, 0], [5, 3, 1]]; // Specify the range for coordFcc variable
-            const xn = 11; // Specify the number of steps
-         
-
-            const mumaxvaluePlusValues = perturbFcCoordFc(nn, pp, Fcc, coordFcc, perturbationRange, xn);
-
-            console.log(mumaxvaluePlusValues);
-
-
-
-
-
-
-
-
+            /*             var yValuesF = mumaxvaluePlusValues;
+                        plotGraph(xValues, yValuesP, 'plotCell2') */
 
 
         }
     </script>
+
+
+
+
+
+
+
+
 
 
 </main>

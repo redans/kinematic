@@ -127,16 +127,31 @@ function kynCalc(n,p,mu,scale, Fc, coordFc) {
 }
 
 
-function populateTable(tableId, data, fontSize, numberFormat, rowNames, columnNames) {
+function populateTable(tableId, data, fontSize, numberFormat, rowNames, columnNames, tableHeader) {
   const table = document.getElementById(tableId);
   table.style.fontSize = fontSize;
   table.innerHTML = ""; // Clear the table
+  table.style.borderCollapse = "collapse"; // Add border-collapse style
+  table.style.border = "2px solid black"; // Add border style
+
+  // Create table header (caption)
+  if (tableHeader) {
+    const caption = document.createElement("caption");
+    const captionText = document.createTextNode(tableHeader);
+    caption.appendChild(captionText);
+    caption.style.fontSize = "14px"; // Set font size
+    caption.style.fontWeight = "bold"; // Apply bold style
+    table.appendChild(caption);
+  }
 
   // Create header row with column names
   const headerRow = document.createElement("tr");
-  headerRow.appendChild(document.createElement("td")); // Empty cell for row labels
+  const emptyHeaderCell = document.createElement("th"); // Empty header cell for row labels
+  headerRow.appendChild(emptyHeaderCell);
+
   for (let i = 0; i < columnNames.length; i++) {
-    const cell = document.createElement("td");
+    const cell = document.createElement("th");
+    cell.style.border = "1px solid black"; // Add border to column name cells
     cell.appendChild(document.createTextNode(columnNames[i]));
     headerRow.appendChild(cell);
   }
@@ -148,6 +163,7 @@ function populateTable(tableId, data, fontSize, numberFormat, rowNames, columnNa
 
     // Add row name as the first cell
     const rowNameCell = document.createElement("td");
+    rowNameCell.style.border = "1px solid black"; // Add border to row name cell
     rowNameCell.appendChild(document.createTextNode(rowNames[i]));
     row.appendChild(rowNameCell);
 
@@ -156,6 +172,7 @@ function populateTable(tableId, data, fontSize, numberFormat, rowNames, columnNa
       if (data[i][j] < 0) {
         cell.style.color = "red";
       }
+      cell.style.border = "1px solid black"; // Add border to data cells
 
       // Format the number based on the specified format
       if (numberFormat === "exponential") {
@@ -172,22 +189,77 @@ function populateTable(tableId, data, fontSize, numberFormat, rowNames, columnNa
     table.appendChild(row);
   }
 
-  // Create a style element and append the CSS rules
-  const style = document.createElement("style");
-  style.innerHTML = `
-    #${tableId} th,
-    #${tableId} td {
-      border: 1px solid black;
-      padding: 6px;
-      text-align: center;
-    }
-  `;
-
-  // Append the style element to the head section of the document
-  document.head.appendChild(style);
+  // Apply border styles to entire table
+  const cells = table.getElementsByTagName("td");
+  for (let i = 0; i < cells.length; i++) {
+    cells[i].style.border = "1px solid black";
+  }
+  const headerCells = table.getElementsByTagName("th");
+  for (let i = 0; i < headerCells.length; i++) {
+    headerCells[i].style.border = "1px solid black";
+  }
 }
 
 
+
+
+
+
+/* function populateTable(tableId, data, fontSize, numberFormat, rowNames, columnNames) {
+  const table = document.getElementById(tableId);
+  table.style.fontSize = fontSize;
+  table.innerHTML = ""; // Clear the table
+  table.style.borderCollapse = "collapse"; // Add border-collapse style
+  
+  table.style.border = "2px solid black"; // Add border style
+
+  // Create header row with column names
+  const headerRow = document.createElement("tr");
+  const emptyCell = document.createElement("td"); // Empty cell for row labels
+  emptyCell.style.border = "1px solid black"; // Add border to empty cell
+  headerRow.appendChild(emptyCell);
+  for (let i = 0; i < columnNames.length; i++) {
+    
+    const cell = document.createElement("td");
+    cell.style.border = "1px solid black"; // Add border to column name cells
+    cell.appendChild(document.createTextNode(columnNames[i]));
+    headerRow.appendChild(cell);
+  }
+  table.appendChild(headerRow);
+
+  // Create rows for each case with row label and data values
+  for (let i = 0; i < data.length; i++) {
+    const row = document.createElement("tr");
+
+    // Add row name as the first cell
+    const rowNameCell = document.createElement("td");
+    rowNameCell.style.border = "1px solid black"; // Add border to row name cell
+    rowNameCell.appendChild(document.createTextNode(rowNames[i]));
+    row.appendChild(rowNameCell);
+
+    for (let j = 0; j < data[i].length; j++) {
+      const cell = document.createElement("td");
+      if (data[i][j] < 0) {
+        cell.style.color = "red";
+      }
+      cell.style.border = "1px solid black"; // Add border to data cells
+
+      // Format the number based on the specified format
+      if (numberFormat === "exponential") {
+        cell.appendChild(document.createTextNode(data[i][j].toExponential(1)));
+      } else if (numberFormat === "fixed") {
+        cell.appendChild(document.createTextNode(data[i][j].toFixed(2)));
+      } else {
+        // Default: No specific format, use the number as is
+        cell.appendChild(document.createTextNode(data[i][j]));
+      }
+
+      row.appendChild(cell);
+    }
+    table.appendChild(row);
+  }
+}
+ */
 
 
 
@@ -205,7 +277,7 @@ function findNegativeForceMuPlus(nn, pp, Fcc, coordFcc) {
       }
 
       // Increment the mu value and continue looping
-      mu += 0.01;
+      mu += 0.005;
   }
 }
 
@@ -222,7 +294,7 @@ function findNegativeForceMuMin(nn, pp, Fcc, coordFcc) {
       }
 
       // Increment the mu value and continue looping
-      mu -= 0.01;
+      mu -= 0.005;
   }
 }
 
@@ -261,3 +333,64 @@ function flipLR(matrix) {
   
   return flippedMatrix;
 }
+
+
+function plotGraph(x, y, targetElementId, title, xAxisName, yAxisName, traceNames) {
+  // Create an array to hold the data traces
+  var data = [];
+
+  // Iterate over the y array to create individual traces
+  for (var i = 0; i < y.length; i++) {
+    var trace = {
+      x: x,
+      y: y[i],
+      mode: 'lines',
+      name: traceNames[i] || 'Trace ' + (i + 1)
+    };
+    data.push(trace);
+  }
+
+  // Set up the layout options
+  var layout = {
+    title: title || 'Plot',
+    xaxis: { title: xAxisName || 'X' },
+    yaxis: { title: yAxisName || 'Y' }
+  };
+
+  // Create the plot
+  Plotly.newPlot(targetElementId, data, layout);
+}
+
+
+
+
+function linspace(start, end, numSteps) {
+  const stepSize = (end - start) / (numSteps - 1);
+  const values = [];
+  
+  for (let i = 0; i < numSteps; i++) {
+    const value = start + stepSize * i;
+    values.push(value);
+  }
+  
+  return values;
+}
+
+function diff(data) {
+  const result = [];
+  
+  for (let i = 0; i < data.length; i++) {
+    const line = data[i];
+    const diffLine = [];
+    
+    for (let j = 1; j < line.length; j++) {
+      const diffValue = line[j] - line[j - 1];
+      diffLine.push(diffValue);
+    }
+    
+    result.push(diffLine);
+  }
+  
+  return result;
+}
+
