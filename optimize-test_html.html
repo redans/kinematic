@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Optimization-js Example</title>
+  </head>
+  <body>
+    
+    <script src="https://cdn.jsdelivr.net/npm/optimization-js@1.2.0/dist/optimization.js"></script>
+
+
+    <script>
+      // Create an instance of the optimizer
+      const optimizer = new Optimization();
+
+      // Set the objective function
+      optimizer.setObjectiveFunction((x) => x * x + 2 * x + 1);
+
+      // Perform optimization
+      const result = optimizer.optimize({
+        algorithm: 'nelderMead',
+        variables: 1,
+        bounds: [[-10, 10]],
+      });
+
+      console.log(result);
+    </script>
+  </body>
+</html>

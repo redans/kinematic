@@ -1,4 +1,4 @@
-
+{ //kynlib
 function motionAinv(n, p) {
    
    const a= [    [n[0][0], n[0][1], n[0][2], n[0][2]*p[0][1] - n[0][1]*p[0][2], n[0][0]*p[0][2] - n[0][2]*p[0][0], n[0][1]*p[0][0] - n[0][0]*p[0][1]],
@@ -394,3 +394,4 @@ function diff(data) {
   return result;
 }
 
+}
