@@ -86,7 +86,9 @@
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs-optimization/1.0.2/mathjs-optimization.min.js"></script> -->
 <script src="https://cdn.plot.ly/plotly-2.20.0.min.js" charset="utf-8"></script>
 <!-- <script src='./kynLib.js'></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"></script> -->
+
+<script src='./fminsearch.js'></script>
 
 
 
@@ -1212,47 +1214,37 @@
                 console.log("hallo")
                 plotGraph(xValuesCoord, yValuesFcCoord, 'plotCell2', "closing force location sensitivity", "amplitude", "friction", ["x", "y", "z"])
 
-            }
+                function findMaxPerRow(array) {
+  const maxColumns = [];
 
-           // const numeric = require('numeric');
+  for (let row = 0; row < array.length; row++) {
+    let max = array[row][0];
+    let maxCol = 0;
 
-/*            function objective(x) {
-      const norm = Math.sqrt(x[0] ** 2 + x[1] ** 2 + x[2] ** 2);
-      const normalized = [x[0] / norm, x[1] / norm, x[2] / norm];
-      const result = 1 - findNegativeForceMuPlus(nn, pp, normalized, coordFcc);
-      console.log(result)
-      return result;
+    for (let col = 1; col < array[row].length; col++) {
+      if (array[row][col] > max) {
+        max = array[row][col];
+        maxCol = col;
+      }
     }
 
-    // Define the initial guess for [Fx, Fy, Fz]
-    const initialGuess = [-1,-1, -1];
+    maxColumns.push(maxCol);
+  }
 
-    // Define the constraints (norm of [Fx, Fy, Fz] should be 1)
-    const constraint = {
-      type: 'eq',
-      fun: function(x) {
-        const norm = Math.sqrt(x[0] ** 2 + x[1] ** 2 + x[2] ** 2);
-        return norm - 1;
-      }
-    };
+  return maxColumns;
+}
 
-    const options = {
-      maxIterations: 100,
-      callback: function(result) {
-        console.log('Iteration:', result.iterations);
-        console.log('Current value:', result.f);
-        console.log('Current solution:', result.solution);
-        console.log('-------------------');
-      }
-    };
-    
-    // Use the minimize function to find the minimum
-    const result = numeric.uncmin(objective, initialGuess, constraint,options);
+K=findMaxPerRow(yValuesF)
+console.log(Fcc[0]+xValues[K[0]])
+console.log(Fcc[1]+xValues[K[1]])
+console.log(Fcc[2]+xValues[K[2]])
 
-    console.log('Minimum value:', result.f);
-    console.log('Optimal [Fx, Fy, Fz]:', result.solution); */
+//-xValues[K[0]])
 
 
+
+
+        }
 
 
 
