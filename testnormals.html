@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js"></script>
+</head>
+<body>
+  <script type="text/javascript">
+
+function cTransL(X, Y, Z, thx, thy, thz, cX, cY, cZ) {
+  const Tci = [
+    [1, 0, 0, -cX],
+    [0, 1, 0, -cY],
+    [0, 0, 1, -cZ],
+    [0, 0, 0, 1]
+  ];
+
+  const Tco = [
+    [1, 0, 0, cX],
+    [0, 1, 0, cY],
+    [0, 0, 1, cZ],
+    [0, 0, 0, 1]
+  ];
+
+  const Rx = [
+    [1, 0, 0, 0],
+    [0, Math.cos(thx), -Math.sin(thx), 0],
+    [0, Math.sin(thx), Math.cos(thx), 0],
+    [0, 0, 0, 1]
+  ];
+
+  const Ry = [
+    [Math.cos(thy), 0, Math.sin(thy), 0],
+    [0, 1, 0, 0],
+    [-Math.sin(thy), 0, Math.cos(thy), 0],
+    [0, 0, 0, 1]
+  ];
+
+  const Rz = [
+    [Math.cos(thz), -Math.sin(thz), 0, 0],
+    [Math.sin(thz), Math.cos(thz), 0, 0],
+    [0, 0, 1, 0],
+    [0, 0, 0, 1]
+  ];
+
+  const Txyz = [
+    [1, 0, 0, X],
+    [0, 1, 0, Y],
+    [0, 0, 1, Z],
+    [0, 0, 0, 1]
+  ];
+
+  const Tout = multiplyMatrices(multiplyMatrices(multiplyMatrices(multiplyMatrices(multiplyMatrices(Txyz, Tco), Rz), Ry), Rx), Tci);
+  return Tout;
+}
+
+function multiplyMatrices(matrix1, matrix2) {
+  const result = [];
+  const rows1 = matrix1.length;
+  const cols1 = matrix1[0].length;
+  const rows2 = matrix2.length;
+  const cols2 = matrix2[0].length;
+
+  for (let i = 0; i < rows1; i++) {
+    const row = [];
+    for (let j = 0; j < cols2; j++) {
+      let sum = 0;
+      for (let k = 0; k < cols1; k++) {
+        sum += matrix1[i][k] * matrix2[k][j];
+      }
+      row.push(sum);
+    }
+    result.push(row);
+  }
+
+  return result;
+}
+
+function concatenateMatrices(matrix1, matrix2) {
+  if (matrix1.length !== matrix2.length) {
+    throw new Error("Matrix dimensions do not match.");
+  }
+
+  const result = [];
+  const rows = matrix1.length;
+
+  for (let i = 0; i < rows; i++) {
+    result.push([...matrix1[i], ...matrix2[i]]);
+  }
+
+  return result;
+}
+
+
+
+const n = [[0], [0], [1], [0]];
+const p1 = [[-20e-3], [-0.5], [0], [1]];
+const p2 = [[20e-3], [-0.5], [0], [1]];
+
+const beta = Math.PI / 180 * 45;
+const alpha = 0;
+let gamma = 0;
+
+const N1 = multiplyMatrices(cTransL(0, 0, 0, alpha, beta, gamma, 0, 0, 0), n);
+const N2 = multiplyMatrices(cTransL(0, 0, 0, alpha, -beta, gamma, 0, 0, 0), n);
+const P1 = multiplyMatrices(cTransL(0, 0, 0, alpha, beta, gamma, 0, 0, 0), p1);
+const P2 = multiplyMatrices(cTransL(0, 0, 0, alpha, -beta, gamma, 0, 0, 0), p2);
+
+gamma = 120;
+const N3 = multiplyMatrices(cTransL(0, 0, 0, alpha, beta, gamma, 0, 0, 0), n);
+const N4 = multiplyMatrices(cTransL(0, 0, 0, alpha, -beta, gamma, 0, 0, 0), n);
+const P3 = multiplyMatrices(cTransL(0, 0, 0, alpha, beta, gamma, 0, 0, 0), p1);
+const P4 = multiplyMatrices(cTransL(0, 0, 0, alpha, -beta, gamma, 0, 0, 0), p2);
+
+gamma=-120
+const N5 = multiplyMatrices(cTransL(0, 0, 0, alpha, beta, gamma, 0, 0, 0), n);
+const N6 = multiplyMatrices(cTransL(0, 0, 0, alpha, -beta, gamma, 0, 0, 0), n);
+const P5 = multiplyMatrices(cTransL(0, 0, 0, alpha, beta, gamma, 0, 0, 0), p1);
+const P6 = multiplyMatrices(cTransL(0, 0, 0, alpha, -beta, gamma, 0, 0, 0), p2);
+
+console.log(N1)
+
+
+ N = [
+  [N1[0], N1[1], N1[2]],
+  [N2[0], N2[1], N2[2]],
+  [N3[0], N3[1], N3[2]],
+  [N4[0], N4[1], N4[2]],
+  [N5[0], N5[1], N5[2]],
+  [N6[0], N6[1], N6[2]],
+
+];
+
+ P = [
+  [P1[0], P1[1], P1[2]],
+  [P2[0], P2[1], P2[2]],
+  [P3[0], P3[1], P3[2]],
+  [P4[0], P4[1], P4[2]],
+  [P5[0], P5[1], P5[2]],
+  [P6[0], P6[1], P6[2]],
+
+];
+
+
+
+console.log("N:", N);
+console.log("P:", P);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+</body>
+</html>
