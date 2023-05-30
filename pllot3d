@@ -1,0 +1,84 @@
+// Import the necessary libraries
+import * as Plotly from 'plotly.js-dist';
+
+// Define the coordinates and normal vectors
+const predefinedNormals = [
+  [0, 1, 0],
+  [0, 1, 0],
+  [1, 0, 0],
+  [0, 0, 1],
+  [0, 0, 1],
+  [0, 0, 1]
+];
+
+const predefinedPoints = [
+  [1, 0, 0],
+  [5, 0, 0],
+  [0, 1, 0],
+  [1, 1, 0],
+  [5, 1, 0],
+  [3, 2, 0]
+];
+
+// Create arrays to hold the coordinates and normal vectors separately
+const xCoords = [];
+const yCoords = [];
+const zCoords = [];
+const uNormals = [];
+const vNormals = [];
+const wNormals = [];
+
+// Extract the coordinates and normal vectors into separate arrays
+for (let i = 0; i < predefinedPoints.length; i++) {
+  const [x, y, z] = predefinedPoints[i];
+  xCoords.push(x);
+  yCoords.push(y);
+  zCoords.push(z);
+
+  const [u, v, w] = predefinedNormals[i];
+  uNormals.push(u);
+  vNormals.push(v);
+  wNormals.push(w);
+}
+
+// Create a trace for the scatter plot of the coordinates
+const coordinatesTrace = {
+  x: xCoords,
+  y: yCoords,
+  z: zCoords,
+  mode: 'markers',
+  marker: {
+    size: 5,
+    color: 'blue'
+  },
+  type: 'scatter3d'
+};
+
+// Create a trace for the quiver plot of the normal vectors
+const vectorsTrace = {
+  x: xCoords,
+  y: yCoords,
+  z: zCoords,
+  u: uNormals,
+  v: vNormals,
+  w: wNormals,
+  mode: 'lines',
+  line: {
+    color: 'red',
+    width: 2
+  },
+  type: 'quiver3d'
+};
+
+// Create a data array containing both traces
+const data = [coordinatesTrace, vectorsTrace];
+
+// Define the layout for the 3D plot
+const layout = {
+  scene: {
+    aspectmode: 'cube'
+  }
+};
+
+// Plot the 3D graph using Plotly
+Plotly.newPlot('graph', data, layout);
