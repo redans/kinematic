@@ -389,6 +389,8 @@
                 </td>
             </tr>
 
+
+
             <tr>
                 <td class="centered" colspan="5">
                     <textarea id="matrix-input1" name="textarea1" rows="6" cols="60"></textarea>
@@ -440,126 +442,90 @@
                 <td> <!-- empty cell --></td>
             </tr>
             <tr>
-                <td><!-- empty cell --></td>
+
                 <td class="centered" colspan="2">
                     <button type="submit" onclick="drawVectors()"
                         style="background-color: rgb(6, 60, 11); color: white;">DRAW input vectors</button>
                 </td>
-
+                <td><!-- empty cell --></td>
                 <td class="centered" colspan="6">
                     <table id="plotConfig"></table>
                 <td><!-- empty cell --></td>
 
-
-
-
-
             </tr>
-
             <tr>
-                <td> <!-- empty cell --></td>
-                <td> <!-- empty cell --></td>
-                <td> <!-- empty cell --></td>
-                <td class="centered" colspan="2">
-                    <h3>advanced settings</h3>
+                <td colspan="10">
+                    <div class="resultbar">CALCULATION OF ALLOWED FRICTION</div>
                 </td>
-
-                <td class="centered" colspan="1">
-
-                    friction coefficient
-                </td>
-
-                <td class="centered" colspan="1">
-
-                    interface stiffness
-                </td>
-                <td class="centered" colspan="2">
-                    plot settings
-                </td>
-                <td> <!-- empty cell --></td>
-
             </tr>
-
-
             <tr>
-                <td> <!-- empty cell --></td>
-
-                <td class="centered" colspan="2">
-                    <button type="submit" onclick="processMatrixInputs()"
-                        style="background-color: red; color: white;">Press to calculate</button>
-                </td>
-
-                <td class="centered" colspan="2">
-                    <input type="radio" name="options" id="standardOption" value="standard" checked> Standard <br>
-                    <input type="radio" name="options" id="advancedOption" value="advanced"> Advanced <br>
-                    <input type="radio" name="options" id="iterateOption" value="iterate"> Iterate (be carefull!)
-                </td>
-                <td class="centered" colspan="1">
-                    <textarea id="matrix-input5" name="textarea5" rows="1" cols="8"></textarea>
-                </td>
-
-                <td class="centered" colspan="1">
-                    <textarea id="matrix-input6" name="textarea6" rows="1" cols="8"></textarea>
-                </td>
-
-                <td class="centered" colspan="2">
-                    <textarea id="matrix-input9" name="textarea9" rows="2" cols="25"></textarea>
-                </td>
-
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
                 <td><!-- empty cell --></td>
             </tr>
 
-            <tr>
-                <td colspan="10">
-                    <div class="resultbar">RESULTS</div>
-                </td>
-            </tr>
+            <tr><!-- calculate standard friction -->
 
-            <tr>
-                <td> <!-- empty cell --></td>
-                <td class="holdleft" colspan="4">
-                    Maximum friction for negative pertubations of normals:<br>
-                    Maximum friction for positive pertubations of normals:
+                <td class="centered" colspan="2">
+                    <button type="submit" onclick="calcStandard()" style="background-color: red; color: white;">Press to
+                        calculate</button>
                 </td>
-
+                <td class="holdright" colspan="3">
+                    Max &#956 for min pertubations:<br>
+                    Max &#956 for plus pertubations:
+                </td>
                 <td class="holdleft">
                     <span id="negative-muMin"></span> <br>
                     <span id="negative-muPlus"></span>
                 </td>
-                <td class="holdright" colspan="1">
-                    <h3>Maximum friction </h3>
+                <td class="centered" colspan="1">
+                    <h3>Max &#956 :</h3>
                 </td>
                 <td class="centered">
                     <h3><span id="MaxMu"></span></h3>
                 </td>
-                <td> <!-- empty cell --></td>
-                <td> <!-- empty cell --></td>
-
-
+                <td class="holdright" colspan="1">
+                    accuracy:</td>
+                <td class="centered" colspan="1">
+                    <textarea id="matrix-Accuracy" name="textareaAccuracy" rows="1" cols="6"></textarea>
+                </td>
             </tr>
 
             <tr>
-                <td><!-- empty cell --></td>
-                <td><!-- empty cell --></td>
-                <td><!-- empty cell --></td>
-                <td><!-- empty cell --></td>
-                <td><!-- empty cell --></td>
-                <td><!-- empty cell --></td>
-                <td><!-- empty cell --></td>
-                <td><!-- empty cell --></td>
-                <td><!-- empty cell --></td>
-                <td><!-- empty cell --></td>
+                <td colspan="10">
+                    <div class="resultbar">INTERFACE FORCES, MOTION MATRIX AND HYSTERESIS OF THE INTERFACE</div>
+                </td>
             </tr>
+
             <tr>
-                <td><!-- empty cell --></td>
-                <td class="centered" colspan="4">
-                    <table id="plotCell"></table>
+                <td class="centered" colspan="2">
+                    <button type="submit" onclick="calcForces()"
+                        style="background-color: rgb(13, 7, 7); color: white;">Press to calculate</button>
                 </td>
-                <td class="centered" colspan="4">
-                    <table id="plotCell2"></table>
+                <td class="centered" colspan="2">
+                    Coefficient of friction
+                </td>
+                <td class="centered" colspan="1">
+                    <textarea id="matrix-input5" name="textarea5" rows="1" cols="8"></textarea>
+                </td>
+                <td><!-- empty cell --></td>
+                <td class="centered" colspan="2">
+                    Interface stiffness
+                </td>
+                <td class="centered" colspan="1">
+                    <textarea id="matrix-input6" name="textarea6" rows="1" cols="8"></textarea>
                 </td>
                 <td><!-- empty cell --></td>
             </tr>
+
+
             <tr>
                 <td><!-- empty cell --></td>
                 <td class="centered" colspan="4">
@@ -597,8 +563,107 @@
                 <td><!-- empty cell --></td>
             </tr>
 
+            <tr>
+                <td colspan="10">
+                    <div class="resultbar">OPTIMIZATION</div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="centered" colspan="5">
+                    <h3>closing force optimization [Fx Fy Fz]</h3>
+                    <span id="newForceVectorE"></span>
+
+                </td>
+                <td class="centered" colspan="5">
+                    <h3>closing force location optimization [X Y Z]</h3>
+                    <span id="newCoordVectorE"></span>
+                    
+
+                </td>
+            </tr>
+
+            <tr>
+                <td> <!-- empty cell --></td>
+                <td class="centered" colspan="1">
+                    scan range
+                </td>
+                <td class="centered" colspan="1">
+                    # points
+                </td>
 
 
+                <td class="centered" colspan="1">
+                    accuracy
+                </td>
+                <td> <!-- empty cell --></td>
+
+                <td> <!-- empty cell --></td>
+                <td class="centered" colspan="1">
+                    scan range
+                </td>
+                <td class="centered" colspan="1">
+                    # points
+                </td>
+
+
+                <td class="centered" colspan="1">
+                    accuracy
+                </td>
+                <td> <!-- empty cell --></td>
+            </tr>
+
+            <tr>
+                <td><!-- empty cell --></td>
+                <td class="centered" colspan="1">
+                    <textarea id="matrix-Frange" name="textareaFrange" rows="1" cols="6"></textarea>
+                </td>
+                <td class="centered" colspan="1">
+                    <textarea id="matrix-Fpoints" name="textareaFpoints" rows="1" cols="6"></textarea>
+                </td>
+                <td class="centered" colspan="1">
+                    <textarea id="matrix-Faccuracy" name="textareaFaccuracy" rows="1" cols="6"></textarea>
+                </td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td class="centered" colspan="1">
+                    <textarea id="matrix-Crange" name="textareaCrange" rows="1" cols="6"></textarea>
+                </td>
+                <td class="centered" colspan="1">
+                    <textarea id="matrix-Cpoints" name="textareaCpoints" rows="1" cols="6"></textarea>
+                </td>
+                <td class="centered" colspan="1">
+                    <textarea id="matrix-Caccuracy" name="textareaCaccuracy" rows="1" cols="6"></textarea>
+                </td>
+                <td><!-- empty cell --></td>
+            </tr>
+
+            <tr>
+                <td> <!-- empty cell --></td>
+
+                <td class="centered" colspan="3">
+                    <button type="submit" onclick="processForce()" style="background-color: red; color: white;">Press to
+                        calculate</button>
+                </td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td class="centered" colspan="3">
+                    <button type="submit" onclick="processCoords()" style="background-color: red; color: white;">Press
+                        to calculate</button>
+                </td>
+                <td><!-- empty cell --></td>
+            </tr>
+
+            <tr>
+                <td><!-- empty cell --></td>
+                <td class="centered" colspan="4">
+                    <table id="plotCell"></table>
+                </td>
+                <td class="centered" colspan="4">
+                    <table id="plotCell2"></table>
+                </td>
+                <td><!-- empty cell --></td>
+            </tr>
 
             <tr>
                 <td><!-- empty cell --></td>
@@ -612,6 +677,9 @@
                 <td><!-- empty cell --></td>
                 <td><!-- empty cell --></td>
             </tr>
+
+
+
 
             <tr>
                 <td colspan="10">
@@ -893,6 +961,8 @@
 
 
             function findNegativeForceMuPlus(nn, pp, Fcc, coordFcc, resolution) {
+
+
                 let mu = 0;
                 while (true) {
                     // Calculate the forces and deformations for the current mu value
@@ -902,14 +972,17 @@
                     if (FinterfaceF.some((row) => row.some((val) => val < 0))) {
                         // Negative force found, return the current mu value
                         return mu;
+
                     }
 
                     // Increment the mu value and continue looping
                     mu += resolution;
+
                 }
             }
 
             function findNegativeForceMuMin(nn, pp, Fcc, coordFcc, resolution) {
+
                 let mu = 0;
                 while (true) {
                     // Calculate the forces and deformations for the current mu value
@@ -919,6 +992,7 @@
                     if (FinterfaceF.some((row) => row.some((val) => val < 0))) {
                         // Negative force found, return the current mu value
                         return mu;
+
                     }
 
                     // Increment the mu value and continue looping
@@ -1396,14 +1470,22 @@
 
         const predefinedFriction = 0.25;
         const predefinedStiffness = 5e7;
-        const preAdvanced = [[1, 31, 1e-2], [1, 31, 1e-2]];
-
-
+        //const preAdvanced = [[1, 31, 1e-2], [1, 31, 1e-2]];
+        const standardAccuracy = 1e-2;
+        const scanRangeF = 1
+        const nrPointsF = 31
+        const accuracyF = 0.01
+        const scanRangeC = 1
+        const nrPointsC = 31
+        const accuracyC = 0.01
 
         const textareaNormals = document.getElementById("matrix-input1");
         const textareaPoints = document.getElementById("matrix-input2");
         const textareaForce = document.getElementById("matrix-input3");
         const textareaCoord = document.getElementById("matrix-input4");
+
+        const textareaAccuracy = document.getElementById("matrix-Accuracy");
+
         const textareaFriction = document.getElementById("matrix-input5");
         const textareaIntStiffness = document.getElementById("matrix-input6");
         const textareaAdvanced = document.getElementById("matrix-input9");
@@ -1412,9 +1494,31 @@
         textareaPoints.value = predefinedPoints.map(row => row.join("\t")).join("\n");
         textareaForce.value = predefinedForce.map(row => row.join("\t")).join("\n");
         textareaCoord.value = predefinedCoord.map(row => row.join("\t")).join("\n");
+        textareaAccuracy.value = standardAccuracy;
         textareaFriction.value = predefinedFriction;
         textareaIntStiffness.value = predefinedStiffness.toExponential(2);
-        textareaAdvanced.value = preAdvanced.map(row => row.join("\t")).join("\n");
+
+        const textareaFrange = document.getElementById("matrix-Frange");
+        textareaFrange.value = scanRangeF
+
+        const textareaFpoints = document.getElementById("matrix-Fpoints");
+        textareaFpoints.value = nrPointsF
+
+        const textareaFaccuracy = document.getElementById("matrix-Faccuracy");
+        textareaFaccuracy.value = accuracyF
+
+        const textareaCrange = document.getElementById("matrix-Crange");
+        textareaCrange.value = scanRangeC
+
+        const textareaCpoints = document.getElementById("matrix-Cpoints");
+        textareaCpoints.value = nrPointsC
+
+        const textareaCaccuracy = document.getElementById("matrix-Caccuracy");
+        textareaCaccuracy.value = accuracyC
+
+
+
+        //textareaAdvanced.value = preAdvanced.map(row => row.join("\t")).join("\n");
 
         let KK = 0;
         let LL = 0;
@@ -1461,17 +1565,81 @@
         }
 
 
+        function calcStandard() {
+
+            const matrixInput1 = document.getElementById("matrix-input1");
+            const matrixValue1 = matrixInput1.value;
+
+            const matrixInput2 = document.getElementById("matrix-input2");
+            const matrixValue2 = matrixInput2.value;
+
+            const matrixInput3 = document.getElementById("matrix-input3");
+            const matrixValue3 = matrixInput3.value;
+
+            const matrixInput4 = document.getElementById("matrix-input4");
+            const matrixValue4 = matrixInput4.value;
+
+            const matrixAccuracy = document.getElementById("matrix-Accuracy");
+            const matrixAccuracyValue = matrixAccuracy.value;
+
+            // Remove non-numeric characters from the string
+            const numericValue = parseFloat(matrixAccuracyValue.replace(/[^\d.]/g, ''));
+
+            // Check if the numeric value is valid
+            if (!isNaN(numericValue)) {
+                // Use the numeric value in your code
+                console.log(numericValue);
+            } else {
+                // Handle the case when the value cannot be converted to a number
+                console.log("Invalid numeric value");
+            }
+
+            // Convert the matrix values to arrays
+            const matrixArray1 = matrixValue1.trim().split(/\s*\n\s*/).map(row => row.trim().split(/\s+/).map(Number));
+            const matrixArray2 = matrixValue2.trim().split(/\s*\n\s*/).map(row => row.trim().split(/\s+/).map(Number));
+            const matrixArray3 = matrixValue3.trim().split(/\s+/).map(Number);
+            const matrixArray4 = matrixValue4.trim().split(/\s+/).map(Number);
+
+            //const matrixAccuracyArray = matrixAccuracyValue.trim().split(/\s*\n\s*/).map(row => row.trim().split(/\s+/).map(Number));
+
+            //const matrixArray5 = matrixValue5.trim().split(/\s+/).map(Number);
+
+            // Check that the matrix arrays have the correct dimensions and contain only numbers
+            const isMatrixValid1 = matrixArray1.length === 6 && matrixArray1.every(row => row.length === 3 && row.every(val => !isNaN(val)));
+            const isMatrixValid2 = matrixArray2.length === 6 && matrixArray2.every(row => row.length === 3 && row.every(val => !isNaN(val)));
+            const isMatrixValid3 = matrixArray3.length === 3 && matrixArray3.every(val => !isNaN(val));
+            const isMatrixValid4 = matrixArray4.length === 3 && matrixArray4.every(val => !isNaN(val));
+            //const ismatrixAccuracyValueValid4 = matrixAccuracy.length === 3 && matrixArray4.every(val => !isNaN(val));
+
+            /* <textarea id="matrix-Accuracy" name="textareaAccuracy" rows="1" cols="6"></textarea> */
+            nn = normr(matrixArray1);
+            pp = matrixArray2;
+            Fcc = matrixArray3;
+            coordFcc = matrixArray4;
+
+
+
+            // Allowed friction coefficients for negative and positive purtubations
+            const mumaxvalueMin = findNegativeForceMuMin(nn, pp, Fcc, coordFcc, numericValue)
+            document.getElementById("negative-muMin").innerHTML = math.abs(mumaxvalueMin).toFixed(3);
+            document.getElementById("negative-muMin").style.fontSize = "14px";
+
+            const mumaxvaluePlus = findNegativeForceMuPlus(nn, pp, Fcc, coordFcc, numericValue)
+            document.getElementById("negative-muPlus").innerHTML = mumaxvaluePlus.toFixed(3);
+            document.getElementById("negative-muPlus").style.fontSize = "14px";
+
+            const MuMaxt = math.min(math.abs(mumaxvalueMin), math.abs(mumaxvaluePlus))
+            document.getElementById("MaxMu").innerHTML = MuMaxt.toFixed(3);
+            //document.getElementById("negative-muPlus").style.fontSize = "14px"; 
+
+
+        }
 
         // Call the function with the predefined inputs
         //create3DPlot(predefinedNormals, predefinedPoints, predefinedForce, predefinedCoord)
 
-        function processMatrixInputs() {
-            var advanced = document.getElementById("advancedOption").checked;
-            var iterate = document.getElementById("iterateOption").checked;
-            var standard = document.getElementById("standardOption").checked;
 
-
-
+        function calcForces() {
             // Get the values of the matrix input fields
             const matrixInput1 = document.getElementById("matrix-input1");
             const matrixValue1 = matrixInput1.value;
@@ -1492,14 +1660,14 @@
             const matrixValue6 = matrixInput6.value;
 
             const matrixInput9 = document.getElementById("matrix-input9");
-            const matrixValue9 = matrixInput9.value;
+            //const matrixValue9 = matrixInput9.value;
 
             // Convert the matrix values to arrays
             const matrixArray1 = matrixValue1.trim().split(/\s*\n\s*/).map(row => row.trim().split(/\s+/).map(Number));
             const matrixArray2 = matrixValue2.trim().split(/\s*\n\s*/).map(row => row.trim().split(/\s+/).map(Number));
             const matrixArray3 = matrixValue3.trim().split(/\s+/).map(Number);
             const matrixArray4 = matrixValue4.trim().split(/\s+/).map(Number);
-            const matrixArray9 = matrixValue9.trim().split(/\s*\n\s*/).map(row => row.trim().split(/\s+/).map(Number));
+            //const matrixArray9 = matrixValue9.trim().split(/\s*\n\s*/).map(row => row.trim().split(/\s+/).map(Number));
             //const matrixArray5 = matrixValue5.trim().split(/\s+/).map(Number);
 
             // Check that the matrix arrays have the correct dimensions and contain only numbers
@@ -1507,7 +1675,92 @@
             const isMatrixValid2 = matrixArray2.length === 6 && matrixArray2.every(row => row.length === 3 && row.every(val => !isNaN(val)));
             const isMatrixValid3 = matrixArray3.length === 3 && matrixArray3.every(val => !isNaN(val));
             const isMatrixValid4 = matrixArray4.length === 3 && matrixArray4.every(val => !isNaN(val));
-            const isMatrixValid9 = matrixArray9.length === 6 && matrixArray9.every(row => row.length === 3 && row.every(val => !isNaN(val)));
+            //const isMatrixValid9 = matrixArray9.length === 6 && matrixArray9.every(row => row.length === 3 && row.every(val => !isNaN(val)));
+
+            //const isMatrixValid5 = matrixArray4.length === 1 && matrixArray5.every(val => !isNaN(val));
+
+            // If any of the matrices are invalid, show an error message
+            if (!isMatrixValid1 || !isMatrixValid2 || !isMatrixValid3 || !isMatrixValid4) {
+                alert("One or more matrices are invalid. Please check your input and try again.");
+                return;
+            }
+
+            nn = normr(matrixArray1);
+            pp = matrixArray2;
+            Fcc = matrixArray3;
+            coordFcc = matrixArray4;
+            mu = matrixValue5;
+            stiffnesdiv = 1 / matrixValue6;
+
+            const [Finterface, WCSdeformT] = kynCalc(nn, pp, mu, 1, Fcc, coordFcc);
+            columnNames = ['n1', 'n2', 'n3', 'n4', 'n5', 'n6'];
+            rowNames = ["IF 1", "IF 2", "IF 3", "IF 4", "IF 5", "IF 6"];
+            rowNames
+            populateTable("result-table", math.transpose(Finterface), "12px", "fixed", rowNames, columnNames, "Forces on interfaces after interface retraction")
+
+            const [FinterfaceMuPlus, _] = kynCalc(nn, pp, -mu, 0.1, Fcc, coordFcc);
+            populateTable("result-table2", math.transpose(FinterfaceMuPlus), "12px", "fixed", rowNames, columnNames, "Forces on interfaces after interface extension")
+
+            const deltaForce = (math.subtract(math.abs(Finterface), math.abs(FinterfaceMuPlus)));
+            const deltaPos = (math.multiply(deltaForce, stiffnesdiv))
+
+
+            rowNames = ["X", "Y", "Z", "Rx", "Ry", "Rz"];
+            //columnNames = ["Case 1", "Case 2", "Case 3", "Case 4", "Case 5", "Case 6"];
+            populateTable("result-table3", WCSdeformT, "12px", "exponential", rowNames, columnNames, "Motion Matrix of WCS")
+
+            rowNames = ["X", "Y", "Z", "Rx", "Ry", "Rz"];
+            columnNames = ["Min", "Max", "Error range +/-"];
+            const A = math.multiply((motionAinv(nn, pp)), math.transpose(deltaPos))
+
+
+            const errorRange = (math.transpose(findMinMaxNumbers(A)))
+            for (let i = 0; i < errorRange.length; i++) {
+                const diff = (errorRange[i][1] - errorRange[i][0]) / 2;
+                errorRange[i].push(diff);
+            }
+
+            populateTable("result-table4", errorRange, "12px", "exponential", rowNames, columnNames, "WCS hysteresys of body due to friction and stiffness")
+
+
+        }
+
+        function processForce() {
+
+            // Get the values of the matrix input fields
+            const matrixInput1 = document.getElementById("matrix-input1");
+            const matrixValue1 = matrixInput1.value;
+
+            const matrixInput2 = document.getElementById("matrix-input2");
+            const matrixValue2 = matrixInput2.value;
+
+            const matrixInput3 = document.getElementById("matrix-input3");
+            const matrixValue3 = matrixInput3.value;
+
+            const matrixInput4 = document.getElementById("matrix-input4");
+            const matrixValue4 = matrixInput4.value;
+
+            const matrixFrange = document.getElementById("matrix-Frange");
+            const matrixValueFrange = parseFloat(matrixFrange.value)
+
+            const matrixFpoints = document.getElementById("matrix-Fpoints");
+            const matrixValueFpoints = parseFloat(matrixFpoints.value)
+
+            const matrixFaccuracy = document.getElementById("matrix-Faccuracy");
+            const matrixValueFaccuracy = parseFloat(matrixFaccuracy.value)
+
+            // Convert the matrix values to arrays
+            const matrixArray1 = matrixValue1.trim().split(/\s*\n\s*/).map(row => row.trim().split(/\s+/).map(Number));
+            const matrixArray2 = matrixValue2.trim().split(/\s*\n\s*/).map(row => row.trim().split(/\s+/).map(Number));
+            const matrixArray3 = matrixValue3.trim().split(/\s+/).map(Number);
+            const matrixArray4 = matrixValue4.trim().split(/\s+/).map(Number);
+
+
+            // Check that the matrix arrays have the correct dimensions and contain only numbers
+            const isMatrixValid1 = matrixArray1.length === 6 && matrixArray1.every(row => row.length === 3 && row.every(val => !isNaN(val)));
+            const isMatrixValid2 = matrixArray2.length === 6 && matrixArray2.every(row => row.length === 3 && row.every(val => !isNaN(val)));
+            const isMatrixValid3 = matrixArray3.length === 3 && matrixArray3.every(val => !isNaN(val));
+            const isMatrixValid4 = matrixArray4.length === 3 && matrixArray4.every(val => !isNaN(val));
 
             //const isMatrixValid5 = matrixArray4.length === 1 && matrixArray5.every(val => !isNaN(val));
 
@@ -1522,101 +1775,125 @@
             pp = matrixArray2;
             Fcc = matrixArray3;
             coordFcc = matrixArray4;
-            mu = matrixValue5;
-            stiffnesdiv = 1 / matrixValue6;
-            resolution = 0.01
-            resolutionF = matrixArray9[0][2]
-            resolutionC = matrixArray9[1][2]
+
 
             //create3DPlot(nn, pp, Fcc ,coordFcc )
 
             // calculate Finterface
-            if (advanced || iterate || standard) {
 
-                if (iterate) {
-                    if (KK !== 0) {
-                        Fcc = KK;
-                        //console.log(Fcc)
-                    }
 
-                    if (LL !== 0) {
-                        coordFcc = LL;
-                        //console.log(coordFcc)
-                    }
-                }
-                // Allowed friction coefficients for negative and positive purtubations
-                const mumaxvalueMin = findNegativeForceMuMin(nn, pp, Fcc, coordFcc, resolution)
-                document.getElementById("negative-muMin").innerHTML = math.abs(mumaxvalueMin).toFixed(3);
-                //document.getElementById("negative-muMin").style.fontSize = "14px";
-
-                const mumaxvaluePlus = findNegativeForceMuPlus(nn, pp, Fcc, coordFcc, resolution)
-                document.getElementById("negative-muPlus").innerHTML = mumaxvaluePlus.toFixed(3);
-                //document.getElementById("negative-muPlus").style.fontSize = "14px";
-
-                const MuMaxt = math.min(math.abs(mumaxvalueMin), math.abs(mumaxvaluePlus))
-                document.getElementById("MaxMu").innerHTML = MuMaxt.toFixed(3);
-                //document.getElementById("negative-muPlus").style.fontSize = "14px";
+            if (KK !== 0) {
+                Fcc = KK;
+                //console.log(Fcc)
             }
 
 
-            if (advanced || iterate) {
-
-                const [Finterface, WCSdeformT] = kynCalc(nn, pp, mu, 1, Fcc, coordFcc);
-                columnNames = ["Case 1", "Case 2", "Case 3", "Case 4", "Case 5", "Case 6"];
-                rowNames = ["IF 1", "IF 2", "IF 3", "IF 4", "IF 5", "IF 6"];
-                rowNames
-                populateTable("result-table", math.transpose(Finterface), "12px", "fixed", rowNames, columnNames, "Forces on interfaces after interface retraction")
-
-                const [FinterfaceMuPlus, _] = kynCalc(nn, pp, -mu, 0.1, Fcc, coordFcc);
-                populateTable("result-table2", math.transpose(FinterfaceMuPlus), "12px", "fixed", rowNames, columnNames, "Forces on interfaces after interface extension")
-
-                const deltaForce = (math.subtract(math.abs(Finterface), math.abs(FinterfaceMuPlus)));
-                const deltaPos = (math.multiply(deltaForce, stiffnesdiv))
+            const perturbationRange = matrixValueFrange; // Specify the range for Fcc variable
+            const xnF = matrixValueFpoints; // Specify the number of steps
+            const yValuesF = perturbFc(nn, pp, Fcc, coordFcc, perturbationRange, xnF, matrixValueFaccuracy);
+            const xValues = linspace(-perturbationRange / 2, perturbationRange / 2, xnF + 1);
+            plotGraph(xValues, yValuesF, 'plotCell', "closing force sensitivity", "scan range", "friction [-]", ["Fx", "Fy", "Fz"])
 
 
-                rowNames = ["X", "Y", "Z", "Rx", "Ry", "Rz"];
-                columnNames = ["Case 1", "Case 2", "Case 3", "Case 4", "Case 5", "Case 6"];
-                populateTable("result-table3", WCSdeformT, "12px", "exponential", rowNames, columnNames, "Motion Matrix of WCS")
+            K = findMaxPerRow(yValuesF)
+            //L = findMaxPerRow(yValuesFcCoord)
 
-                rowNames = ["X", "Y", "Z", "Rx", "Ry", "Rz"];
-                columnNames = ["Min", "Max", "Error range +/-"];
-                const A = math.multiply((motionAinv(nn, pp)), math.transpose(deltaPos))
+            KK = calcNewSetpoint(Fcc, xValues, K);
+            //LL = calcNewSetpoint(coordFcc, xValuesCoord, L);
 
+            document.getElementById("newForceVector").innerHTML = KK.join("    ");
+            document.getElementById("newForceVectorE").innerHTML = KK.join("    ");
+            //document.getElementById("newCoordVector").innerHTML = LL.join("    ");
 
-                const errorRange = (math.transpose(findMinMaxNumbers(A)))
-                for (let i = 0; i < errorRange.length; i++) {
-                    const diff = (errorRange[i][1] - errorRange[i][0]) / 2;
-                    errorRange[i].push(diff);
-                }
-
-                populateTable("result-table4", errorRange, "12px", "exponential", rowNames, columnNames, "WCS accuracy of body due to friction and stiffness")
-
-                const perturbationRange = matrixArray9[0][0]; // Specify the range for Fcc variable
-                const xnF = matrixArray9[0][1]; // Specify the number of steps
-                const yValuesF = perturbFc(nn, pp, Fcc, coordFcc, perturbationRange, xnF, resolutionF);
-                const xValues = linspace(-perturbationRange / 2, perturbationRange / 2, xnF + 1);
-                plotGraph(xValues, yValuesF, 'plotCell', "closing force sensitivity", "amplitude", "friction", ["Fx", "Fy", "Fz"])
-
-                const perturbationRangeCoordFc = matrixArray9[1][0]; // Specify the range for Fcc variable
-                const xnCoord = matrixArray9[1][1]; // Specify the number of steps
-                const yValuesFcCoord = perturbCoordFc(nn, pp, Fcc, coordFcc, perturbationRangeCoordFc, xnCoord, resolutionC);
-                const xValuesCoord = linspace(-perturbationRangeCoordFc / 2, perturbationRangeCoordFc / 2, xnCoord + 1);
-                plotGraph(xValuesCoord, yValuesFcCoord, 'plotCell2', "closing force location sensitivity", "amplitude", "friction", ["x", "y", "z"])
-
-                K = findMaxPerRow(yValuesF)
-                L = findMaxPerRow(yValuesFcCoord)
-
-                KK = calcNewSetpoint(Fcc, xValues, K);
-                LL = calcNewSetpoint(coordFcc, xValuesCoord, L);
-
-                document.getElementById("newForceVector").innerHTML = KK.join("    ");
-                document.getElementById("newCoordVector").innerHTML = LL.join("    ");
-
-                return KK, LL
-
-            }
+            return KK
 
         }
+
+        function processCoords() {
+
+            // Get the values of the matrix input fields
+            const matrixInput1 = document.getElementById("matrix-input1");
+            const matrixValue1 = matrixInput1.value;
+
+            const matrixInput2 = document.getElementById("matrix-input2");
+            const matrixValue2 = matrixInput2.value;
+
+            const matrixInput3 = document.getElementById("matrix-input3");
+            const matrixValue3 = matrixInput3.value;
+
+            const matrixInput4 = document.getElementById("matrix-input4");
+            const matrixValue4 = matrixInput4.value;
+
+            const matrixCrange = document.getElementById("matrix-Crange");
+            const matrixValueCrange = parseFloat(matrixCrange.value)
+
+            const matrixCpoints = document.getElementById("matrix-Cpoints");
+            const matrixValueCpoints = parseFloat(matrixCpoints.value)
+
+            const matrixCaccuracy = document.getElementById("matrix-Caccuracy");
+            const matrixValueCaccuracy = parseFloat(matrixCaccuracy.value)
+
+            // Convert the matrix values to arrays
+            const matrixArray1 = matrixValue1.trim().split(/\s*\n\s*/).map(row => row.trim().split(/\s+/).map(Number));
+            const matrixArray2 = matrixValue2.trim().split(/\s*\n\s*/).map(row => row.trim().split(/\s+/).map(Number));
+            const matrixArray3 = matrixValue3.trim().split(/\s+/).map(Number);
+            const matrixArray4 = matrixValue4.trim().split(/\s+/).map(Number);
+
+
+            // Check that the matrix arrays have the correct dimensions and contain only numbers
+            const isMatrixValid1 = matrixArray1.length === 6 && matrixArray1.every(row => row.length === 3 && row.every(val => !isNaN(val)));
+            const isMatrixValid2 = matrixArray2.length === 6 && matrixArray2.every(row => row.length === 3 && row.every(val => !isNaN(val)));
+            const isMatrixValid3 = matrixArray3.length === 3 && matrixArray3.every(val => !isNaN(val));
+            const isMatrixValid4 = matrixArray4.length === 3 && matrixArray4.every(val => !isNaN(val));
+
+            //const isMatrixValid5 = matrixArray4.length === 1 && matrixArray5.every(val => !isNaN(val));
+
+            // If any of the matrices are invalid, show an error message
+            if (!isMatrixValid1 || !isMatrixValid2 || !isMatrixValid3 || !isMatrixValid4) {
+                alert("One or more matrices are invalid. Please check your input and try again.");
+                return;
+            }
+
+            // assign the values of the variables
+            nn = normr(matrixArray1);
+            pp = matrixArray2;
+            Fcc = matrixArray3;
+            coordFcc = matrixArray4;
+
+
+            //create3DPlot(nn, pp, Fcc ,coordFcc )
+
+            // calculate Finterface
+
+
+            if (LL !== 0) {
+                coordFcc = LL;
+                //console.log(Fcc)
+            }
+
+
+            const perturbationRange = matrixValueCrange; // Specify the range for Fcc variable
+            const xnF = matrixValueCpoints; // Specify the number of steps
+            const yValuesC = perturbCoordFc(nn, pp, Fcc, coordFcc, perturbationRange, xnF, matrixValueCaccuracy);
+            const xValues = linspace(-perturbationRange / 2, perturbationRange / 2, xnF + 1);
+            plotGraph(xValues, yValuesC, 'plotCell2', "closing force location", "scan range", "friction [-]", ["X", "Y", "Z"])
+
+
+            L = findMaxPerRow(yValuesC)
+            //L = findMaxPerRow(yValuesFcCoord)
+
+            LL = calcNewSetpoint(coordFcc, xValues, L);
+            //LL = calcNewSetpoint(coordFcc, xValuesCoord, L);
+
+            
+            document.getElementById("newCoordVector").innerHTML = LL.join("    ");
+            document.getElementById("newCoordVectorE").innerHTML = LL.join("    ");
+
+            return LL
+
+        }
+
+
 
 
 

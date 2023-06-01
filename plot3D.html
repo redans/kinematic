@@ -8,201 +8,57 @@
   <!-- Include Plotly.js library -->
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
+  <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+
+
 </head>
 
 <body>
     
   <div id="graph"></div>
+  <input type="file" id="fileInput" style="display: none;" />
 
-  <script>
-    // Define the coordinates and normal vectors
+  <button id="browseButton">Browse</button>
 
-    function cTransL(X, Y, Z, thx, thy, thz, cX, cY, cZ) {
-                const Tci = [
-                    [1, 0, 0, -cX],
-                    [0, 1, 0, -cY],
-                    [0, 0, 1, -cZ],
-                    [0, 0, 0, 1]
-                ];
+<script>
+  const fileInput = document.getElementById('fileInput');
+  const browseButton = document.getElementById('browseButton');
 
-                const Tco = [
-                    [1, 0, 0, cX],
-                    [0, 1, 0, cY],
-                    [0, 0, 1, cZ],
-                    [0, 0, 0, 1]
-                ];
+  browseButton.addEventListener('click', function () {
+    fileInput.click(); // Trigger the file input element
+  });
 
-                const Rx = [
-                    [1, 0, 0, 0],
-                    [0, math.cos(thx), -math.sin(thx), 0],
-                    [0, math.sin(thx), math.cos(thx), 0],
-                    [0, 0, 0, 1]
-                ];
+  fileInput.addEventListener('change', function (e) {
+    const file = e.target.files[0];
+    const reader = new FileReader();
 
-                const Ry = [
-                    [math.cos(thy), 0, math.sin(thy), 0],
-                    [0, 1, 0, 0],
-                    [-math.sin(thy), 0, math.cos(thy), 0],
-                    [0, 0, 0, 1]
-                ];
+    reader.onload = function (e) {
+      const data = new Uint8Array(e.target.result);
+      const workbook = XLSX.read(data, { type: 'array' });
 
-                const Rz = [
-                    [math.cos(thz), -math.sin(thz), 0, 0],
-                    [math.sin(thz), math.cos(thz), 0, 0],
-                    [0, 0, 1, 0],
-                    [0, 0, 0, 1]
-                ];
+      // Extract data from a specific sheet
+      const sheetName = workbook.SheetNames[0]; // Assuming the data is in the first sheet
+      const worksheet = workbook.Sheets[sheetName];
 
-                const Txyz = [
-                    [1, 0, 0, X],
-                    [0, 1, 0, Y],
-                    [0, 0, 1, Z],
-                    [0, 0, 0, 1]
-                ];
+      // Extract variables from the sheet
+      const predefinedNormals = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+      const predefinedPoints = XLSX.utils.sheet_to_json(worksheet, { header: 2 });
+      const predefinedForce = XLSX.utils.sheet_to_json(worksheet, { header: 3 });
+      const predefinedCoord = XLSX.utils.sheet_to_json(worksheet, { header: 4 });
 
-                const Tout = math.multiply(math.multiply(math.multiply(math.multiply(math.multiply(Txyz, Tco), Rz), Ry), Rx), Tci);
-                return Tout;
-            }
-
-            const n = [[0], [0], [1], [0]];
-            const p1 = [[-20e-3], [-0.5], [0], [1]];
-            const p2 = [[20e-3], [-0.5], [0], [1]];
- 
-            const beta = math.PI / 180 * 60;
-            const alpha = 0;
-            let gamma = 0;
- 
-            N1 = math.multiply(cTransL(0, 0, 0, alpha, beta, gamma, 0, 0, 0), n);
-            //N1 = N1.map(arr => arr[0])
-            const N2 = math.multiply(cTransL(0, 0, 0, alpha, -beta, gamma, 0, 0, 0), n);
-            const P1 = math.multiply(cTransL(0, 0, 0, alpha, beta, gamma, 0, 0, 0), p1);
-            const P2 = math.multiply(cTransL(0, 0, 0, alpha, -beta, gamma, 0, 0, 0), p2);
- 
-            gamma = math.PI / 180 * 120;
-            const N3 = math.multiply(cTransL(0, 0, 0, alpha, beta, gamma, 0, 0, 0), n);
-            const N4 = math.multiply(cTransL(0, 0, 0, alpha, -beta, gamma, 0, 0, 0), n);
-            const P3 = math.multiply(cTransL(0, 0, 0, alpha, beta, gamma, 0, 0, 0), p1);
-            const P4 = math.multiply(cTransL(0, 0, 0, alpha, -beta, gamma, 0, 0, 0), p2);
- 
-            gamma = math.PI / 180 * -120;
-            const N5 = math.multiply(cTransL(0, 0, 0, alpha, beta, gamma, 0, 0, 0), n);
-            const N6 = math.multiply(cTransL(0, 0, 0, alpha, -beta, gamma, 0, 0, 0), n);
-            const P5 = math.multiply(cTransL(0, 0, 0, alpha, beta, gamma, 0, 0, 0), p1);
-            const P6 = math.multiply(cTransL(0, 0, 0, alpha, -beta, gamma, 0, 0, 0), p2);
- 
-
-            
-
-
-        predefinedNormals = [
-                [N1[0], N1[1], N1[2]],
-                [N2[0], N2[1], N2[2]],
-                [N3[0], N3[1], N3[2]],
-                [N4[0], N4[1], N4[2]],
-                [N5[0], N5[1], N5[2]],
-                [N6[0], N6[1], N6[2]],
- 
-            ]; 
-            predefinedNormals  = predefinedNormals.map(row => row.map(innerArr => innerArr[0]));
- 
-           predefinedPoints = [
-                [P1[0], P1[1], P1[2]],
-                [P2[0], P2[1], P2[2]],
-                [P3[0], P3[1], P3[2]],
-                [P4[0], P4[1], P4[2]],
-                [P5[0], P5[1], P5[2]],
-                [P6[0], P6[1], P6[2]],
- 
-            ];
-
-           console.log( predefinedNormals)
-           predefinedPoints  = predefinedPoints.map(row => row.map(innerArr => innerArr[0]));
-
-/*      predefinedNormals = [
-      [0, 1, 0],
-      [0, 1, 0],
-      [1, 0, 0],
-      [0, 0, 1],
-      [0, 0, 1],
-      [0, 0, 1]
-    ]; */
-  
- /*   const predefinedPoints = [
-      [1, 0, 0],
-      [5, 0, 0],
-      [0, 1, 0],
-      [1, 1, 0],
-      [5, 1, 0],
-      [3, 2, 0]
-    ]; */
-
-    // Create arrays to hold the coordinates and normal vectors separately
-    const xCoords = [];
-    const yCoords = [];
-    const zCoords = [];
-    const uNormals = [];
-    const vNormals = [];
-    const wNormals = [];
-
-    // Extract the coordinates and normal vectors into separate arrays
-    for (let i = 0; i < predefinedPoints.length; i++) {
-      const [x, y, z] = predefinedPoints[i];
-      xCoords.push(x);
-      yCoords.push(y);
-      zCoords.push(z);
-
-      const [u, v, w] = predefinedNormals[i];
-      uNormals.push(u);
-      vNormals.push(v);
-      wNormals.push(w);
-    }
-
-    // Create a trace for the scatter plot of the coordinates
-    const coordinatesTrace = {
-      x: xCoords,
-      y: yCoords,
-      z: zCoords,
-      mode: 'markers',
-      marker: {
-        size: 5,
-        color: 'blue'
-      },
-      type: 'scatter3d'
+      // Use the extracted variables
+      console.log(predefinedNormals);
+      console.log(predefinedPoints);
+      console.log(predefinedForce);
+      console.log(predefinedCoord);
     };
 
-    // Create a trace for the cone plot of the normal vectors
-    const vectorsTrace = {
-      x: xCoords,
-      y: yCoords,
-      z: zCoords,
-      u: uNormals,
-      v: vNormals,
-      w: wNormals,
-      type: 'cone',
-      anchor: 'tip',
-      sizemode: 'scaled',
-      sizeref: 0.3,
-      showscale: false,
-      colorscale: [[0, 'rgba(255, 0, 0, 1)'], [1, 'rgba(255, 0, 0, 1)']],
-      colorbar: {
-        thickness: 20,
-        thicknessmode: 'pixels'
-      }
-    };
+    reader.readAsArrayBuffer(file);
+  });
 
-    // Create a data array containing both traces
-    const data = [coordinatesTrace, vectorsTrace];
 
-    // Define the layout for the 3D plot
-    const layout = {
-      scene: {
-       // aspectmode: 'cube', // Automatically scale to have the same scale in all directions
-        aspectratio: { x: 1, y: 1, z: 0.05} // Adjust the aspect ratio as needed
-      }
-    };
 
-    // Plot the 3D graph using Plotly
-    Plotly.newPlot('graph', data, layout);
   </script>
 </body>
 
