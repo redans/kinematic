@@ -1,0 +1,2207 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>kinematic body</title>
+    <link rel="icon"
+        href="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gQ3JlYXRlZCB3aXRoIElua3NjYXBlIChodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy8pIC0tPgoKPHN2ZwogICB3aWR0aD0iMjU2IgogICBoZWlnaHQ9IjI1NiIKICAgdmlld0JveD0iMCAwIDI1NiAyNTYiCiAgIHZlcnNpb249IjEuMSIKICAgaWQ9IlNWR1Jvb3QiCiAgIHNvZGlwb2RpOmRvY25hbWU9Imljb24uc3ZnIgogICBpbmtzY2FwZTp2ZXJzaW9uPSIxLjIuMiAoYjBhODQ4NiwgMjAyMi0xMi0wMSkiCiAgIGlua3NjYXBlOmRhdGFsb3NzPSJ0cnVlIgogICB4bWxuczppbmtzY2FwZT0iaHR0cDovL3d3dy5pbmtzY2FwZS5vcmcvbmFtZXNwYWNlcy9pbmtzY2FwZSIKICAgeG1sbnM6c29kaXBvZGk9Imh0dHA6Ly9zb2RpcG9kaS5zb3VyY2Vmb3JnZS5uZXQvRFREL3NvZGlwb2RpLTAuZHRkIgogICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxzb2RpcG9kaTpuYW1lZHZpZXcKICAgICBpZD0ibmFtZWR2aWV3ODkiCiAgICAgcGFnZWNvbG9yPSIjZmZmZmZmIgogICAgIGJvcmRlcmNvbG9yPSIjMDAwMDAwIgogICAgIGJvcmRlcm9wYWNpdHk9IjAuMjUiCiAgICAgaW5rc2NhcGU6c2hvd3BhZ2VzaGFkb3c9IjIiCiAgICAgaW5rc2NhcGU6cGFnZW9wYWNpdHk9IjAuMCIKICAgICBpbmtzY2FwZTpwYWdlY2hlY2tlcmJvYXJkPSIwIgogICAgIGlua3NjYXBlOmRlc2tjb2xvcj0iI2QxZDFkMSIKICAgICBpbmtzY2FwZTpkb2N1bWVudC11bml0cz0icHgiCiAgICAgc2hvd2dyaWQ9InRydWUiCiAgICAgaW5rc2NhcGU6em9vbT0iMi42ODAyODg0IgogICAgIGlua3NjYXBlOmN4PSIxNDcuMTg1NjUiCiAgICAgaW5rc2NhcGU6Y3k9IjEyMy42ODA3MiIKICAgICBpbmtzY2FwZTp3aW5kb3ctd2lkdGg9IjE2ODAiCiAgICAgaW5rc2NhcGU6d2luZG93LWhlaWdodD0iOTMzIgogICAgIGlua3NjYXBlOndpbmRvdy14PSIwIgogICAgIGlua3NjYXBlOndpbmRvdy15PSIyNSIKICAgICBpbmtzY2FwZTp3aW5kb3ctbWF4aW1pemVkPSIxIgogICAgIGlua3NjYXBlOmN1cnJlbnQtbGF5ZXI9ImxheWVyMSI+CiAgICA8aW5rc2NhcGU6Z3JpZAogICAgICAgdHlwZT0ieHlncmlkIgogICAgICAgaWQ9ImdyaWQ5NSIgLz4KICA8L3NvZGlwb2RpOm5hbWVkdmlldz4KICA8ZGVmcwogICAgIGlkPSJkZWZzODQiIC8+CiAgPGcKICAgICBpbmtzY2FwZTpsYWJlbD0iTGF5ZXIgMSIKICAgICBpbmtzY2FwZTpncm91cG1vZGU9ImxheWVyIgogICAgIGlkPSJsYXllcjEiPgogICAgPHJlY3QKICAgICAgIHN0eWxlPSJvcGFjaXR5OjAuOTtmaWxsOiNmZjk5NTU7c3Ryb2tlOiNmZjk5NTU7c3Ryb2tlLXdpZHRoOjE7c3Ryb2tlLWRhc2hhcnJheTpub25lIgogICAgICAgaWQ9InJlY3QyMTc4IgogICAgICAgd2lkdGg9IjI1NSIKICAgICAgIGhlaWdodD0iMjU1IgogICAgICAgeD0iMCIKICAgICAgIHk9IjAiCiAgICAgICByeT0iMjUiIC8+CiAgICA8cGF0aAogICAgICAgc3R5bGU9ImZpbGw6IzAwMDAwMCIKICAgICAgIGQ9Ik0gMTI0Ljk0ODExLDExOS45MjE0NiAyMTUuMDY4NzIsMjQuNzc0MTk0IgogICAgICAgaWQ9InBhdGg5MzYiIC8+CiAgICA8cGF0aAogICAgICAgc3R5bGU9ImZpbGw6IzAwMDAwMDtzdHJva2U6IzAwMDAwMCIKICAgICAgIGQ9Ik0gMjAwLDQ1IDIyNSwyMCIKICAgICAgIGlkPSJwYXRoOTM4IiAvPgogICAgPHBhdGgKICAgICAgIHN0eWxlPSJmaWxsOiMwMDAwMDA7c3Ryb2tlOiMwMDAwMDAiCiAgICAgICBkPSJNIDIwMC40MjQ2OCw0Mi45MjQ2OCAyMTAsODAiCiAgICAgICBpZD0icGF0aDkzOC0wIgogICAgICAgc29kaXBvZGk6bm9kZXR5cGVzPSJjYyIgLz4KICAgIDxwYXRoCiAgICAgICBzdHlsZT0iZmlsbDojMDAwMDAwO3N0cm9rZTojMDAwMDAwIgogICAgICAgZD0iTSAyMDIuMDc1MzIsNDQuNTc1MzIgMTY1LDM1IgogICAgICAgaWQ9InBhdGg5MzgtMC05IgogICAgICAgc29kaXBvZGk6bm9kZXR5cGVzPSJjYyIgLz4KICAgIDxjaXJjbGUKICAgICAgIHN0eWxlPSJvcGFjaXR5OjE7ZmlsbDpub25lO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoxNjtzdHJva2UtZGFzaGFycmF5Om5vbmUiCiAgICAgICBpZD0icGF0aDEwOTQiCiAgICAgICBjeD0iNTAiCiAgICAgICBjeT0iMTE1IgogICAgICAgcj0iMzAiIC8+CiAgICA8cGF0aAogICAgICAgc3R5bGU9ImZpbGw6bm9uZTtzdHJva2U6IzAwMDBmZjtzdHJva2Utd2lkdGg6MTY7c3Ryb2tlLWRhc2hhcnJheTpub25lIgogICAgICAgZD0ibSA1MCwxMTUgaCA4NSBsIDY1LC03MCIKICAgICAgIGlkPSJwYXRoMTE5NiIKICAgICAgIHNvZGlwb2RpOm5vZGV0eXBlcz0iY2NjIiAvPgogICAgPHBhdGgKICAgICAgIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwZmY7c3Ryb2tlLXdpZHRoOjE4LjQ3NTI7c3Ryb2tlLWRhc2hhcnJheTpub25lIgogICAgICAgZD0iTSAxMzUsMTE1IFYgMjM1IgogICAgICAgaWQ9InBhdGgxMTk4IiAvPgogICAgPHBhdGgKICAgICAgIHN0eWxlPSJvcGFjaXR5OjE7ZmlsbDpub25lO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoxNjtzdHJva2UtZGFzaGFycmF5Om5vbmUiCiAgICAgICBkPSJNIDE2NSwzNSAyMjUsMjAgMjEwLDgwIFoiCiAgICAgICBpZD0icGF0aDIxMjAiIC8+CiAgICA8Y2lyY2xlCiAgICAgICBpZD0icGF0aDg4MCIKICAgICAgIHN0eWxlPSJmaWxsOiMwMDAwMDA7c3Ryb2tlOiMwMDAwMDAiCiAgICAgICBjeD0iMTI0Ljk0ODExIgogICAgICAgY3k9IjExOS45MjE0NiIKICAgICAgIHI9IjAuMTgwNzU0NDUiIC8+CiAgICA8Y2lyY2xlCiAgICAgICBzdHlsZT0ib3BhY2l0eToxO2ZpbGw6I2ZmMDAwMDtzdHJva2U6IzAwMDAwMCIKICAgICAgIGlkPSJwYXRoMTA5NiIKICAgICAgIGN4PSIyMDAiCiAgICAgICBjeT0iNDUuNSIKICAgICAgIHI9IjEyLjUiIC8+CiAgICA8Y2lyY2xlCiAgICAgICBzdHlsZT0ib3BhY2l0eToxO2ZpbGw6I2ZmMDAwMDtzdHJva2U6IzAwMDAwMCIKICAgICAgIGlkPSJwYXRoMTA5Ni0zLTIiCiAgICAgICBjeD0iNTAiCiAgICAgICBjeT0iMTE0LjUiCiAgICAgICByPSIxMi41IiAvPgogICAgPGNpcmNsZQogICAgICAgc3R5bGU9Im9wYWNpdHk6MTtmaWxsOiNmZjAwMDA7c3Ryb2tlOiMwMDAwMDAiCiAgICAgICBpZD0icGF0aDEwOTYtMyIKICAgICAgIGN4PSIxMzUuNSIKICAgICAgIGN5PSIyMDUiCiAgICAgICByPSIxMi41IiAvPgogICAgPHBhdGgKICAgICAgIHN0eWxlPSJvcGFjaXR5OjE7ZmlsbDpub25lO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoxNjtzdHJva2UtZGFzaGFycmF5Om5vbmUiCiAgICAgICBkPSJtIDk1LDE4MSBoIDc1IHYgNTAgSCA5NSBaIgogICAgICAgaWQ9InBhdGg1MTkyIiAvPgogIDwvZz4KPC9zdmc+Cg=="
+        type="image/svg+xml">
+    <link rel="shortcut icon"
+        href="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gQ3JlYXRlZCB3aXRoIElua3NjYXBlIChodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy8pIC0tPgoKPHN2ZwogICB3aWR0aD0iMjU2IgogICBoZWlnaHQ9IjI1NiIKICAgdmlld0JveD0iMCAwIDI1NiAyNTYiCiAgIHZlcnNpb249IjEuMSIKICAgaWQ9IlNWR1Jvb3QiCiAgIHNvZGlwb2RpOmRvY25hbWU9Imljb24uc3ZnIgogICBpbmtzY2FwZTp2ZXJzaW9uPSIxLjIuMiAoYjBhODQ4NiwgMjAyMi0xMi0wMSkiCiAgIGlua3NjYXBlOmRhdGFsb3NzPSJ0cnVlIgogICB4bWxuczppbmtzY2FwZT0iaHR0cDovL3d3dy5pbmtzY2FwZS5vcmcvbmFtZXNwYWNlcy9pbmtzY2FwZSIKICAgeG1sbnM6c29kaXBvZGk9Imh0dHA6Ly9zb2RpcG9kaS5zb3VyY2Vmb3JnZS5uZXQvRFREL3NvZGlwb2RpLTAuZHRkIgogICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxzb2RpcG9kaTpuYW1lZHZpZXcKICAgICBpZD0ibmFtZWR2aWV3ODkiCiAgICAgcGFnZWNvbG9yPSIjZmZmZmZmIgogICAgIGJvcmRlcmNvbG9yPSIjMDAwMDAwIgogICAgIGJvcmRlcm9wYWNpdHk9IjAuMjUiCiAgICAgaW5rc2NhcGU6c2hvd3BhZ2VzaGFkb3c9IjIiCiAgICAgaW5rc2NhcGU6cGFnZW9wYWNpdHk9IjAuMCIKICAgICBpbmtzY2FwZTpwYWdlY2hlY2tlcmJvYXJkPSIwIgogICAgIGlua3NjYXBlOmRlc2tjb2xvcj0iI2QxZDFkMSIKICAgICBpbmtzY2FwZTpkb2N1bWVudC11bml0cz0icHgiCiAgICAgc2hvd2dyaWQ9InRydWUiCiAgICAgaW5rc2NhcGU6em9vbT0iMi42ODAyODg0IgogICAgIGlua3NjYXBlOmN4PSIxNDcuMTg1NjUiCiAgICAgaW5rc2NhcGU6Y3k9IjEyMy42ODA3MiIKICAgICBpbmtzY2FwZTp3aW5kb3ctd2lkdGg9IjE2ODAiCiAgICAgaW5rc2NhcGU6d2luZG93LWhlaWdodD0iOTMzIgogICAgIGlua3NjYXBlOndpbmRvdy14PSIwIgogICAgIGlua3NjYXBlOndpbmRvdy15PSIyNSIKICAgICBpbmtzY2FwZTp3aW5kb3ctbWF4aW1pemVkPSIxIgogICAgIGlua3NjYXBlOmN1cnJlbnQtbGF5ZXI9ImxheWVyMSI+CiAgICA8aW5rc2NhcGU6Z3JpZAogICAgICAgdHlwZT0ieHlncmlkIgogICAgICAgaWQ9ImdyaWQ5NSIgLz4KICA8L3NvZGlwb2RpOm5hbWVkdmlldz4KICA8ZGVmcwogICAgIGlkPSJkZWZzODQiIC8+CiAgPGcKICAgICBpbmtzY2FwZTpsYWJlbD0iTGF5ZXIgMSIKICAgICBpbmtzY2FwZTpncm91cG1vZGU9ImxheWVyIgogICAgIGlkPSJsYXllcjEiPgogICAgPHJlY3QKICAgICAgIHN0eWxlPSJvcGFjaXR5OjAuOTtmaWxsOiNmZjk5NTU7c3Ryb2tlOiNmZjk5NTU7c3Ryb2tlLXdpZHRoOjE7c3Ryb2tlLWRhc2hhcnJheTpub25lIgogICAgICAgaWQ9InJlY3QyMTc4IgogICAgICAgd2lkdGg9IjI1NSIKICAgICAgIGhlaWdodD0iMjU1IgogICAgICAgeD0iMCIKICAgICAgIHk9IjAiCiAgICAgICByeT0iMjUiIC8+CiAgICA8cGF0aAogICAgICAgc3R5bGU9ImZpbGw6IzAwMDAwMCIKICAgICAgIGQ9Ik0gMTI0Ljk0ODExLDExOS45MjE0NiAyMTUuMDY4NzIsMjQuNzc0MTk0IgogICAgICAgaWQ9InBhdGg5MzYiIC8+CiAgICA8cGF0aAogICAgICAgc3R5bGU9ImZpbGw6IzAwMDAwMDtzdHJva2U6IzAwMDAwMCIKICAgICAgIGQ9Ik0gMjAwLDQ1IDIyNSwyMCIKICAgICAgIGlkPSJwYXRoOTM4IiAvPgogICAgPHBhdGgKICAgICAgIHN0eWxlPSJmaWxsOiMwMDAwMDA7c3Ryb2tlOiMwMDAwMDAiCiAgICAgICBkPSJNIDIwMC40MjQ2OCw0Mi45MjQ2OCAyMTAsODAiCiAgICAgICBpZD0icGF0aDkzOC0wIgogICAgICAgc29kaXBvZGk6bm9kZXR5cGVzPSJjYyIgLz4KICAgIDxwYXRoCiAgICAgICBzdHlsZT0iZmlsbDojMDAwMDAwO3N0cm9rZTojMDAwMDAwIgogICAgICAgZD0iTSAyMDIuMDc1MzIsNDQuNTc1MzIgMTY1LDM1IgogICAgICAgaWQ9InBhdGg5MzgtMC05IgogICAgICAgc29kaXBvZGk6bm9kZXR5cGVzPSJjYyIgLz4KICAgIDxjaXJjbGUKICAgICAgIHN0eWxlPSJvcGFjaXR5OjE7ZmlsbDpub25lO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoxNjtzdHJva2UtZGFzaGFycmF5Om5vbmUiCiAgICAgICBpZD0icGF0aDEwOTQiCiAgICAgICBjeD0iNTAiCiAgICAgICBjeT0iMTE1IgogICAgICAgcj0iMzAiIC8+CiAgICA8cGF0aAogICAgICAgc3R5bGU9ImZpbGw6bm9uZTtzdHJva2U6IzAwMDBmZjtzdHJva2Utd2lkdGg6MTY7c3Ryb2tlLWRhc2hhcnJheTpub25lIgogICAgICAgZD0ibSA1MCwxMTUgaCA4NSBsIDY1LC03MCIKICAgICAgIGlkPSJwYXRoMTE5NiIKICAgICAgIHNvZGlwb2RpOm5vZGV0eXBlcz0iY2NjIiAvPgogICAgPHBhdGgKICAgICAgIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwZmY7c3Ryb2tlLXdpZHRoOjE4LjQ3NTI7c3Ryb2tlLWRhc2hhcnJheTpub25lIgogICAgICAgZD0iTSAxMzUsMTE1IFYgMjM1IgogICAgICAgaWQ9InBhdGgxMTk4IiAvPgogICAgPHBhdGgKICAgICAgIHN0eWxlPSJvcGFjaXR5OjE7ZmlsbDpub25lO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoxNjtzdHJva2UtZGFzaGFycmF5Om5vbmUiCiAgICAgICBkPSJNIDE2NSwzNSAyMjUsMjAgMjEwLDgwIFoiCiAgICAgICBpZD0icGF0aDIxMjAiIC8+CiAgICA8Y2lyY2xlCiAgICAgICBpZD0icGF0aDg4MCIKICAgICAgIHN0eWxlPSJmaWxsOiMwMDAwMDA7c3Ryb2tlOiMwMDAwMDAiCiAgICAgICBjeD0iMTI0Ljk0ODExIgogICAgICAgY3k9IjExOS45MjE0NiIKICAgICAgIHI9IjAuMTgwNzU0NDUiIC8+CiAgICA8Y2lyY2xlCiAgICAgICBzdHlsZT0ib3BhY2l0eToxO2ZpbGw6I2ZmMDAwMDtzdHJva2U6IzAwMDAwMCIKICAgICAgIGlkPSJwYXRoMTA5NiIKICAgICAgIGN4PSIyMDAiCiAgICAgICBjeT0iNDUuNSIKICAgICAgIHI9IjEyLjUiIC8+CiAgICA8Y2lyY2xlCiAgICAgICBzdHlsZT0ib3BhY2l0eToxO2ZpbGw6I2ZmMDAwMDtzdHJva2U6IzAwMDAwMCIKICAgICAgIGlkPSJwYXRoMTA5Ni0zLTIiCiAgICAgICBjeD0iNTAiCiAgICAgICBjeT0iMTE0LjUiCiAgICAgICByPSIxMi41IiAvPgogICAgPGNpcmNsZQogICAgICAgc3R5bGU9Im9wYWNpdHk6MTtmaWxsOiNmZjAwMDA7c3Ryb2tlOiMwMDAwMDAiCiAgICAgICBpZD0icGF0aDEwOTYtMyIKICAgICAgIGN4PSIxMzUuNSIKICAgICAgIGN5PSIyMDUiCiAgICAgICByPSIxMi41IiAvPgogICAgPHBhdGgKICAgICAgIHN0eWxlPSJvcGFjaXR5OjE7ZmlsbDpub25lO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoxNjtzdHJva2UtZGFzaGFycmF5Om5vbmUiCiAgICAgICBkPSJtIDk1LDE4MSBoIDc1IHYgNTAgSCA5NSBaIgogICAgICAgaWQ9InBhdGg1MTkyIiAvPgogIDwvZz4KPC9zdmc+Cg=="
+        type="image/svg+xml">
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #061e96;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            table-layout: fixed;
+
+        }
+
+
+        th,
+        td {
+            border: 1px solid rgba(47, 125, 241, 0.099);
+            padding: 10px;
+            text-align: left;
+        }
+
+        .holdleft {
+            text-align: left;
+            column-span: 2;
+        }
+
+
+        .centered {
+            text-align: center;
+            column-span: 4;
+        }
+
+        .centered textarea {
+            text-align: center;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .holdright {
+            text-align: right;
+            column-span: 2;
+        }
+
+        nav {
+            background-color: #ccc;
+            padding: 10px;
+        }
+
+
+        .resultbar {
+            background-color: #2944b0;
+            color: #f5ecec;
+            padding: 10px;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #747474;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        main {
+            margin: 0 auto;
+            max-width: 1200px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(160, 130, 130, 0.3);
+        }
+    </style>
+</head>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js"></script>
+
+
+<script src="https://cdn.plot.ly/plotly-2.20.0.min.js" charset="utf-8"></script>
+<!-- <script src='./kynLib.js'></script> -->
+
+
+
+
+
+
+<header>
+    <h1>Self-centering of a Kinematic body</h1>
+</header>
+
+<footer style="text-align: left; background-color: rgb(159, 157, 157);">
+    DRAFT <br>
+    version rc0.9 <br> 01-06-2023
+
+</footer>
+<main>
+
+
+    <div>
+
+        <table>
+
+            <tr>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+            </tr>
+
+            <tr>
+                <td><!-- empty cell --></td>
+                <td class="hold left" colspan="5">
+                    <h2>Calculation tool functionality</h2>
+                    <p>This tool provides a comprehensive analysis of the self-centering properties of a kinematic body
+                        with six degrees of freedom in its constraints. It is divided into several sections:<br>
+                        <br>
+                    <ol>
+                        <li>Input section: This section allows users to input their desired parameters and visualize
+                            them in a 3D representation. </li>
+                        <li>Allowed friction calculation: In this section, the tool calculates the maximum allowable
+                            friction based on the given inputs.</li>
+                        <li>Interface forces, motion matrix, and hysteresis calculation: This section provides
+                            calculations for the interface forces, motion matrix, and hysteresis, giving insights into
+                            the behavior of the system.</li>
+                        <li>Closing force optimization: Users can optimize the direction and location of the closing
+                            force in this section.</li>
+                    </ol>
+                    <br>
+                    Regarding the self-centering condition, it is considered violated when the interface points become
+                    loose, indicated by a negative force on the interface. In this tool, a negative force implies that
+                    the interface needs to exert a pulling force. In the table, the columns represent the force
+                    scenarios in which a specific interface is retracted. These retraction scenarios are highlighted
+                    with red numbers.
+
+                    </p>
+                </td>
+
+                <td class="centered" colspan="4">
+                    <h3>example of pre-loaded kinematic body</h3>
+                    <!-- image of gholder -->
+                    <svg
+                    width="71mm"
+                    height="42mm"
+                    viewBox="0 0 41 22"
+                    version="1.1"
+                    id="svg5"
+                    inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+                    sodipodi:docname="gholder.svg"
+                    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+                    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:svg="http://www.w3.org/2000/svg">
+                   <sodipodi:namedview
+                      id="namedview7"
+                      pagecolor="#ffffff"
+                      bordercolor="#666666"
+                      borderopacity="1.0"
+                      inkscape:showpageshadow="2"
+                      inkscape:pageopacity="0.0"
+                      inkscape:pagecheckerboard="0"
+                      inkscape:deskcolor="#d1d1d1"
+                      inkscape:document-units="mm"
+                      showgrid="true"
+                      inkscape:zoom="6.2217172"
+                      inkscape:cx="-63.406932"
+                      inkscape:cy="14.304733"
+                      inkscape:window-width="3072"
+                      inkscape:window-height="1675"
+                      inkscape:window-x="1912"
+                      inkscape:window-y="-8"
+                      inkscape:window-maximized="1"
+                      inkscape:current-layer="layer1">
+                     <inkscape:grid
+                        type="xygrid"
+                        id="grid63"
+                        originx="0"
+                        originy="0" />
+                   </sodipodi:namedview>
+                   <defs
+                      id="defs2">
+                     <marker
+                        style="overflow:visible"
+                        id="marker2144"
+                        refX="0"
+                        refY="0"
+                        orient="auto-start-reverse"
+                        inkscape:stockid="Arrow2"
+                        markerWidth="7.6999998"
+                        markerHeight="5.5999999"
+                        viewBox="0 0 7.7 5.6"
+                        inkscape:isstock="true"
+                        inkscape:collect="always"
+                        preserveAspectRatio="xMidYMid">
+                       <path
+                          transform="scale(0.7)"
+                          d="M -2,-4 9,0 -2,4 c 2,-2.33 2,-5.66 0,-8 z"
+                          style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+                          id="path2142" />
+                     </marker>
+                     <marker
+                        style="overflow:visible"
+                        id="Arrow2"
+                        refX="0"
+                        refY="0"
+                        orient="auto-start-reverse"
+                        inkscape:stockid="Arrow2"
+                        markerWidth="7.6999998"
+                        markerHeight="5.5999999"
+                        viewBox="0 0 7.7 5.6"
+                        inkscape:isstock="true"
+                        inkscape:collect="always"
+                        preserveAspectRatio="xMidYMid">
+                       <path
+                          transform="scale(0.7)"
+                          d="M -2,-4 9,0 -2,4 c 2,-2.33 2,-5.66 0,-8 z"
+                          style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+                          id="arrow2L" />
+                     </marker>
+                     <marker
+                        style="overflow:visible"
+                        id="Arrow2-5"
+                        refX="0"
+                        refY="0"
+                        orient="auto-start-reverse"
+                        inkscape:stockid="Arrow2"
+                        markerWidth="7.6999998"
+                        markerHeight="5.5999999"
+                        viewBox="0 0 7.7 5.6"
+                        inkscape:isstock="true"
+                        inkscape:collect="always"
+                        preserveAspectRatio="xMidYMid">
+                       <path
+                          transform="scale(0.7)"
+                          d="M -2,-4 9,0 -2,4 c 2,-2.33 2,-5.66 0,-8 z"
+                          style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+                          id="arrow2L-5" />
+                     </marker>
+                   </defs>
+                   <g
+                      inkscape:label="Layer 1"
+                      inkscape:groupmode="layer"
+                      id="layer1">
+                     <path
+                        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker2144)"
+                        d="M 12.878179,20.593592 V 17.154009"
+                        id="path440"
+                        sodipodi:nodetypes="cc" />
+                     <path
+                        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker2144)"
+                        d="M 34.044846,20.593592 V 17.154009"
+                        id="path442"
+                        sodipodi:nodetypes="cc" />
+                     <path
+                        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker2144)"
+                        d="m 2.2948456,10.01026 h 3.439583"
+                        id="path444"
+                        sodipodi:nodetypes="cc" />
+                     <path
+                        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow2)"
+                        d="m 23.461512,7.364425 -7.9375,5.291667"
+                        id="path504" />
+                     <g
+                        id="g2283-8-2"
+                        transform="matrix(0.65338111,0,0,0.63210521,-10.902329,-20.136224)"
+                        style="stroke-width:0.4;stroke-dasharray:none">
+                       <g
+                          id="g2278-3-1"
+                          style="stroke-width:0.4;stroke-dasharray:none">
+                         <circle
+                            style="fill:none;stroke:#000000;stroke-width:0.4;stroke-dasharray:none"
+                            id="path2200-6-0"
+                            cx="68.791664"
+                            cy="47.625"
+                            r="1.3229166" />
+                         <circle
+                            style="fill:#000000;stroke:none;stroke-width:0.4;stroke-dasharray:none"
+                            id="path2200-8-2-5"
+                            cx="68.762497"
+                            cy="47.625"
+                            r="0.5" />
+                       </g>
+                     </g>
+                     <g
+                        id="g2283-8-2-2"
+                        transform="matrix(0.65338111,0,0,0.63210521,-21.485662,-25.427891)"
+                        style="stroke-width:0.4;stroke-dasharray:none">
+                       <g
+                          id="g2278-3-1-5"
+                          style="stroke-width:0.4;stroke-dasharray:none">
+                         <circle
+                            style="fill:none;stroke:#000000;stroke-width:0.4;stroke-dasharray:none"
+                            id="path2200-6-0-5"
+                            cx="68.791664"
+                            cy="47.625"
+                            r="1.3229166" />
+                         <circle
+                            style="fill:#000000;stroke:none;stroke-width:0.4;stroke-dasharray:none"
+                            id="path2200-8-2-5-7"
+                            cx="68.762497"
+                            cy="47.625"
+                            r="0.5" />
+                       </g>
+                     </g>
+                     <g
+                        id="g2283-8-2-2-0"
+                        transform="matrix(0.65338111,0,0,0.63210521,-32.049938,-20.145221)"
+                        style="stroke-width:0.4;stroke-dasharray:none">
+                       <g
+                          id="g2278-3-1-5-5"
+                          style="stroke-width:0.4;stroke-dasharray:none">
+                         <circle
+                            style="fill:none;stroke:#000000;stroke-width:0.4;stroke-dasharray:none"
+                            id="path2200-6-0-5-1"
+                            cx="68.791664"
+                            cy="47.625"
+                            r="1.3229166" />
+                         <circle
+                            style="fill:#000000;stroke:none;stroke-width:0.4;stroke-dasharray:none"
+                            id="path2200-8-2-5-7-2"
+                            cx="68.762497"
+                            cy="47.625"
+                            r="0.5" />
+                       </g>
+                     </g>
+                     <rect
+                        style="fill:none;stroke:#000000;stroke-width:0.4;stroke-dasharray:none"
+                        id="rect3235"
+                        width="31.75"
+                        height="13.49375"
+                        x="7.5865126"
+                        y="2.0727627" />
+                     <text
+                        xml:space="preserve"
+                        style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+                        x="1.0670061"
+                        y="18.233013"
+                        id="text3297"><tspan
+                          sodipodi:role="line"
+                          id="tspan3295"
+                          style="font-size:2.11667px;stroke-width:0.264583"
+                          x="1.0670061"
+                          y="18.233013">(0,0)</tspan></text>
+                     <path
+                        style="fill:none;stroke:#000000;stroke-width:0.0942868;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+                        d="m 7.3073696,15.814646 c -0.01719,3.56e-4 -0.02122,-0.02189 -0.03628,-0.025 -0.004,-7.77e-4 -0.0081,0 -0.0121,0 -0.0054,0 -0.01076,0 -0.01612,0 -0.0054,0 -0.0108,-6.8e-4 -0.01613,0 -0.0055,6.8e-4 -0.01069,0.0031 -0.01612,0.0042 -0.008,0.0017 -0.01633,0.0018 -0.0242,0.0041 -0.0018,5.34e-4 -0.0022,0.0035 -0.0041,0.0042 -0.0025,9.23e-4 -0.0054,-3.91e-4 -0.0081,0 -0.01619,0.0024 -0.03226,0.0056 -0.04838,0.0083 -0.0081,0.0014 -0.01627,0.0021 -0.0242,0.0042 -0.0029,7.28e-4 -0.0053,0.003 -0.0081,0.0042 -0.06976,0.02884 0.01605,-0.0083 -0.03226,0.01667 -0.01877,0.0097 -0.0085,-0.0029 -0.03226,0.0125 -0.0049,0.0031 -0.0071,0.0096 -0.0121,0.0125 -0.0048,0.0029 -0.01143,0.0011 -0.01612,0.0042 -0.0065,0.0042 -0.0104,0.0115 -0.01612,0.01667 -0.0051,0.0046 -0.01138,0.0076 -0.01613,0.0125 -0.0021,0.0022 -0.0021,0.0059 -0.0041,0.0083 -0.01755,0.02268 -0.0067,0.0028 -0.02822,0.025 -0.0048,0.0049 -0.0078,0.01133 -0.0121,0.01667 -0.0024,0.003 -0.0061,0.005 -0.0081,0.0083 -0.0022,0.0037 -0.0019,0.0087 -0.0041,0.0125 -0.0033,0.006 -0.0082,0.01102 -0.0121,0.01667 -0.0028,0.004 -0.0051,0.0086 -0.0081,0.01251 -0.0023,0.0031 -0.0067,0.0047 -0.0081,0.0083 -0.0028,0.0079 -0.0016,0.01692 -0.0041,0.025 -0.003,0.01011 -0.0086,0.01921 -0.0121,0.02917 -0.0032,0.0095 -0.0052,0.01951 -0.0081,0.02917 -0.0025,0.0084 -0.006,0.01648 -0.0081,0.025 -0.002,0.0082 -0.0017,0.01691 -0.0041,0.025 -0.0017,0.006 -0.0062,0.01078 -0.0081,0.01667 -0.0077,0.02405 -0.0016,0.01728 -0.0041,0.04167 -6.97e-4,0.0071 -0.0028,0.01387 -0.0041,0.02084 -0.0015,0.0083 -0.0016,0.01692 -0.0041,0.025 -0.003,0.01011 -0.0084,0.0193 -0.0121,0.02917 -0.0074,0.0199 -0.01143,0.0373 -0.01612,0.05834 -0.01049,0.04698 9.98e-4,-0.0052 -0.0041,0.04167 -0.0018,0.01693 -0.0072,0.02048 -0.0121,0.03751 -0.002,0.0068 -0.0018,0.01412 -0.0041,0.02084 -0.0019,0.0059 -0.0064,0.0107 -0.0081,0.01667 -0.01383,0.05003 0.01585,-0.02637 -0.0041,0.025 -0.0011,0.0029 -0.0023,0.0057 -0.0041,0.0083 -9.98e-4,0.0017 -0.0036,0.0022 -0.0041,0.0042 -9.48e-4,0.004 0.0016,0.0087 0,0.0125 -0.0058,0.01393 -0.01562,0.01808 -0.0242,0.02917 -0.0073,0.0095 -3.55e-4,0.0065 -0.0081,0.0125 -0.0094,0.0073 -0.01727,0.01164 -0.02822,0.01667 -0.0066,0.0031 -0.01369,0.005 -0.02016,0.0083 -0.0044,0.0022 -0.0077,0.0063 -0.0121,0.0083 -0.0078,0.0035 -0.01685,0.0039 -0.0242,0.0083 -0.09907,0.05973 0.05362,-0.01729 -0.05242,0.03751 -0.08818,0.04557 0.03835,-0.02531 -0.06048,0.02917 -0.0095,0.0053 -0.01829,0.01218 -0.02822,0.01667 -0.01168,0.0053 -0.02445,0.0076 -0.03628,0.0125 -0.0084,0.0034 -0.01587,0.0089 -0.02419,0.0125 -0.0078,0.0034 -0.01602,0.0059 -0.0242,0.0083 -0.0026,7.77e-4 -0.0091,0 -0.0121,0 -0.0094,0 -0.01881,0 -0.02822,0 -0.01881,0 -0.03763,0 -0.05645,0 -0.0027,0 0.0054,0 0.0081,0"
+                        id="path3422" />
+                     <g
+                        id="g5164"
+                        transform="translate(-2.4568724,-43.86603)">
+                       <g
+                          id="g2283-8-2-2-0-7"
+                          transform="matrix(0.32262727,0,0,0.30820284,-8.0815079,35.655461)"
+                          style="stroke-width:0.4;stroke-dasharray:none">
+                         <g
+                            id="g2278-3-1-5-5-4"
+                            style="stroke-width:0.4;stroke-dasharray:none">
+                           <circle
+                              style="fill:none;stroke:#000000;stroke-width:0.4;stroke-dasharray:none"
+                              id="path2200-6-0-5-1-3"
+                              cx="68.791664"
+                              cy="47.625"
+                              r="1.3229166" />
+                           <circle
+                              style="fill:#000000;stroke:none;stroke-width:0.4;stroke-dasharray:none"
+                              id="path2200-8-2-5-7-2-8"
+                              cx="68.762497"
+                              cy="47.625"
+                              r="0.5" />
+                         </g>
+                       </g>
+                       <path
+                          style="fill:none;stroke:#000000;stroke-width:0.109458px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow2)"
+                          d="M 14.106026,50.425811 V 49.293547"
+                          id="path4210" />
+                       <path
+                          style="fill:none;stroke:#000000;stroke-width:0.109458px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow2-5)"
+                          d="m 14.063508,50.368941 h 1.058156"
+                          id="path4210-7" />
+                       <text
+                          xml:space="preserve"
+                          style="font-size:1.4218px;line-height:1.25;font-family:sans-serif;stroke-width:0.106635"
+                          x="16.019234"
+                          y="50.746288"
+                          id="text5117"><tspan
+                            sodipodi:role="line"
+                            id="tspan5115"
+                            style="stroke-width:0.106635"
+                            x="16.019234"
+                            y="50.746288">x</tspan></text>
+                       <text
+                          xml:space="preserve"
+                          style="font-size:1.4218px;line-height:1.25;font-family:sans-serif;stroke-width:0.106635"
+                          x="13.145014"
+                          y="51.652554"
+                          id="text5117-4"><tspan
+                            sodipodi:role="line"
+                            id="tspan5115-8"
+                            style="stroke-width:0.106635"
+                            x="13.145014"
+                            y="51.652554">z</tspan></text>
+                       <text
+                          xml:space="preserve"
+                          style="font-size:1.4218px;line-height:1.25;font-family:sans-serif;stroke-width:0.106635"
+                          x="13.458346"
+                          y="48.181278"
+                          id="text5121"><tspan
+                            sodipodi:role="line"
+                            id="tspan5119"
+                            style="stroke-width:0.106635"
+                            x="13.458346"
+                            y="48.181278">y</tspan></text>
+                     </g>
+                     <text
+                        xml:space="preserve"
+                        style="font-size:2.06036px;line-height:1.25;font-family:sans-serif;stroke-width:0.154527"
+                        x="18.183853"
+                        y="12.64699"
+                        id="text5192"><tspan
+                          sodipodi:role="line"
+                          id="tspan5190"
+                          style="stroke-width:0.154527"
+                          x="18.183853"
+                          y="12.64699">Fc</tspan></text>
+                     <text
+                        xml:space="preserve"
+                        style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+                        x="13.447762"
+                        y="20.116402"
+                        id="text7486"><tspan
+                          sodipodi:role="line"
+                          id="tspan7484"
+                          style="font-size:2.11667px;stroke-width:0.264583"
+                          x="13.447762"
+                          y="20.116402">n<tspan
+                    style="font-size:65%;baseline-shift:sub"
+                    id="tspan7517">1</tspan></tspan></text>
+                     <text
+                        xml:space="preserve"
+                        style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+                        x="34.788502"
+                        y="19.971741"
+                        id="text7486-7"><tspan
+                          sodipodi:role="line"
+                          id="tspan7484-7"
+                          style="font-size:2.11667px;stroke-width:0.264583"
+                          x="34.788502"
+                          y="19.971741">n<tspan
+                    style="font-size:65%;baseline-shift:sub"
+                    id="tspan7515">2</tspan></tspan></text>
+                     <text
+                        xml:space="preserve"
+                        style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+                        x="2.1686392"
+                        y="8.5482397"
+                        id="text7486-7-9"><tspan
+                          sodipodi:role="line"
+                          id="tspan7484-7-6"
+                          style="font-size:2.11667px;stroke-width:0.264583"
+                          x="2.1686392"
+                          y="8.5482397">n<tspan
+                    style="font-size:65%;baseline-shift:sub"
+                    id="tspan7551">3</tspan></tspan></text>
+                     <text
+                        xml:space="preserve"
+                        style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+                        x="35.059917"
+                        y="12.07788"
+                        id="text7486-7-1"><tspan
+                          sodipodi:role="line"
+                          id="tspan7484-7-1"
+                          style="font-size:2.11667px;stroke-width:0.264583"
+                          x="35.059917"
+                          y="12.07788">n<tspan
+                    style="font-size:65%;baseline-shift:sub"
+                    id="tspan7515-2">5</tspan></tspan></text>
+                     <text
+                        xml:space="preserve"
+                        style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+                        x="10.229679"
+                        y="12.26684"
+                        id="text7486-7-15"><tspan
+                          sodipodi:role="line"
+                          id="tspan7484-7-0"
+                          style="font-size:2.11667px;stroke-width:0.264583"
+                          x="10.229679"
+                          y="12.26684">n<tspan
+                    style="font-size:65%;baseline-shift:sub"
+                    id="tspan7515-9">4</tspan></tspan></text>
+                     <text
+                        xml:space="preserve"
+                        style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+                        x="25.151413"
+                        y="4.3807125"
+                        id="text7486-7-0"><tspan
+                          sodipodi:role="line"
+                          id="tspan7484-7-4"
+                          style="font-size:2.11667px;stroke-width:0.264583"
+                          x="25.151413"
+                          y="4.3807125">n<tspan
+                    style="font-size:65%;baseline-shift:sub"
+                    id="tspan7515-8">6</tspan></tspan></text>
+                     <path
+                        style="fill:none;stroke:#0000ff;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.8, 0.2, 0.1, 0.2;stroke-dashoffset:0;stroke-opacity:1"
+                        d="m 10.420882,10.010259 26.008438,0"
+                        id="path19868"
+                        sodipodi:nodetypes="cc" />
+                     <path
+                        style="fill:none;stroke:#0000ff;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.8, 0.2, 0.1, 0.2;stroke-dashoffset:0;stroke-opacity:1"
+                        d="m 21.182109,4.7199742 h 4.904124"
+                        id="path19868-3"
+                        sodipodi:nodetypes="cc" />
+                     <path
+                        style="fill:none;stroke:#0000ff;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.8, 0.2, 0.1, 0.2;stroke-dashoffset:0;stroke-opacity:1"
+                        d="m 12.878179,13.236228 0,-5.298728"
+                        id="path19870"
+                        sodipodi:nodetypes="cc" />
+                     <path
+                        style="fill:none;stroke:#0000ff;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.8, 0.2, 0.1, 0.2;stroke-dashoffset:0;stroke-opacity:1"
+                        d="m 23.452234,6.6251374 0,-4.0867439"
+                        id="path19870-0"
+                        sodipodi:nodetypes="cc" />
+                     <path
+                        style="fill:none;stroke:#0000ff;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.8, 0.2, 0.1, 0.2;stroke-dashoffset:0;stroke-opacity:1"
+                        d="m 34.044845,13.23327 c 0,0 -0.05452,0.349922 0.0056,-5.2732173"
+                        id="path19872"
+                        sodipodi:nodetypes="cc" />
+                   </g>
+                 </svg>
+                 
+                </td>
+
+
+            </tr>
+
+            <tr>
+                <td colspan="10">
+                    <div class="resultbar">INPUTS</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="centered" colspan="2">input examples</td>
+                <td class="centered" colspan="2"> <input type="radio" name="options" id="Optiongh" value="gratingHolder"
+                        checked> grating holder </td>
+                <td class="centered" colspan="2"> <input type="radio" name="options" id="Option222" value="vgrooves">
+                    120&deg 2-2-2 </td>
+                <td class="centered" colspan="1"> <input type="radio" name="options" id="Option321"
+                        value="pointgrooveflat"> 3-2-1</td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+
+
+
+            </tr>
+
+            <tr>
+                <td class="centered" colspan="5">
+                    <label for="matrix-input1">normals of interfaces [nx ny nz]</label>
+                </td>
+
+                <td class="centered" colspan="5">
+                    <label for="matrix-input2">interfaces points [px py pz]</label>
+                </td>
+            </tr>
+
+
+
+            <tr>
+                <td class="centered" colspan="5">
+                    <textarea id="matrix-input1" name="textarea1" rows="6" cols="70"></textarea>
+                </td>
+
+                <td class="centered" colspan="5">
+                    <textarea id="matrix-input2" name="textarea2" rows="6" cols="70"></textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <td> <!-- empty cell --></td>
+                <td class="centered" colspan="4">
+                    <br>
+                    closing force [Fx Fy Fz]
+                </td>
+
+                <td class="centered" colspan="4">
+                    <br>
+                    closing force location [x y z]
+                </td>
+                <td> <!-- empty cell --></td>
+            </tr>
+
+            <tr>
+                <td> <!-- empty cell --></td>
+                <td class="centered" colspan="4">
+                    <textarea id="matrix-input3" name="textarea3" rows="1" cols="50"></textarea>
+                </td>
+
+                <td class="centered" colspan="4">
+                    <textarea id="matrix-input4" name="textarea4" rows="1" cols="50"></textarea>
+                </td>
+
+                <td> <!-- empty cell --></td>
+            </tr>
+
+            <tr>
+                <td> <!-- empty cell --></td>
+
+                <td class="centered" colspan="4">
+                    Optimized force definition: <span id="newForceVector"></span>
+                </td>
+
+                <td class="centered" colspan="4">
+                    Optimized coords definition: <span id="newCoordVector"></span>
+
+                </td>
+                <td> <!-- empty cell --></td>
+            </tr>
+            <tr>
+
+                <td class="centered" colspan="2">
+                    <button type="submit" onclick="drawVectors()"
+                        style="background-color: rgb(6, 60, 11); color: white;">DRAW input vectors</button>
+                </td>
+                <td><!-- empty cell --></td>
+                <td class="centered" colspan="6">
+                    <table id="plotConfig"></table>
+                <td><!-- empty cell --></td>
+
+            </tr>
+            <tr>
+                <td colspan="10">
+                    <div class="resultbar">CALCULATION OF ALLOWED FRICTION</div>
+                </td>
+            </tr>
+            <tr>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+            </tr>
+
+            <tr><!-- calculate standard friction -->
+
+                <td class="centered" colspan="2">
+                    <button type="submit" onclick="calcStandard()" style="background-color: red; color: white;">Press to
+                        calculate</button>
+                </td>
+                <td class="holdright" colspan="3">
+                    Max &#956 for min pertubations:<br>
+                    Max &#956 for plus pertubations:
+                </td>
+                <td class="holdleft">
+                    <span id="negative-muMin"></span> <br>
+                    <span id="negative-muPlus"></span>
+                </td>
+                <td class="centered" colspan="1">
+                    <h3>Max &#956 :</h3>
+                </td>
+                <td class="centered">
+                    <h3><span id="MaxMu"></span></h3>
+                </td>
+                <td class="holdright" colspan="1">
+                    accuracy:</td>
+                <td class="centered" colspan="1">
+                    <textarea id="matrix-Accuracy" name="textareaAccuracy" rows="1" cols="6"></textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="10">
+                    <div class="resultbar">INTERFACE FORCES, MOTION MATRIX AND HYSTERESIS OF THE INTERFACE</div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="centered" colspan="2">
+                    <button type="submit" onclick="calcForces()"
+                        style="background-color: rgb(13, 7, 7); color: white;">Press to calculate</button>
+                </td>
+                <td class="centered" colspan="2">
+                    Coefficient of friction
+                </td>
+                <td class="centered" colspan="1">
+                    <textarea id="matrix-input5" name="textarea5" rows="1" cols="8"></textarea>
+                </td>
+                <td><!-- empty cell --></td>
+                <td class="centered" colspan="2">
+                    Interface stiffness
+                </td>
+                <td class="centered" colspan="1">
+                    <textarea id="matrix-input6" name="textarea6" rows="1" cols="8"></textarea>
+                </td>
+                <td><!-- empty cell --></td>
+            </tr>
+
+
+            <tr>
+                <td><!-- empty cell --></td>
+                <td class="centered" colspan="4">
+                    <table id="result-table"></table>
+                </td>
+                <td class="centered" colspan="4">
+                    <table id="result-table2"></table>
+                </td>
+                <td><!-- empty cell --></td>
+            </tr>
+
+
+            <tr>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+
+            </tr>
+
+            <tr>
+                <td><!-- empty cell --></td>
+                <td class="centered" colspan="4">
+                    <table id="result-table3"></table>
+                </td>
+                <td class="centered" colspan="4">
+                    <table id="result-table4"></table>
+                </td>
+                <td><!-- empty cell --></td>
+            </tr>
+
+            <tr>
+                <td colspan="10">
+                    <div class="resultbar">OPTIMIZATION</div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="centered" colspan="5">
+                    <h3>closing force optimization [Fx Fy Fz]</h3>
+                    <span id="newForceVectorE"></span>
+
+                </td>
+                <td class="centered" colspan="5">
+                    <h3>closing force location optimization [X Y Z]</h3>
+                    <span id="newCoordVectorE"></span>
+
+
+                </td>
+            </tr>
+
+            <tr>
+                <td> <!-- empty cell --></td>
+                <td class="centered" colspan="1">
+                    scan range
+                </td>
+                <td class="centered" colspan="1">
+                    # points
+                </td>
+
+
+                <td class="centered" colspan="1">
+                    accuracy
+                </td>
+                <td> <!-- empty cell --></td>
+
+                <td> <!-- empty cell --></td>
+                <td class="centered" colspan="1">
+                    scan range
+                </td>
+                <td class="centered" colspan="1">
+                    # points
+                </td>
+
+
+                <td class="centered" colspan="1">
+                    accuracy
+                </td>
+                <td> <!-- empty cell --></td>
+            </tr>
+
+            <tr>
+                <td><!-- empty cell --></td>
+                <td class="centered" colspan="1">
+                    <textarea id="matrix-Frange" name="textareaFrange" rows="1" cols="6"></textarea>
+                </td>
+                <td class="centered" colspan="1">
+                    <textarea id="matrix-Fpoints" name="textareaFpoints" rows="1" cols="6"></textarea>
+                </td>
+                <td class="centered" colspan="1">
+                    <textarea id="matrix-Faccuracy" name="textareaFaccuracy" rows="1" cols="6"></textarea>
+                </td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td class="centered" colspan="1">
+                    <textarea id="matrix-Crange" name="textareaCrange" rows="1" cols="6"></textarea>
+                </td>
+                <td class="centered" colspan="1">
+                    <textarea id="matrix-Cpoints" name="textareaCpoints" rows="1" cols="6"></textarea>
+                </td>
+                <td class="centered" colspan="1">
+                    <textarea id="matrix-Caccuracy" name="textareaCaccuracy" rows="1" cols="6"></textarea>
+                </td>
+                <td><!-- empty cell --></td>
+            </tr>
+
+            <tr>
+                <td> <!-- empty cell --></td>
+
+                <td class="centered" colspan="3">
+                    <button type="submit" onclick="processForce()" style="background-color: red; color: white;">Press to
+                        calculate</button>
+                </td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td class="centered" colspan="3">
+                    <button type="submit" onclick="processCoords()" style="background-color: red; color: white;">Press
+                        to calculate</button>
+                </td>
+                <td><!-- empty cell --></td>
+            </tr>
+
+            <tr>
+                <td><!-- empty cell --></td>
+                <td class="centered" colspan="4">
+                    <table id="plotCell"></table>
+                </td>
+                <td class="centered" colspan="4">
+                    <table id="plotCell2"></table>
+                </td>
+                <td><!-- empty cell --></td>
+            </tr>
+
+            <tr>
+                <td><!-- empty cell --></td>
+                <td class="holdleft" colspan="8">
+                    <sub>Note: During this optimization process, the standard inputs are utilized. To incorporate the
+                        optimized results, simply copy and paste the updated inputs. Please be aware that setting a very
+                        small value for the accuracy field may result in longer waiting times.</sub>
+
+                </td>
+
+                <td><!-- empty cell --></td>
+            </tr>
+
+
+
+
+            <tr>
+                <td colspan="10">
+                    <div class="resultbar">About this tool</div>
+                </td>
+
+            </tr>
+
+            <tr>
+                <td><!-- empty cell --></td>
+                <td class="hold right" colspan="8">
+                    <sub>This calculation tool utilizes the principle of ΣForces=0 and ΣMoments=0 to determine
+                        situations where the contact is lost for one of the six interfaces, either when it is retracted
+                        or extended (Force < 0 indicates the interface needs to pull). However, determining the
+                            direction of friction forces presents a challenge. To overcome this, the tool solves the
+                            world coordinate system (WCS) motion of the object when a single interface is moved in its
+                            normal direction. By tracking the movement of the contact point, the friction direction for
+                            this specific 'loadcase' becomes known. This process is repeated for all six interfaces,
+                            providing us with the friction force direction for each retraction case, enabling us to
+                            solve the force equations. For those familiar with JavaScript, all the functionality is
+                            encapsulated in this HTML. The tool relies on mathjs and plotly libraries, which are loaded
+                            from the web, necessitating an active internet connection. Enjoy using the tool! <br>
+                            <br>
+                            On the functionality todo list are:<ol>
+                                <li> applying multiple closing forces</li>
+                                <li>don't know yet</li>
+
+                            </ol>
+
+
+                    </sub>
+                <td><!-- empty cell --></td>
+            </tr>
+
+            <!--             <tr>
+                <td class="centered" colspan="3">
+                <td>Column 2</td>
+                <td>Column 3</td>
+                <td>Column 4</td>
+                <td>Column 5</td>
+                <td>Column 6</td>
+                <td>Column 7</td>
+                <td>Column 8</td>
+            </tr> -->
+
+        </table>
+
+    </div>
+
+
+
+
+
+    <script> /* standard inputs */
+
+        { //kynlib scripts
+            function motionAinv(n, p) {
+
+                const a = [[n[0][0], n[0][1], n[0][2], n[0][2] * p[0][1] - n[0][1] * p[0][2], n[0][0] * p[0][2] - n[0][2] * p[0][0], n[0][1] * p[0][0] - n[0][0] * p[0][1]],
+                [n[1][0], n[1][1], n[1][2], n[1][2] * p[1][1] - n[1][1] * p[1][2], n[1][0] * p[1][2] - n[1][2] * p[1][0], n[1][1] * p[1][0] - n[1][0] * p[1][1]],
+                [n[2][0], n[2][1], n[2][2], n[2][2] * p[2][1] - n[2][1] * p[2][2], n[2][0] * p[2][2] - n[2][2] * p[2][0], n[2][1] * p[2][0] - n[2][0] * p[2][1]],
+                [n[3][0], n[3][1], n[3][2], n[3][2] * p[3][1] - n[3][1] * p[3][2], n[3][0] * p[3][2] - n[3][2] * p[3][0], n[3][1] * p[3][0] - n[3][0] * p[3][1]],
+                [n[4][0], n[4][1], n[4][2], n[4][2] * p[4][1] - n[4][1] * p[4][2], n[4][0] * p[4][2] - n[4][2] * p[4][0], n[4][1] * p[4][0] - n[4][0] * p[4][1]],
+                [n[5][0], n[5][1], n[5][2], n[5][2] * p[5][1] - n[5][1] * p[5][2], n[5][0] * p[5][2] - n[5][2] * p[5][0], n[5][1] * p[5][0] - n[5][0] * p[5][1]],
+                ];
+                return math.inv(a);
+            }
+
+            function motionB(n, scale) {
+                let b = new Array(6); // create an array of length 6
+                for (let i = 0; i < 6; i++) {
+                    b[i] = new Array(6).fill(0); // initialize each element of b to an array of length 6 filled with 0s
+                }
+
+                for (let ii = 0; ii < 6; ii++) {
+                    b[ii][ii] = -scale * math.pow(n[ii][0], 2) - scale * math.pow(n[ii][1], 2) - scale * math.pow(n[ii][2], 2);
+                }
+
+                return b;
+            }
+
+            function Rt(Rx, Ry, Rz) {
+                return [
+                    [1, -Rz, Ry],
+                    [Rz, 1, -Rx],
+                    [-Ry, Rx, 1]
+                ];
+            }
+
+            function normr(deform) {
+                for (let i = 0; i < deform.length; i++) {
+                    const row = deform[i];
+                    const norm = math.norm(row, 2); // Compute the L2 norm of the row
+                    if (norm !== 0) { // Check if the norm is not zero
+                        deform[i] = row.map(x => x / norm); // Divide each element of the row by its norm
+                    } else {
+                        deform[i] = row; // If the norm is zero, leave the row unchanged
+                    }
+                }
+                return deform;
+            }
+
+
+            function normrP(deform) {
+
+                for (let i = 0; i < deform.length; i++) {
+                    const slice = deform[i];
+
+                    for (let j = 0; j < slice.length; j++) {
+                        const row = slice[j];
+
+                        const norm = math.norm(row, 2); // Compute the L2 norm of the row
+                        if (norm !== 0) { // Check if the norm is not zero
+                            slice[j] = row.map(x => x / norm); // Divide each element of the row by its norm
+                        } else {
+                            slice[j] = row; // If the norm is zero, leave the row unchanged
+                        }
+                    }
+                }
+                return deform;
+            }
+
+            function calculateDeformation(p, DOF) {
+                var deformation = [];
+                //console.log(p)
+                //console.log(DOF)
+                const pPrime = math.transpose(p);
+
+                for (var i = 0; i <= 5; i++) {
+                    const temp = math.subtract(math.transpose(p), math.add(math.multiply(Rt(DOF[3][i], DOF[4][i], DOF[5][i]), pPrime), math.transpose([[DOF[0][i], DOF[1][i], DOF[2][i]]])));
+                    deformation.push(math.transpose(temp.valueOf()));
+                }
+                //console.log(deformation)
+                return deformation;
+            }
+
+
+            function ForceA(p, F) {
+                const af = [[F[0][0], F[1][0], F[2][0], F[3][0], F[4][0], F[5][0]],
+                [F[0][1], F[1][1], F[2][1], F[3][1], F[4][1], F[5][1]],
+                [F[0][2], F[1][2], F[2][2], F[3][2], F[4][2], F[5][2]],
+                [F[0][1] * p[0][2] - F[0][2] * p[0][1], F[1][1] * p[1][2] - F[1][2] * p[1][1], F[2][1] * p[2][2] - F[2][2] * p[2][1], F[3][1] * p[3][2] - F[3][2] * p[3][1], F[4][1] * p[4][2] - F[4][2] * p[4][1], F[5][1] * p[5][2] - F[5][2] * p[5][1]],
+                [F[0][2] * p[0][0] - F[0][0] * p[0][2], F[1][2] * p[1][0] - F[1][0] * p[1][2], F[2][2] * p[2][0] - F[2][0] * p[2][2], F[3][2] * p[3][0] - F[3][0] * p[3][2], F[4][2] * p[4][0] - F[4][0] * p[4][2], F[5][2] * p[5][0] - F[5][0] * p[5][2]],
+                [F[0][0] * p[0][1] - F[0][1] * p[0][0], F[1][0] * p[1][1] - F[1][1] * p[1][0], F[2][0] * p[2][1] - F[2][1] * p[2][0], F[3][0] * p[3][1] - F[3][1] * p[3][0], F[4][0] * p[4][1] - F[4][1] * p[4][0], F[5][0] * p[5][1] - F[5][1] * p[5][0]]
+                ];
+
+                return af;
+            }
+
+            function ForceB(Fc, coordFc) {
+                const b = [
+                    -Fc[0],
+                    -Fc[1],
+                    -Fc[2],
+                    coordFc[1] * Fc[2] - coordFc[2] * Fc[1],
+                    coordFc[2] * Fc[0] - coordFc[0] * Fc[2],
+                    coordFc[0] * Fc[2] - coordFc[1] * Fc[0]
+                ];
+
+                return b;
+            }
+
+
+            function kynCalc(n, p, mu, scale, Fc, coordFc) {
+
+                const normNormals = normr(n)
+
+
+                //const { norm: _norm, inv, multiply, transpose, subtract, add } = require('mathjs');
+
+                const Ma = motionAinv(n, p); // calculate motion matrix a
+
+                const Mb = motionB(n, scale) // calculate motion matrix b
+
+                const WCSdeform = math.multiply(Ma, Mb); // calculate WCS deformation (motion matrices per retracted interface)
+
+                const PointDeformation = calculateDeformation(p, WCSdeform) // calculate deformation per point
+                //console.log(PointDeformation )
+                const normFw = normrP(PointDeformation); // normalized friction vectors
+
+
+
+                const F = normrP(math.add(math.multiply(normFw, mu), n)) // normalized force vectors 
+                //console.table('stop')
+                // calculate all 6 force matrices a
+                const CC = [];
+                for (var i = 0; i <= 5; i++) {
+                    CC.push(ForceA(p, F[i]));
+                }
+
+                const BB = ForceB(Fc, coordFc) // calculate force vector b
+
+                // calculate interface forces
+                const Finterface = [];
+                for (var i = 0; i <= 5; i++) {
+                    Finterface.push(math.multiply(math.inv(CC[i]), BB));
+                }
+
+                //console.table(transpose(Finterface))
+
+                return [Finterface, WCSdeform]
+            }
+
+
+            function populateTable(tableId, data, fontSize, numberFormat, rowNames, columnNames, tableHeader) {
+                const table = document.getElementById(tableId);
+                table.style.fontSize = fontSize;
+                table.innerHTML = ""; // Clear the table
+                table.style.borderCollapse = "collapse"; // Add border-collapse style
+                table.style.border = "2px solid black"; // Add border style
+
+                // Create table header (caption)
+                if (tableHeader) {
+                    const caption = document.createElement("caption");
+                    const captionText = document.createTextNode(tableHeader);
+                    caption.appendChild(captionText);
+                    caption.style.fontSize = "14px"; // Set font size
+                    caption.style.fontWeight = "bold"; // Apply bold style
+                    table.appendChild(caption);
+                }
+
+                // Create header row with column names
+                const headerRow = document.createElement("tr");
+                const emptyHeaderCell = document.createElement("th"); // Empty header cell for row labels
+                headerRow.appendChild(emptyHeaderCell);
+
+                for (let i = 0; i < columnNames.length; i++) {
+                    const cell = document.createElement("th");
+                    cell.style.border = "1px solid black"; // Add border to column name cells
+                    cell.appendChild(document.createTextNode(columnNames[i]));
+                    headerRow.appendChild(cell);
+                }
+                table.appendChild(headerRow);
+
+                // Create rows for each case with row label and data values
+                for (let i = 0; i < data.length; i++) {
+                    const row = document.createElement("tr");
+
+                    // Add row name as the first cell
+                    const rowNameCell = document.createElement("td");
+                    rowNameCell.style.border = "1px solid black"; // Add border to row name cell
+                    rowNameCell.appendChild(document.createTextNode(rowNames[i]));
+                    row.appendChild(rowNameCell);
+
+                    for (let j = 0; j < data[i].length; j++) {
+                        const cell = document.createElement("td");
+                        if (data[i][j] < 0) {
+                            cell.style.color = "red";
+                        }
+                        cell.style.border = "1px solid black"; // Add border to data cells
+
+                        // Format the number based on the specified format
+                        if (numberFormat === "exponential") {
+                            cell.appendChild(document.createTextNode(data[i][j].toExponential(1)));
+                        } else if (numberFormat === "fixed") {
+                            cell.appendChild(document.createTextNode(data[i][j].toFixed(2)));
+                        } else {
+                            // Default: No specific format, use the number as is
+                            cell.appendChild(document.createTextNode(data[i][j]));
+                        }
+
+                        row.appendChild(cell);
+                    }
+                    table.appendChild(row);
+                }
+
+                // Apply border styles to entire table
+                const cells = table.getElementsByTagName("td");
+                for (let i = 0; i < cells.length; i++) {
+                    cells[i].style.border = "1px solid black";
+                }
+                const headerCells = table.getElementsByTagName("th");
+                for (let i = 0; i < headerCells.length; i++) {
+                    headerCells[i].style.border = "1px solid black";
+                }
+            }
+
+
+            function findNegativeForceMuPlus(nn, pp, Fcc, coordFcc, resolution) {
+
+
+                let mu = 0;
+                while (true) {
+                    // Calculate the forces and deformations for the current mu value
+                    const [FinterfaceF, WCSdeformF] = kynCalc(nn, pp, mu, 0.1, Fcc, coordFcc);
+
+                    // Check if any of the FinterfaceF values are negative
+                    if (FinterfaceF.some((row) => row.some((val) => val < 0))) {
+                        // Negative force found, return the current mu value
+                        return mu;
+
+                    }
+
+                    // Increment the mu value and continue looping
+                    mu += resolution;
+
+                }
+            }
+
+            function findNegativeForceMuMin(nn, pp, Fcc, coordFcc, resolution) {
+
+                let mu = 0;
+                while (true) {
+                    // Calculate the forces and deformations for the current mu value
+                    const [FinterfaceF, WCSdeformF] = kynCalc(nn, pp, mu, 0.1, Fcc, coordFcc);
+
+                    // Check if any of the FinterfaceF values are negative
+                    if (FinterfaceF.some((row) => row.some((val) => val < 0))) {
+                        // Negative force found, return the current mu value
+                        return mu;
+
+                    }
+
+                    // Increment the mu value and continue looping
+                    mu -= resolution;
+                }
+            }
+
+            function findLargestNumbers(array) {
+                const largestPositiveNumbers = [];
+                const largestNegativeNumbers = [];
+
+                for (let i = 0; i < array.length; i++) {
+                    let maxPositive = -Infinity;
+                    let maxNegative = -Infinity;
+
+                    for (let j = 0; j < array[i].length; j++) {
+                        const value = array[i][j];
+
+                        if (value > 0 && value > maxPositive) {
+                            maxPositive = value;
+                        } else if (value < 0 && value > maxNegative) {
+                            maxNegative = value;
+                        }
+                    }
+
+                    largestPositiveNumbers.push(maxPositive);
+                    largestNegativeNumbers.push(maxNegative);
+                }
+
+                return [largestPositiveNumbers, largestNegativeNumbers];
+            }
+
+            function findMinMaxNumbers(array) {
+                const smallestNumbers = [];
+                const largestNumbers = [];
+                for (let i = 0; i < array.length; i++) {
+                    let smallest = Infinity;
+                    let largest = -Infinity;
+
+                    for (let j = 0; j < array[i].length; j++) {
+                        const value = array[i][j];
+
+                        if (value < smallest) {
+                            smallest = value;
+                        }
+
+                        if (value > largest) {
+                            largest = value;
+                        }
+                    }
+
+                    smallestNumbers.push(smallest);
+                    largestNumbers.push(largest);
+                }
+
+                return [smallestNumbers, largestNumbers];
+
+            }
+
+
+            function flipLR(matrix) {
+                const flippedMatrix = [];
+
+                for (let i = 0; i < matrix.length; i++) {
+                    flippedMatrix.push(matrix[i].reverse());
+                }
+
+                return flippedMatrix;
+            }
+
+
+            function plotGraph(x, y, targetElementId, title, xAxisName, yAxisName, traceNames) {
+                // Create an array to hold the data traces
+                var data = [];
+
+                // Iterate over the y array to create individual traces
+                for (var i = 0; i < y.length; i++) {
+                    var trace = {
+                        x: x,
+                        y: y[i],
+                        mode: 'lines',
+                        name: traceNames[i] || 'Trace ' + (i + 1)
+                    };
+                    data.push(trace);
+                }
+
+                // Set up the layout options
+                var layout = {
+                    title: title || 'Plot',
+                    xaxis: { title: xAxisName || 'X' },
+                    yaxis: { title: yAxisName || 'Y' }
+                };
+
+                // Create the plot
+                Plotly.newPlot(targetElementId, data, layout);
+            }
+
+
+
+
+            function linspace(start, end, numSteps) {
+                const stepSize = (end - start) / (numSteps - 1);
+                const values = [];
+
+                for (let i = 0; i < numSteps; i++) {
+                    const value = start + stepSize * i;
+                    values.push(value);
+                }
+
+                return values;
+            }
+
+            function diff(data) {
+                const result = [];
+
+                for (let i = 0; i < data.length; i++) {
+                    const line = data[i];
+                    const diffLine = [];
+
+                    for (let j = 1; j < line.length; j++) {
+                        const diffValue = line[j] - line[j - 1];
+                        diffLine.push(diffValue);
+                    }
+
+                    result.push(diffLine);
+                }
+
+                return result;
+            }
+
+
+            function cTransL(X, Y, Z, thx, thy, thz, cX, cY, cZ) {
+                const Tci = [
+                    [1, 0, 0, -cX],
+                    [0, 1, 0, -cY],
+                    [0, 0, 1, -cZ],
+                    [0, 0, 0, 1]
+                ];
+
+                const Tco = [
+                    [1, 0, 0, cX],
+                    [0, 1, 0, cY],
+                    [0, 0, 1, cZ],
+                    [0, 0, 0, 1]
+                ];
+
+                const Rx = [
+                    [1, 0, 0, 0],
+                    [0, math.cos(thx), -math.sin(thx), 0],
+                    [0, math.sin(thx), math.cos(thx), 0],
+                    [0, 0, 0, 1]
+                ];
+
+                const Ry = [
+                    [math.cos(thy), 0, math.sin(thy), 0],
+                    [0, 1, 0, 0],
+                    [-math.sin(thy), 0, math.cos(thy), 0],
+                    [0, 0, 0, 1]
+                ];
+
+                const Rz = [
+                    [math.cos(thz), -math.sin(thz), 0, 0],
+                    [math.sin(thz), math.cos(thz), 0, 0],
+                    [0, 0, 1, 0],
+                    [0, 0, 0, 1]
+                ];
+
+                const Txyz = [
+                    [1, 0, 0, X],
+                    [0, 1, 0, Y],
+                    [0, 0, 1, Z],
+                    [0, 0, 0, 1]
+                ];
+
+                const Tout = math.multiply(math.multiply(math.multiply(math.multiply(math.multiply(Txyz, Tco), Rz), Ry), Rx), Tci);
+                return Tout;
+            }
+
+            function concatenateMatrices(matrix1, matrix2) {
+                if (matrix1.length !== matrix2.length) {
+                    throw new Error("Matrix dimensions do not match.");
+                }
+
+                const result = [];
+                const rows = matrix1.length;
+
+                for (let i = 0; i < rows; i++) {
+                    result.push([...matrix1[i], ...matrix2[i]]);
+                }
+
+                return result;
+            }
+
+
+            function findMaxPerRow(array) {
+                const maxColumns = [];
+
+                for (let row = 0; row < array.length; row++) {
+                    let max = array[row][0];
+                    let maxCol = 0;
+
+                    for (let col = 1; col < array[row].length; col++) {
+                        if (array[row][col] > max) {
+                            max = array[row][col];
+                            maxCol = col;
+                        }
+                    }
+
+                    maxColumns.push(maxCol);
+                }
+
+                return maxColumns;
+            }
+
+            function perturbFc(nn, pp, Fcc, coordFcc, perturbationRange, xn, resolution) {
+                const mumaxvaluePlusValues = [];
+
+                for (let i = 0; i < Fcc.length; i++) {
+                    const perturbedFcc = [...Fcc];
+                    const columnValues = [];
+
+                    const perturbationStart = Fcc[i] - perturbationRange;
+                    const perturbationEnd = Fcc[i] + perturbationRange;
+                    const perturbationStep = (perturbationEnd - perturbationStart) / xn;
+
+                    for (let j = 0; j <= xn; j++) {
+                        const perturbationValue = perturbationStart + j * perturbationStep;
+                        perturbedFcc[i] = perturbationValue;
+
+                        const mumaxvaluePlus = findNegativeForceMuPlus(nn, pp, perturbedFcc, coordFcc, resolution);
+                        columnValues.push(mumaxvaluePlus);
+                    }
+
+                    mumaxvaluePlusValues.push(columnValues);
+                }
+
+                return mumaxvaluePlusValues;
+            }
+
+            function perturbCoordFc(nn, pp, Fcc, coordFcc, perturbationRange, xn, resolution) {
+                const mumaxvaluePlusValues = [];
+
+                for (let i = 0; i < coordFcc.length; i++) {
+                    const perturbedCoordFcc = [...coordFcc];
+                    const columnValues = [];
+
+                    const perturbationStart = coordFcc[i] - perturbationRange;
+                    const perturbationEnd = coordFcc[i] + perturbationRange;
+                    const perturbationStep = (perturbationEnd - perturbationStart) / xn;
+
+                    for (let j = 0; j <= xn; j++) {
+                        const perturbationValue = perturbationStart + j * perturbationStep;
+                        perturbedCoordFcc[i] = perturbationValue;
+
+                        const mumaxvaluePlus = findNegativeForceMuPlus(nn, pp, Fcc, perturbedCoordFcc, resolution);
+                        columnValues.push(mumaxvaluePlus);
+                    }
+
+                    mumaxvaluePlusValues.push(columnValues);
+                }
+
+                return mumaxvaluePlusValues;
+            }
+
+            function calcNewSetpoint(start_value, new_value, new_setpoint) {
+                const CoordX = start_value[0] + new_value[new_setpoint[0]];
+                const CoordY = start_value[1] + new_value[new_setpoint[1]];
+                const CoordZ = start_value[2] + new_value[new_setpoint[2]];
+
+                const coordNew = [CoordX, CoordY, CoordZ];
+                const formattedCoordNew = coordNew.map((element) => Number(element.toFixed(3)));
+
+                return [formattedCoordNew[0], formattedCoordNew[1], formattedCoordNew[2]];
+            }
+
+
+            function create3DPlot(normals, points, forces, forceCoordinates) {
+                const coordinatesTrace = {
+                    x: [],
+                    y: [],
+                    z: [],
+                    mode: 'markers',
+                    marker: {
+                        size: 5,
+                        color: 'blue'
+                    },
+                    type: 'scatter3d',
+                    name: 'Points'
+                };
+
+                const vectorTraces = []; // Array to hold the vector traces
+
+                for (let i = 0; i < points.length; i++) {
+                    const [x, y, z] = points[i];
+                    coordinatesTrace.x.push(x);
+                    coordinatesTrace.y.push(y);
+                    coordinatesTrace.z.push(z);
+
+                    const [u, v, w] = normals[i];
+                    const startPoint = [x - u, y - v, z - w]; // Starting point of the vector
+
+                    const vectorTrace = {
+                        x: [startPoint[0], x],
+                        y: [startPoint[1], y],
+                        z: [startPoint[2], z],
+                        mode: 'lines',
+                        line: {
+                            color: 'red',
+                            width: 3
+                        },
+                        type: 'scatter3d',
+                        name: `N ${i + 1}`
+                    };
+
+                    vectorTraces.push(vectorTrace);
+                }
+
+                const forceTraces = []; // Array to hold the force traces
+
+                for (let i = 0; i < forces.length; i++) {
+                    const [forceX, forceY, forceZ] = forces[i];
+
+                    const [forceCoordX, forceCoordY, forceCoordZ] = forceCoordinates[i];
+
+                    const forceTrace = {
+                        x: [forceCoordX, forceCoordX + forceX],
+                        y: [forceCoordY, forceCoordY + forceY],
+                        z: [forceCoordZ, forceCoordZ + forceZ],
+                        mode: 'lines',
+                        line: {
+                            color: 'green',
+                            width: 3
+                        },
+                        type: 'scatter3d',
+                        name: `F ${i + 1}`
+                    };
+
+                    forceTraces.push(forceTrace);
+                }
+                const forceConnectionTrace = {
+                    x: forceCoordinates.map(coord => coord[0]),
+                    y: forceCoordinates.map(coord => coord[1]),
+                    z: forceCoordinates.map(coord => coord[2]),
+                    mode: 'markers',
+                    marker: {
+                        size: 5,
+                        color: 'green'
+                    },
+                    type: 'scatter3d',
+                    name: 'Force Connection'
+                };
+                const data = [coordinatesTrace, ...vectorTraces, ...forceTraces, forceConnectionTrace]; // Include coordinate traces, vector traces, and force traces
+
+                const layout = {
+                    scene: {
+                        xaxis: {
+                            scaleanchor: 'y',
+                            scaleratio: 1
+                        },
+                        yaxis: {
+                            scaleanchor: 'z',
+                            scaleratio: 1
+                        },
+                        zaxis: {
+                            scaleanchor: 'x',
+                            scaleratio: 1
+                        },
+                        annotations: [{
+                            x: forces[0][0],
+                            y: forces[0][1],
+                            z: forces[0][2],
+                            showarrow: true,
+                            arrowhead: 10,
+                            ax: 0,
+                            ay: 0,
+                            az: 40,
+                        }]
+                    },
+
+
+                    showlegend: false
+
+                };
+
+                Plotly.newPlot('plotConfig', data, layout);
+            }
+
+        }
+
+        /*         var Option1 = document.getElementById("Optiongh").checked;
+                var Option2 = document.getElementById("Option222").checked;
+                var Option3 = document.getElementById("Option321").checked; */
+
+        let predefinedNormals = [];
+        let predefinedPoints = [];
+        let predefinedForce = [];
+        let predefinedCoord = [];
+
+        const textareaNormals = document.getElementById("matrix-input1");
+        const textareaPoints = document.getElementById("matrix-input2");
+        const textareaForce = document.getElementById("matrix-input3");
+        const textareaCoord = document.getElementById("matrix-input4");
+
+        function updateTextareaValues() {
+            textareaNormals.value = predefinedNormals.map(row => row.join("\t")).join("\n");
+            textareaPoints.value = predefinedPoints.map(row => row.join("\t")).join("\n");
+            textareaForce.value = predefinedForce.map(row => row.join("\t")).join("\n");
+            textareaCoord.value = predefinedCoord.map(row => row.join("\t")).join("\n");
+        }
+
+        function handleOptionChange() {
+
+            if (Option1.checked) {
+                console.log(Option1.checked)
+                predefinedNormals = [
+                    [0, 1, 0,],
+                    [0, 1, 0,],
+                    [1, 0, 0,],
+                    [0, 0, 1,],
+                    [0, 0, 1,],
+                    [0, 0, 1,]
+                ];
+
+
+                predefinedPoints = [
+                    [1, 0, 0],
+                    [5, 0, 0],
+                    [0, 1, 0],
+                    [1, 1, 0],
+                    [5, 1, 0],
+                    [3, 2, 0]
+                ];
+
+                predefinedForce = [[-0.969, -1.7, -2.001]];
+
+                predefinedCoord = [[2.524, 1.382, 0.159]];
+
+            }
+
+            if (Option2.checked) {
+                console.log(Option2.checked)
+                // example of a v-groove setup. Optimal openings angle between grooves appears to be between 2*(60 to 65)deg
+                const n = [[0], [0], [1], [0]];
+                const p1 = [[-100e-3], [-0.5], [0], [1]];
+                const p2 = [[100e-3], [-0.5], [0], [1]];
+
+                const beta = math.PI / 180 * 64;
+                const alpha = 0;
+                let gamma = 0;
+
+                const N1 = math.multiply(cTransL(0, 0, 0, alpha, beta, gamma, 0, 0, 0), n);
+                const N2 = math.multiply(cTransL(0, 0, 0, alpha, -beta, gamma, 0, 0, 0), n);
+                const P1 = math.multiply(cTransL(0, 0, 0, alpha, beta, gamma, 0, 0, 0), p1);
+                const P2 = math.multiply(cTransL(0, 0, 0, alpha, -beta, gamma, 0, 0, 0), p2);
+
+                gamma = math.PI / 180 * 120;
+                const N3 = math.multiply(cTransL(0, 0, 0, alpha, beta, gamma, 0, 0, 0), n);
+                const N4 = math.multiply(cTransL(0, 0, 0, alpha, -beta, gamma, 0, 0, 0), n);
+                const P3 = math.multiply(cTransL(0, 0, 0, alpha, beta, gamma, 0, 0, 0), p1);
+                const P4 = math.multiply(cTransL(0, 0, 0, alpha, -beta, gamma, 0, 0, 0), p2);
+
+                gamma = math.PI / 180 * -120;
+                const N5 = math.multiply(cTransL(0, 0, 0, alpha, beta, gamma, 0, 0, 0), n);
+                const N6 = math.multiply(cTransL(0, 0, 0, alpha, -beta, gamma, 0, 0, 0), n);
+                const P5 = math.multiply(cTransL(0, 0, 0, alpha, beta, gamma, 0, 0, 0), p1);
+                const P6 = math.multiply(cTransL(0, 0, 0, alpha, -beta, gamma, 0, 0, 0), p2);
+
+                predefinedNormals = [
+                    [N1[0], N1[1], N1[2]],
+                    [N2[0], N2[1], N2[2]],
+                    [N3[0], N3[1], N3[2]],
+                    [N4[0], N4[1], N4[2]],
+                    [N5[0], N5[1], N5[2]],
+                    [N6[0], N6[1], N6[2]],
+
+                ];
+                predefinedNormals = predefinedNormals.map(row => row.map(innerArr => innerArr[0]));
+
+                predefinedPoints = [
+                    [P1[0], P1[1], P1[2]],
+                    [P2[0], P2[1], P2[2]],
+                    [P3[0], P3[1], P3[2]],
+                    [P4[0], P4[1], P4[2]],
+                    [P5[0], P5[1], P5[2]],
+                    [P6[0], P6[1], P6[2]],
+
+                ];
+
+                predefinedPoints = predefinedPoints.map(row => row.map(innerArr => innerArr[0]));
+
+                predefinedForce = [
+                    [0, 0, -1]
+                ];
+
+                predefinedCoord = [
+                    [0, 0, 0]];
+
+            }
+
+            if (Option3.checked) {
+                console.log(Option3.checked)
+                // example of a v-groove setup. Optimal openings angle between grooves appears to be between 2*(60 to 65)deg
+                const n = [[0], [0], [1], [0]];
+                const p1 = [[-100e-3], [0], [0], [1]];
+                const p2 = [[100e-3], [0], [0], [1]];
+
+                const beta = math.PI / 180 * 65;
+                const alpha = 0;
+                let gamma = 0;
+
+                const N1 = math.multiply(cTransL(0, 0, 0, alpha, beta, gamma, 0, 0, 0), n);
+                const N2 = math.multiply(cTransL(0, 0, 0, alpha, beta, math.PI / 180 * 120, 0, 0, 0), n);
+                const N3 = math.multiply(cTransL(0, 0, 0, alpha, beta,math.PI / 180 * -120, 0, 0, 0), n);
+                const P1 = math.multiply(cTransL(0, -0.5, 0, alpha, beta, gamma, 0, 0, 0), p1);
+                const P2 = math.multiply(cTransL(0, -0.5, 0, alpha, beta, math.PI / 180 * 120, 0, 0, 0), p1);
+                const P3 = math.multiply(cTransL(0, -0.5, 0, alpha, beta,math.PI / 180 * -120, 0, 0, 0), p1);
+
+                gamma = 0;
+                
+                const N4 = math.multiply(cTransL(0, 0, 0, alpha, -beta, gamma, 0, 0, 0), n);
+                const N5 = math.multiply(cTransL(0, 0, 0, alpha, beta, gamma, 0, 0, 0), n);
+                const P4 = math.multiply(cTransL(0.15, 0.5, 0, alpha, 0, gamma, 0, 0, 0), p1);
+                const P5 = math.multiply(cTransL(-0.15, 0.5, 0, alpha, 0, math.PI / 180 * 180, 0, 0, 0), p1);
+
+                gamma = math.PI / 180 * -120;
+               
+                const N6 = math.multiply(cTransL(0, 0, 0, 0, 0, 0, 0, 0, 0), n);
+                const P6 = math.multiply(cTransL(-1, 0, 0, 0, 0, 0, 0, 0, 0), p1);
+
+                predefinedNormals = [
+                    [N1[0], N1[1], N1[2]],
+                    [N2[0], N2[1], N2[2]],
+                    [N3[0], N3[1], N3[2]],
+                    [N4[0], N4[1], N4[2]],
+                    [N5[0], N5[1], N5[2]],
+                    [N6[0], N6[1], N6[2]],
+
+                ];
+                predefinedNormals = predefinedNormals.map(row => row.map(innerArr => innerArr[0]));
+
+                predefinedPoints = [
+                    [P1[0], P1[1], P1[2]],
+                    [P2[0], P2[1], P2[2]],
+                    [P3[0], P3[1], P3[2]],
+                    [P4[0], P4[1], P4[2]],
+                    [P5[0], P5[1], P5[2]],
+                    [P6[0], P6[1], P6[2]],
+
+                ];
+
+                predefinedPoints = predefinedPoints.map(row => row.map(innerArr => innerArr[0]));
+
+                predefinedForce = [
+                    [0, 0, -1]
+                ];
+
+                predefinedCoord = [
+                    [-0.063, -0.301, 0]];
+
+            }
+            updateTextareaValues();
+            
+        }
+
+
+        // Get the option elements
+        const Option1 = document.getElementById("Optiongh");
+        const Option2 = document.getElementById("Option222");
+        const Option3 = document.getElementById("Option321");
+
+        // Add event listeners to the option elements
+        Option1.addEventListener("change", handleOptionChange);
+        Option2.addEventListener("change", handleOptionChange);
+        Option3.addEventListener("change", handleOptionChange);
+        handleOptionChange();
+
+        const predefinedFriction = 0.25;
+        const predefinedStiffness = 5e7;
+       
+        const standardAccuracy = 1e-2;
+        const scanRangeF = 0.1
+        const nrPointsF = 31
+        const accuracyF = 0.01
+        const scanRangeC = 0.1
+        const nrPointsC = 31
+        const accuracyC = 0.01
+
+        const textareaAccuracy = document.getElementById("matrix-Accuracy");
+        const textareaFriction = document.getElementById("matrix-input5");
+        const textareaIntStiffness = document.getElementById("matrix-input6");
+       
+
+        textareaAccuracy.value = standardAccuracy;
+        textareaFriction.value = predefinedFriction;
+        textareaIntStiffness.value = predefinedStiffness.toExponential(2);
+
+        const textareaFrange = document.getElementById("matrix-Frange");
+        textareaFrange.value = scanRangeF
+
+        const textareaFpoints = document.getElementById("matrix-Fpoints");
+        textareaFpoints.value = nrPointsF
+
+        const textareaFaccuracy = document.getElementById("matrix-Faccuracy");
+        textareaFaccuracy.value = accuracyF
+
+        const textareaCrange = document.getElementById("matrix-Crange");
+        textareaCrange.value = scanRangeC
+
+        const textareaCpoints = document.getElementById("matrix-Cpoints");
+        textareaCpoints.value = nrPointsC
+
+        const textareaCaccuracy = document.getElementById("matrix-Caccuracy");
+        textareaCaccuracy.value = accuracyC
+
+        let KK = 0;
+        let LL = 0;
+
+        document.getElementById("negative-muPlus").textContent = "0"; // set starting value
+        document.getElementById("negative-muMin").textContent = "0"; // set starting value
+        //let nn, pp, Fcc, coordFcc, stiffnessdiv; // declare the variables outside the function
+
+
+        function drawVectors() {
+
+            const matrixInput1 = document.getElementById("matrix-input1");
+            const matrixValue1 = matrixInput1.value;
+
+            const matrixInput2 = document.getElementById("matrix-input2");
+            const matrixValue2 = matrixInput2.value;
+
+            const matrixInput3 = document.getElementById("matrix-input3");
+            const matrixValue3 = matrixInput3.value;
+
+            const matrixInput4 = document.getElementById("matrix-input4");
+            const matrixValue4 = matrixInput4.value;
+
+            // Convert the matrix values to arrays
+            const matrixArray1 = matrixValue1.trim().split(/\s*\n\s*/).map(row => row.trim().split(/\s+/).map(Number));
+            const matrixArray2 = matrixValue2.trim().split(/\s*\n\s*/).map(row => row.trim().split(/\s+/).map(Number));
+            const matrixArray3 = matrixValue3.trim().split(/\s*\n\s*/).map(row => row.trim().split(/\s+/).map(Number));
+            const matrixArray4 = matrixValue4.trim().split(/\s*\n\s*/).map(row => row.trim().split(/\s+/).map(Number));
+
+            //const matrixArray5 = matrixValue5.trim().split(/\s+/).map(Number);
+
+            // Check that the matrix arrays have the correct dimensions and contain only numbers
+            const isMatrixValid1 = matrixArray1.length === 6 && matrixArray1.every(row => row.length === 3 && row.every(val => !isNaN(val)));
+            const isMatrixValid2 = matrixArray2.length === 6 && matrixArray2.every(row => row.length === 3 && row.every(val => !isNaN(val)));
+            const isMatrixValid3 = matrixArray3.length === 3 && matrixArray3.every(val => !isNaN(val));
+            const isMatrixValid4 = matrixArray4.length === 3 && matrixArray4.every(val => !isNaN(val));
+
+            //const isMatrixValid5 = matrixArray4.length === 1 && matrixArray5.every(val => !isNaN(val));
+
+
+
+            create3DPlot(matrixArray1, matrixArray2, matrixArray3, matrixArray4)
+
+        }
+
+
+        function calcStandard() {
+
+            const matrixInput1 = document.getElementById("matrix-input1");
+            const matrixValue1 = matrixInput1.value;
+
+            const matrixInput2 = document.getElementById("matrix-input2");
+            const matrixValue2 = matrixInput2.value;
+
+            const matrixInput3 = document.getElementById("matrix-input3");
+            const matrixValue3 = matrixInput3.value;
+
+            const matrixInput4 = document.getElementById("matrix-input4");
+            const matrixValue4 = matrixInput4.value;
+
+            const matrixAccuracy = document.getElementById("matrix-Accuracy");
+            const matrixAccuracyValue = matrixAccuracy.value;
+
+            // Remove non-numeric characters from the string
+            const numericValue = parseFloat(matrixAccuracyValue.replace(/[^\d.]/g, ''));
+
+            // Check if the numeric value is valid
+            if (!isNaN(numericValue)) {
+                // Use the numeric value in your code
+                console.log(numericValue);
+            } else {
+                // Handle the case when the value cannot be converted to a number
+                console.log("Invalid numeric value");
+            }
+
+            // Convert the matrix values to arrays
+            const matrixArray1 = matrixValue1.trim().split(/\s*\n\s*/).map(row => row.trim().split(/\s+/).map(Number));
+            const matrixArray2 = matrixValue2.trim().split(/\s*\n\s*/).map(row => row.trim().split(/\s+/).map(Number));
+            const matrixArray3 = matrixValue3.trim().split(/\s+/).map(Number);
+            const matrixArray4 = matrixValue4.trim().split(/\s+/).map(Number);
+
+            //const matrixAccuracyArray = matrixAccuracyValue.trim().split(/\s*\n\s*/).map(row => row.trim().split(/\s+/).map(Number));
+
+            //const matrixArray5 = matrixValue5.trim().split(/\s+/).map(Number);
+
+            // Check that the matrix arrays have the correct dimensions and contain only numbers
+            const isMatrixValid1 = matrixArray1.length === 6 && matrixArray1.every(row => row.length === 3 && row.every(val => !isNaN(val)));
+            const isMatrixValid2 = matrixArray2.length === 6 && matrixArray2.every(row => row.length === 3 && row.every(val => !isNaN(val)));
+            const isMatrixValid3 = matrixArray3.length === 3 && matrixArray3.every(val => !isNaN(val));
+            const isMatrixValid4 = matrixArray4.length === 3 && matrixArray4.every(val => !isNaN(val));
+            //const ismatrixAccuracyValueValid4 = matrixAccuracy.length === 3 && matrixArray4.every(val => !isNaN(val));
+
+            /* <textarea id="matrix-Accuracy" name="textareaAccuracy" rows="1" cols="6"></textarea> */
+            nn = normr(matrixArray1);
+            pp = matrixArray2;
+            Fcc = matrixArray3;
+            coordFcc = matrixArray4;
+
+
+
+            // Allowed friction coefficients for negative and positive purtubations
+            const mumaxvalueMin = findNegativeForceMuMin(nn, pp, Fcc, coordFcc, numericValue)
+            document.getElementById("negative-muMin").innerHTML = math.abs(mumaxvalueMin).toFixed(3);
+            document.getElementById("negative-muMin").style.fontSize = "14px";
+
+            const mumaxvaluePlus = findNegativeForceMuPlus(nn, pp, Fcc, coordFcc, numericValue)
+            document.getElementById("negative-muPlus").innerHTML = mumaxvaluePlus.toFixed(3);
+            document.getElementById("negative-muPlus").style.fontSize = "14px";
+
+            const MuMaxt = math.min(math.abs(mumaxvalueMin), math.abs(mumaxvaluePlus))
+            document.getElementById("MaxMu").innerHTML = MuMaxt.toFixed(3);
+            //document.getElementById("negative-muPlus").style.fontSize = "14px"; 
+
+
+        }
+
+        // Call the function with the predefined inputs
+        //create3DPlot(predefinedNormals, predefinedPoints, predefinedForce, predefinedCoord)
+
+
+        function calcForces() {
+            // Get the values of the matrix input fields
+            const matrixInput1 = document.getElementById("matrix-input1");
+            const matrixValue1 = matrixInput1.value;
+
+            const matrixInput2 = document.getElementById("matrix-input2");
+            const matrixValue2 = matrixInput2.value;
+
+            const matrixInput3 = document.getElementById("matrix-input3");
+            const matrixValue3 = matrixInput3.value;
+
+            const matrixInput4 = document.getElementById("matrix-input4");
+            const matrixValue4 = matrixInput4.value;
+
+            const matrixInput5 = document.getElementById("matrix-input5");
+            const matrixValue5 = matrixInput5.value;
+
+            const matrixInput6 = document.getElementById("matrix-input6");
+            const matrixValue6 = matrixInput6.value;
+
+            const matrixInput9 = document.getElementById("matrix-input9");
+            //const matrixValue9 = matrixInput9.value;
+
+            // Convert the matrix values to arrays
+            const matrixArray1 = matrixValue1.trim().split(/\s*\n\s*/).map(row => row.trim().split(/\s+/).map(Number));
+            const matrixArray2 = matrixValue2.trim().split(/\s*\n\s*/).map(row => row.trim().split(/\s+/).map(Number));
+            const matrixArray3 = matrixValue3.trim().split(/\s+/).map(Number);
+            const matrixArray4 = matrixValue4.trim().split(/\s+/).map(Number);
+            //const matrixArray9 = matrixValue9.trim().split(/\s*\n\s*/).map(row => row.trim().split(/\s+/).map(Number));
+            //const matrixArray5 = matrixValue5.trim().split(/\s+/).map(Number);
+
+            // Check that the matrix arrays have the correct dimensions and contain only numbers
+            const isMatrixValid1 = matrixArray1.length === 6 && matrixArray1.every(row => row.length === 3 && row.every(val => !isNaN(val)));
+            const isMatrixValid2 = matrixArray2.length === 6 && matrixArray2.every(row => row.length === 3 && row.every(val => !isNaN(val)));
+            const isMatrixValid3 = matrixArray3.length === 3 && matrixArray3.every(val => !isNaN(val));
+            const isMatrixValid4 = matrixArray4.length === 3 && matrixArray4.every(val => !isNaN(val));
+            //const isMatrixValid9 = matrixArray9.length === 6 && matrixArray9.every(row => row.length === 3 && row.every(val => !isNaN(val)));
+
+            //const isMatrixValid5 = matrixArray4.length === 1 && matrixArray5.every(val => !isNaN(val));
+
+            // If any of the matrices are invalid, show an error message
+            if (!isMatrixValid1 || !isMatrixValid2 || !isMatrixValid3 || !isMatrixValid4) {
+                alert("One or more matrices are invalid. Please check your input and try again.");
+                return;
+            }
+
+            nn = normr(matrixArray1);
+            pp = matrixArray2;
+            Fcc = matrixArray3;
+            coordFcc = matrixArray4;
+            mu = matrixValue5;
+            stiffnesdiv = 1 / matrixValue6;
+
+            const [Finterface, WCSdeformT] = kynCalc(nn, pp, mu, 1, Fcc, coordFcc);
+            columnNames = ['n1', 'n2', 'n3', 'n4', 'n5', 'n6'];
+            rowNames = ["IF 1", "IF 2", "IF 3", "IF 4", "IF 5", "IF 6"];
+            rowNames
+            populateTable("result-table", math.transpose(Finterface), "12px", "fixed", rowNames, columnNames, "Forces on interfaces after interface retraction")
+
+            const [FinterfaceMuPlus, _] = kynCalc(nn, pp, -mu, 0.1, Fcc, coordFcc);
+            populateTable("result-table2", math.transpose(FinterfaceMuPlus), "12px", "fixed", rowNames, columnNames, "Forces on interfaces after interface extension")
+
+            const deltaForce = (math.subtract(math.abs(Finterface), math.abs(FinterfaceMuPlus)));
+            const deltaPos = (math.multiply(deltaForce, stiffnesdiv))
+
+
+            rowNames = ["X", "Y", "Z", "Rx", "Ry", "Rz"];
+            //columnNames = ["Case 1", "Case 2", "Case 3", "Case 4", "Case 5", "Case 6"];
+            populateTable("result-table3", WCSdeformT, "12px", "exponential", rowNames, columnNames, "Motion Matrix of WCS")
+
+            rowNames = ["X", "Y", "Z", "Rx", "Ry", "Rz"];
+            columnNames = ["Min", "Max", "Error range +/-"];
+            const A = math.multiply((motionAinv(nn, pp)), math.transpose(deltaPos))
+
+
+            const errorRange = (math.transpose(findMinMaxNumbers(A)))
+            for (let i = 0; i < errorRange.length; i++) {
+                const diff = (errorRange[i][1] - errorRange[i][0]) / 2;
+                errorRange[i].push(diff);
+            }
+
+            populateTable("result-table4", errorRange, "12px", "exponential", rowNames, columnNames, "WCS hysteresys of body due to friction and stiffness")
+
+
+        }
+
+        function processForce() {
+
+            // Get the values of the matrix input fields
+            const matrixInput1 = document.getElementById("matrix-input1");
+            const matrixValue1 = matrixInput1.value;
+
+            const matrixInput2 = document.getElementById("matrix-input2");
+            const matrixValue2 = matrixInput2.value;
+
+            const matrixInput3 = document.getElementById("matrix-input3");
+            const matrixValue3 = matrixInput3.value;
+
+            const matrixInput4 = document.getElementById("matrix-input4");
+            const matrixValue4 = matrixInput4.value;
+
+            const matrixFrange = document.getElementById("matrix-Frange");
+            const matrixValueFrange = parseFloat(matrixFrange.value)
+
+            const matrixFpoints = document.getElementById("matrix-Fpoints");
+            const matrixValueFpoints = parseFloat(matrixFpoints.value)
+
+            const matrixFaccuracy = document.getElementById("matrix-Faccuracy");
+            const matrixValueFaccuracy = parseFloat(matrixFaccuracy.value)
+
+            // Convert the matrix values to arrays
+            const matrixArray1 = matrixValue1.trim().split(/\s*\n\s*/).map(row => row.trim().split(/\s+/).map(Number));
+            const matrixArray2 = matrixValue2.trim().split(/\s*\n\s*/).map(row => row.trim().split(/\s+/).map(Number));
+            const matrixArray3 = matrixValue3.trim().split(/\s+/).map(Number);
+            const matrixArray4 = matrixValue4.trim().split(/\s+/).map(Number);
+
+
+            // Check that the matrix arrays have the correct dimensions and contain only numbers
+            const isMatrixValid1 = matrixArray1.length === 6 && matrixArray1.every(row => row.length === 3 && row.every(val => !isNaN(val)));
+            const isMatrixValid2 = matrixArray2.length === 6 && matrixArray2.every(row => row.length === 3 && row.every(val => !isNaN(val)));
+            const isMatrixValid3 = matrixArray3.length === 3 && matrixArray3.every(val => !isNaN(val));
+            const isMatrixValid4 = matrixArray4.length === 3 && matrixArray4.every(val => !isNaN(val));
+
+            //const isMatrixValid5 = matrixArray4.length === 1 && matrixArray5.every(val => !isNaN(val));
+
+            // If any of the matrices are invalid, show an error message
+            if (!isMatrixValid1 || !isMatrixValid2 || !isMatrixValid3 || !isMatrixValid4) {
+                alert("One or more matrices are invalid. Please check your input and try again.");
+                return;
+            }
+
+            // assign the values of the variables
+            nn = normr(matrixArray1);
+            pp = matrixArray2;
+            Fcc = matrixArray3;
+            coordFcc = matrixArray4;
+
+
+            //create3DPlot(nn, pp, Fcc ,coordFcc )
+
+            // calculate Finterface
+
+
+            if (KK !== 0) {
+                Fcc = KK;
+                //console.log(Fcc)
+            }
+
+
+            const perturbationRange = matrixValueFrange; // Specify the range for Fcc variable
+            const xnF = matrixValueFpoints; // Specify the number of steps
+            const yValuesF = perturbFc(nn, pp, Fcc, coordFcc, perturbationRange, xnF, matrixValueFaccuracy);
+            const xValues = linspace(-perturbationRange / 2, perturbationRange / 2, xnF + 1);
+            plotGraph(xValues, yValuesF, 'plotCell', "closing force sensitivity", "scan range", "friction [-]", ["Fx", "Fy", "Fz"])
+
+
+            K = findMaxPerRow(yValuesF)
+            //L = findMaxPerRow(yValuesFcCoord)
+
+            KK = calcNewSetpoint(Fcc, xValues, K);
+            //LL = calcNewSetpoint(coordFcc, xValuesCoord, L);
+
+            document.getElementById("newForceVector").innerHTML = KK.join("    ");
+            document.getElementById("newForceVectorE").innerHTML = KK.join("    ");
+            //document.getElementById("newCoordVector").innerHTML = LL.join("    ");
+
+            return KK
+
+        }
+
+        function processCoords() {
+
+            // Get the values of the matrix input fields
+            const matrixInput1 = document.getElementById("matrix-input1");
+            const matrixValue1 = matrixInput1.value;
+
+            const matrixInput2 = document.getElementById("matrix-input2");
+            const matrixValue2 = matrixInput2.value;
+
+            const matrixInput3 = document.getElementById("matrix-input3");
+            const matrixValue3 = matrixInput3.value;
+
+            const matrixInput4 = document.getElementById("matrix-input4");
+            const matrixValue4 = matrixInput4.value;
+
+            const matrixCrange = document.getElementById("matrix-Crange");
+            const matrixValueCrange = parseFloat(matrixCrange.value)
+
+            const matrixCpoints = document.getElementById("matrix-Cpoints");
+            const matrixValueCpoints = parseFloat(matrixCpoints.value)
+
+            const matrixCaccuracy = document.getElementById("matrix-Caccuracy");
+            const matrixValueCaccuracy = parseFloat(matrixCaccuracy.value)
+
+            // Convert the matrix values to arrays
+            const matrixArray1 = matrixValue1.trim().split(/\s*\n\s*/).map(row => row.trim().split(/\s+/).map(Number));
+            const matrixArray2 = matrixValue2.trim().split(/\s*\n\s*/).map(row => row.trim().split(/\s+/).map(Number));
+            const matrixArray3 = matrixValue3.trim().split(/\s+/).map(Number);
+            const matrixArray4 = matrixValue4.trim().split(/\s+/).map(Number);
+
+
+            // Check that the matrix arrays have the correct dimensions and contain only numbers
+            const isMatrixValid1 = matrixArray1.length === 6 && matrixArray1.every(row => row.length === 3 && row.every(val => !isNaN(val)));
+            const isMatrixValid2 = matrixArray2.length === 6 && matrixArray2.every(row => row.length === 3 && row.every(val => !isNaN(val)));
+            const isMatrixValid3 = matrixArray3.length === 3 && matrixArray3.every(val => !isNaN(val));
+            const isMatrixValid4 = matrixArray4.length === 3 && matrixArray4.every(val => !isNaN(val));
+
+            //const isMatrixValid5 = matrixArray4.length === 1 && matrixArray5.every(val => !isNaN(val));
+
+            // If any of the matrices are invalid, show an error message
+            if (!isMatrixValid1 || !isMatrixValid2 || !isMatrixValid3 || !isMatrixValid4) {
+                alert("One or more matrices are invalid. Please check your input and try again.");
+                return;
+            }
+
+            // assign the values of the variables
+            nn = normr(matrixArray1);
+            pp = matrixArray2;
+            Fcc = matrixArray3;
+            coordFcc = matrixArray4;
+
+
+            //create3DPlot(nn, pp, Fcc ,coordFcc )
+
+            // calculate Finterface
+
+
+            if (LL !== 0) {
+                coordFcc = LL;
+                //console.log(Fcc)
+            }
+
+
+            const perturbationRange = matrixValueCrange; // Specify the range for Fcc variable
+            const xnF = matrixValueCpoints; // Specify the number of steps
+            const yValuesC = perturbCoordFc(nn, pp, Fcc, coordFcc, perturbationRange, xnF, matrixValueCaccuracy);
+            const xValues = linspace(-perturbationRange / 2, perturbationRange / 2, xnF + 1);
+            plotGraph(xValues, yValuesC, 'plotCell2', "closing force location", "scan range", "friction [-]", ["X", "Y", "Z"])
+
+
+            L = findMaxPerRow(yValuesC)
+            //L = findMaxPerRow(yValuesFcCoord)
+
+            LL = calcNewSetpoint(coordFcc, xValues, L);
+            //LL = calcNewSetpoint(coordFcc, xValuesCoord, L);
+
+
+            document.getElementById("newCoordVector").innerHTML = LL.join("    ");
+            document.getElementById("newCoordVectorE").innerHTML = LL.join("    ");
+
+            return LL
+
+        }
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+</main>
+<footer>
+    <p>&copy Code by Sander Struycken &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; E-mail: sander.struycken@asml.com</p>
+</footer>
+
+
+
+
+
+</html>
