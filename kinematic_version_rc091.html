@@ -1478,6 +1478,40 @@
                 return [formattedCoordNew[0], formattedCoordNew[1], formattedCoordNew[2]];
             }
 
+            function calculateBoundingBoxSize(coordinates) {
+            let minX = coordinates[0][0];
+            let maxX = coordinates[0][0];
+            let minY = coordinates[0][1];
+            let maxY = coordinates[0][1];
+            let minZ = coordinates[0][2];
+            let maxZ = coordinates[0][2];
+
+            for (let i = 1; i < coordinates.length; i++) {
+                const point = coordinates[i];
+                const x = point[0];
+                const y = point[1];
+                const z = point[2];
+
+                minX = Math.min(minX, x);
+                maxX = Math.max(maxX, x);
+                minY = Math.min(minY, y);
+                maxY = Math.max(maxY, y);
+                minZ = Math.min(minZ, z);
+                maxZ = Math.max(maxZ, z);
+            }
+
+            const sizeX = maxX - minX;
+            const sizeY = maxY - minY;
+            const sizeZ = maxZ - minZ;
+            const maxDimension = Math.max(sizeX, sizeY, sizeZ);
+
+            return {
+            sizeX,
+            sizeY,
+            sizeZ,
+            maxDimension
+            };
+        }
 
             function create3DPlot(normals, points, forces, forceCoordinates) {
                 const coordinatesTrace = {
@@ -1825,6 +1859,7 @@
         //let nn, pp, Fcc, coordFcc, stiffnessdiv; // declare the variables outside the function
 
 
+
         function drawVectors() {
 
             const matrixInput1 = document.getElementById("matrix-input1");
@@ -1855,9 +1890,11 @@
 
             //const isMatrixValid5 = matrixArray4.length === 1 && matrixArray5.every(val => !isNaN(val));
 
+            calculateBoundingBoxSize(matrixValue2)
+            const boundingBoxSize = calculateBoundingBoxSize(predefinedPoints);
 
-
-            create3DPlot(matrixArray1, matrixArray2, matrixArray3, matrixArray4)
+            create3DPlot(matrixArray1, matrixArray2, math.multiply(normr(matrixArray3),boundingBoxSize.maxDimension*0.5), matrixArray4)
+            //console.log(math.multiply(normr(matrixArray3),boundingBoxSize.maxDimension*0.2))
 
         }
 
@@ -1885,7 +1922,7 @@
             // Check if the numeric value is valid
             if (!isNaN(numericValue)) {
                 // Use the numeric value in your code
-                console.log(numericValue);
+                //console.log(numericValue);
             } else {
                 // Handle the case when the value cannot be converted to a number
                 console.log("Invalid numeric value");
