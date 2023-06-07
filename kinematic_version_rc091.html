@@ -98,6 +98,8 @@
 
 
 <script src="https://cdn.plot.ly/plotly-2.20.0.min.js" charset="utf-8"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/newton-raphson-method@1.0.2/index.min.js"></script> -->
+
 <!-- <script src='./kynLib.js'></script> -->
 
 
@@ -561,7 +563,7 @@
 
             <tr>
                 <td colspan="10">
-                    <div class="resultbar">INPUTS</div>
+                    <div class="resultbar">INPUTS and drawing option</div>
                 </td>
             </tr>
             <tr>
@@ -656,7 +658,7 @@
             </tr>
             <tr>
                 <td colspan="10">
-                    <div class="resultbar">CALCULATION OF ALLOWED FRICTION</div>
+                    <div class="resultbar">CALCULATION OF ALLOWED FRICTION of input situation</div>
                 </td>
             </tr>
             <tr>
@@ -871,7 +873,7 @@
                 <td class="holdleft" colspan="8">
                     <sub>Note: During this optimization process, the standard inputs are utilized. To incorporate the
                         optimized results, simply copy and paste the updated inputs. Please be aware that setting a very
-                        small value for the accuracy field may result in longer waiting times.</sub>
+                        small value for the accuracy field may result in longer waiting times.  </sub>
 
                 </td>
 
@@ -901,7 +903,8 @@
                             providing us with the friction force direction for each retraction case, enabling us to
                             solve the force equations. For those familiar with JavaScript, all the functionality is
                             encapsulated in this HTML. The tool relies on mathjs and plotly libraries, which are loaded
-                            from the web, necessitating an active internet connection. Enjoy using the tool! <br>
+                            from the web, necessitating an active internet connection. So far little effort spend on error handling meaning make sure the object is constraint and the ranges are not set to wide.
+                            Enjoy using the tool! <br>
                             <br>
                             On the functionality todo list are:<ol>
                                 <li> applying multiple closing forces</li>
@@ -912,6 +915,8 @@
 
                     </sub>
                 <td><!-- empty cell --></td>
+               
+
             </tr>
 
             <!--             <tr>
@@ -933,8 +938,8 @@
 
 
 
-    <script> /* standard inputs */
-
+    <script> 
+   
         { //kynlib scripts
             function motionAinv(n, p) {
 
@@ -1197,6 +1202,13 @@
                     mu -= resolution;
                 }
             }
+
+
+
+
+
+
+
 
             function findLargestNumbers(array) {
                 const largestPositiveNumbers = [];
@@ -1604,7 +1616,7 @@
         function handleOptionChange() {
 
             if (Option1.checked) {
-                console.log(Option1.checked)
+                //console.log(Option1.checked)
                 predefinedNormals = [
                     [0, 1, 0,],
                     [0, 1, 0,],
@@ -1631,7 +1643,7 @@
             }
 
             if (Option2.checked) {
-                console.log(Option2.checked)
+                //console.log(Option2.checked)
                 // example of a v-groove setup. Optimal openings angle between grooves appears to be between 2*(60 to 65)deg
                 const n = [[0], [0], [1], [0]];
                 const p1 = [[-100e-3], [-0.5], [0], [1]];
@@ -1691,7 +1703,7 @@
             }
 
             if (Option3.checked) {
-                console.log(Option3.checked)
+                //console.log(Option3.checked)
                 // example of a v-groove setup. Optimal openings angle between grooves appears to be between 2*(60 to 65)deg
                 const n = [[0], [0], [1], [0]];
                 const p1 = [[-100e-3], [0], [0], [1]];
@@ -2005,7 +2017,7 @@
                 errorRange[i].push(diff);
             }
 
-            populateTable("result-table4", errorRange, "12px", "exponential", rowNames, columnNames, "WCS hysteresys of body due to friction and stiffness")
+            populateTable("result-table4", errorRange, "12px", "exponential", rowNames, columnNames, "WCS hysteresis of body due to friction and stiffness")
 
 
         }

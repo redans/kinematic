@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Function Optimization Example</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js"></script>
+</head>
+<body>
+    <h1>Function Optimization Example</h1>
+    <script>
+        function objectiveFunction(x) {
+            // Define your objective function here
+            // Calculate and return the value to be minimized
+            return (x[0] - 3) ** 2 + (x[1] - 4) ** 2 + (x[2] - 5) ** 2;
+        }
+
+        // Set up the optimization options
+        const options = {
+            xTol: 1e-6,
+            fTol: 1e-6,
+            maxIterations: 100
+        };
+
+        // Initial guess for the optimal solution
+        const initialGuess = [0, 0, 0];
+
+        // Perform the optimization using Nelder-Mead method
+        const result = math.nelderMead(objectiveFunction, initialGuess, options);
+
+        // Retrieve the optimal solution
+        const optimalSolution = result.x;
+
+        // Retrieve the minimum value of the objective function
+        const minimumValue = result.fx;
+
+        // Display the results
+        const resultContainer = document.createElement('div');
+        resultContainer.innerHTML = `
+            <h2>Optimization Result</h2>
+            <p>Optimal solution: ${optimalSolution}</p>
+            <p>Minimum value: ${minimumValue}</p>
+        `;
+        document.body.appendChild(resultContainer);
+    </script>
+</body>
+</html>
