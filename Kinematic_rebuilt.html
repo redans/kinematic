@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>kinematic body</title>
+    <link rel="icon"
+        href="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gQ3JlYXRlZCB3aXRoIElua3NjYXBlIChodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy8pIC0tPgoKPHN2ZwogICB3aWR0aD0iMjU2IgogICBoZWlnaHQ9IjI1NiIKICAgdmlld0JveD0iMCAwIDI1NiAyNTYiCiAgIHZlcnNpb249IjEuMSIKICAgaWQ9IlNWR1Jvb3QiCiAgIHNvZGlwb2RpOmRvY25hbWU9Imljb24uc3ZnIgogICBpbmtzY2FwZTp2ZXJzaW9uPSIxLjIuMiAoYjBhODQ4NiwgMjAyMi0xMi0wMSkiCiAgIGlua3NjYXBlOmRhdGFsb3NzPSJ0cnVlIgogICB4bWxuczppbmtzY2FwZT0iaHR0cDovL3d3dy5pbmtzY2FwZS5vcmcvbmFtZXNwYWNlcy9pbmtzY2FwZSIKICAgeG1sbnM6c29kaXBvZGk9Imh0dHA6Ly9zb2RpcG9kaS5zb3VyY2Vmb3JnZS5uZXQvRFREL3NvZGlwb2RpLTAuZHRkIgogICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxzb2RpcG9kaTpuYW1lZHZpZXcKICAgICBpZD0ibmFtZWR2aWV3ODkiCiAgICAgcGFnZWNvbG9yPSIjZmZmZmZmIgogICAgIGJvcmRlcmNvbG9yPSIjMDAwMDAwIgogICAgIGJvcmRlcm9wYWNpdHk9IjAuMjUiCiAgICAgaW5rc2NhcGU6c2hvd3BhZ2VzaGFkb3c9IjIiCiAgICAgaW5rc2NhcGU6cGFnZW9wYWNpdHk9IjAuMCIKICAgICBpbmtzY2FwZTpwYWdlY2hlY2tlcmJvYXJkPSIwIgogICAgIGlua3NjYXBlOmRlc2tjb2xvcj0iI2QxZDFkMSIKICAgICBpbmtzY2FwZTpkb2N1bWVudC11bml0cz0icHgiCiAgICAgc2hvd2dyaWQ9InRydWUiCiAgICAgaW5rc2NhcGU6em9vbT0iMi42ODAyODg0IgogICAgIGlua3NjYXBlOmN4PSIxNDcuMTg1NjUiCiAgICAgaW5rc2NhcGU6Y3k9IjEyMy42ODA3MiIKICAgICBpbmtzY2FwZTp3aW5kb3ctd2lkdGg9IjE2ODAiCiAgICAgaW5rc2NhcGU6d2luZG93LWhlaWdodD0iOTMzIgogICAgIGlua3NjYXBlOndpbmRvdy14PSIwIgogICAgIGlua3NjYXBlOndpbmRvdy15PSIyNSIKICAgICBpbmtzY2FwZTp3aW5kb3ctbWF4aW1pemVkPSIxIgogICAgIGlua3NjYXBlOmN1cnJlbnQtbGF5ZXI9ImxheWVyMSI+CiAgICA8aW5rc2NhcGU6Z3JpZAogICAgICAgdHlwZT0ieHlncmlkIgogICAgICAgaWQ9ImdyaWQ5NSIgLz4KICA8L3NvZGlwb2RpOm5hbWVkdmlldz4KICA8ZGVmcwogICAgIGlkPSJkZWZzODQiIC8+CiAgPGcKICAgICBpbmtzY2FwZTpsYWJlbD0iTGF5ZXIgMSIKICAgICBpbmtzY2FwZTpncm91cG1vZGU9ImxheWVyIgogICAgIGlkPSJsYXllcjEiPgogICAgPHJlY3QKICAgICAgIHN0eWxlPSJvcGFjaXR5OjAuOTtmaWxsOiNmZjk5NTU7c3Ryb2tlOiNmZjk5NTU7c3Ryb2tlLXdpZHRoOjE7c3Ryb2tlLWRhc2hhcnJheTpub25lIgogICAgICAgaWQ9InJlY3QyMTc4IgogICAgICAgd2lkdGg9IjI1NSIKICAgICAgIGhlaWdodD0iMjU1IgogICAgICAgeD0iMCIKICAgICAgIHk9IjAiCiAgICAgICByeT0iMjUiIC8+CiAgICA8cGF0aAogICAgICAgc3R5bGU9ImZpbGw6IzAwMDAwMCIKICAgICAgIGQ9Ik0gMTI0Ljk0ODExLDExOS45MjE0NiAyMTUuMDY4NzIsMjQuNzc0MTk0IgogICAgICAgaWQ9InBhdGg5MzYiIC8+CiAgICA8cGF0aAogICAgICAgc3R5bGU9ImZpbGw6IzAwMDAwMDtzdHJva2U6IzAwMDAwMCIKICAgICAgIGQ9Ik0gMjAwLDQ1IDIyNSwyMCIKICAgICAgIGlkPSJwYXRoOTM4IiAvPgogICAgPHBhdGgKICAgICAgIHN0eWxlPSJmaWxsOiMwMDAwMDA7c3Ryb2tlOiMwMDAwMDAiCiAgICAgICBkPSJNIDIwMC40MjQ2OCw0Mi45MjQ2OCAyMTAsODAiCiAgICAgICBpZD0icGF0aDkzOC0wIgogICAgICAgc29kaXBvZGk6bm9kZXR5cGVzPSJjYyIgLz4KICAgIDxwYXRoCiAgICAgICBzdHlsZT0iZmlsbDojMDAwMDAwO3N0cm9rZTojMDAwMDAwIgogICAgICAgZD0iTSAyMDIuMDc1MzIsNDQuNTc1MzIgMTY1LDM1IgogICAgICAgaWQ9InBhdGg5MzgtMC05IgogICAgICAgc29kaXBvZGk6bm9kZXR5cGVzPSJjYyIgLz4KICAgIDxjaXJjbGUKICAgICAgIHN0eWxlPSJvcGFjaXR5OjE7ZmlsbDpub25lO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoxNjtzdHJva2UtZGFzaGFycmF5Om5vbmUiCiAgICAgICBpZD0icGF0aDEwOTQiCiAgICAgICBjeD0iNTAiCiAgICAgICBjeT0iMTE1IgogICAgICAgcj0iMzAiIC8+CiAgICA8cGF0aAogICAgICAgc3R5bGU9ImZpbGw6bm9uZTtzdHJva2U6IzAwMDBmZjtzdHJva2Utd2lkdGg6MTY7c3Ryb2tlLWRhc2hhcnJheTpub25lIgogICAgICAgZD0ibSA1MCwxMTUgaCA4NSBsIDY1LC03MCIKICAgICAgIGlkPSJwYXRoMTE5NiIKICAgICAgIHNvZGlwb2RpOm5vZGV0eXBlcz0iY2NjIiAvPgogICAgPHBhdGgKICAgICAgIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwZmY7c3Ryb2tlLXdpZHRoOjE4LjQ3NTI7c3Ryb2tlLWRhc2hhcnJheTpub25lIgogICAgICAgZD0iTSAxMzUsMTE1IFYgMjM1IgogICAgICAgaWQ9InBhdGgxMTk4IiAvPgogICAgPHBhdGgKICAgICAgIHN0eWxlPSJvcGFjaXR5OjE7ZmlsbDpub25lO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoxNjtzdHJva2UtZGFzaGFycmF5Om5vbmUiCiAgICAgICBkPSJNIDE2NSwzNSAyMjUsMjAgMjEwLDgwIFoiCiAgICAgICBpZD0icGF0aDIxMjAiIC8+CiAgICA8Y2lyY2xlCiAgICAgICBpZD0icGF0aDg4MCIKICAgICAgIHN0eWxlPSJmaWxsOiMwMDAwMDA7c3Ryb2tlOiMwMDAwMDAiCiAgICAgICBjeD0iMTI0Ljk0ODExIgogICAgICAgY3k9IjExOS45MjE0NiIKICAgICAgIHI9IjAuMTgwNzU0NDUiIC8+CiAgICA8Y2lyY2xlCiAgICAgICBzdHlsZT0ib3BhY2l0eToxO2ZpbGw6I2ZmMDAwMDtzdHJva2U6IzAwMDAwMCIKICAgICAgIGlkPSJwYXRoMTA5NiIKICAgICAgIGN4PSIyMDAiCiAgICAgICBjeT0iNDUuNSIKICAgICAgIHI9IjEyLjUiIC8+CiAgICA8Y2lyY2xlCiAgICAgICBzdHlsZT0ib3BhY2l0eToxO2ZpbGw6I2ZmMDAwMDtzdHJva2U6IzAwMDAwMCIKICAgICAgIGlkPSJwYXRoMTA5Ni0zLTIiCiAgICAgICBjeD0iNTAiCiAgICAgICBjeT0iMTE0LjUiCiAgICAgICByPSIxMi41IiAvPgogICAgPGNpcmNsZQogICAgICAgc3R5bGU9Im9wYWNpdHk6MTtmaWxsOiNmZjAwMDA7c3Ryb2tlOiMwMDAwMDAiCiAgICAgICBpZD0icGF0aDEwOTYtMyIKICAgICAgIGN4PSIxMzUuNSIKICAgICAgIGN5PSIyMDUiCiAgICAgICByPSIxMi41IiAvPgogICAgPHBhdGgKICAgICAgIHN0eWxlPSJvcGFjaXR5OjE7ZmlsbDpub25lO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoxNjtzdHJva2UtZGFzaGFycmF5Om5vbmUiCiAgICAgICBkPSJtIDk1LDE4MSBoIDc1IHYgNTAgSCA5NSBaIgogICAgICAgaWQ9InBhdGg1MTkyIiAvPgogIDwvZz4KPC9zdmc+Cg=="
+        type="image/svg+xml">
+    <link rel="shortcut icon"
+        href="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gQ3JlYXRlZCB3aXRoIElua3NjYXBlIChodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy8pIC0tPgoKPHN2ZwogICB3aWR0aD0iMjU2IgogICBoZWlnaHQ9IjI1NiIKICAgdmlld0JveD0iMCAwIDI1NiAyNTYiCiAgIHZlcnNpb249IjEuMSIKICAgaWQ9IlNWR1Jvb3QiCiAgIHNvZGlwb2RpOmRvY25hbWU9Imljb24uc3ZnIgogICBpbmtzY2FwZTp2ZXJzaW9uPSIxLjIuMiAoYjBhODQ4NiwgMjAyMi0xMi0wMSkiCiAgIGlua3NjYXBlOmRhdGFsb3NzPSJ0cnVlIgogICB4bWxuczppbmtzY2FwZT0iaHR0cDovL3d3dy5pbmtzY2FwZS5vcmcvbmFtZXNwYWNlcy9pbmtzY2FwZSIKICAgeG1sbnM6c29kaXBvZGk9Imh0dHA6Ly9zb2RpcG9kaS5zb3VyY2Vmb3JnZS5uZXQvRFREL3NvZGlwb2RpLTAuZHRkIgogICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxzb2RpcG9kaTpuYW1lZHZpZXcKICAgICBpZD0ibmFtZWR2aWV3ODkiCiAgICAgcGFnZWNvbG9yPSIjZmZmZmZmIgogICAgIGJvcmRlcmNvbG9yPSIjMDAwMDAwIgogICAgIGJvcmRlcm9wYWNpdHk9IjAuMjUiCiAgICAgaW5rc2NhcGU6c2hvd3BhZ2VzaGFkb3c9IjIiCiAgICAgaW5rc2NhcGU6cGFnZW9wYWNpdHk9IjAuMCIKICAgICBpbmtzY2FwZTpwYWdlY2hlY2tlcmJvYXJkPSIwIgogICAgIGlua3NjYXBlOmRlc2tjb2xvcj0iI2QxZDFkMSIKICAgICBpbmtzY2FwZTpkb2N1bWVudC11bml0cz0icHgiCiAgICAgc2hvd2dyaWQ9InRydWUiCiAgICAgaW5rc2NhcGU6em9vbT0iMi42ODAyODg0IgogICAgIGlua3NjYXBlOmN4PSIxNDcuMTg1NjUiCiAgICAgaW5rc2NhcGU6Y3k9IjEyMy42ODA3MiIKICAgICBpbmtzY2FwZTp3aW5kb3ctd2lkdGg9IjE2ODAiCiAgICAgaW5rc2NhcGU6d2luZG93LWhlaWdodD0iOTMzIgogICAgIGlua3NjYXBlOndpbmRvdy14PSIwIgogICAgIGlua3NjYXBlOndpbmRvdy15PSIyNSIKICAgICBpbmtzY2FwZTp3aW5kb3ctbWF4aW1pemVkPSIxIgogICAgIGlua3NjYXBlOmN1cnJlbnQtbGF5ZXI9ImxheWVyMSI+CiAgICA8aW5rc2NhcGU6Z3JpZAogICAgICAgdHlwZT0ieHlncmlkIgogICAgICAgaWQ9ImdyaWQ5NSIgLz4KICA8L3NvZGlwb2RpOm5hbWVkdmlldz4KICA8ZGVmcwogICAgIGlkPSJkZWZzODQiIC8+CiAgPGcKICAgICBpbmtzY2FwZTpsYWJlbD0iTGF5ZXIgMSIKICAgICBpbmtzY2FwZTpncm91cG1vZGU9ImxheWVyIgogICAgIGlkPSJsYXllcjEiPgogICAgPHJlY3QKICAgICAgIHN0eWxlPSJvcGFjaXR5OjAuOTtmaWxsOiNmZjk5NTU7c3Ryb2tlOiNmZjk5NTU7c3Ryb2tlLXdpZHRoOjE7c3Ryb2tlLWRhc2hhcnJheTpub25lIgogICAgICAgaWQ9InJlY3QyMTc4IgogICAgICAgd2lkdGg9IjI1NSIKICAgICAgIGhlaWdodD0iMjU1IgogICAgICAgeD0iMCIKICAgICAgIHk9IjAiCiAgICAgICByeT0iMjUiIC8+CiAgICA8cGF0aAogICAgICAgc3R5bGU9ImZpbGw6IzAwMDAwMCIKICAgICAgIGQ9Ik0gMTI0Ljk0ODExLDExOS45MjE0NiAyMTUuMDY4NzIsMjQuNzc0MTk0IgogICAgICAgaWQ9InBhdGg5MzYiIC8+CiAgICA8cGF0aAogICAgICAgc3R5bGU9ImZpbGw6IzAwMDAwMDtzdHJva2U6IzAwMDAwMCIKICAgICAgIGQ9Ik0gMjAwLDQ1IDIyNSwyMCIKICAgICAgIGlkPSJwYXRoOTM4IiAvPgogICAgPHBhdGgKICAgICAgIHN0eWxlPSJmaWxsOiMwMDAwMDA7c3Ryb2tlOiMwMDAwMDAiCiAgICAgICBkPSJNIDIwMC40MjQ2OCw0Mi45MjQ2OCAyMTAsODAiCiAgICAgICBpZD0icGF0aDkzOC0wIgogICAgICAgc29kaXBvZGk6bm9kZXR5cGVzPSJjYyIgLz4KICAgIDxwYXRoCiAgICAgICBzdHlsZT0iZmlsbDojMDAwMDAwO3N0cm9rZTojMDAwMDAwIgogICAgICAgZD0iTSAyMDIuMDc1MzIsNDQuNTc1MzIgMTY1LDM1IgogICAgICAgaWQ9InBhdGg5MzgtMC05IgogICAgICAgc29kaXBvZGk6bm9kZXR5cGVzPSJjYyIgLz4KICAgIDxjaXJjbGUKICAgICAgIHN0eWxlPSJvcGFjaXR5OjE7ZmlsbDpub25lO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoxNjtzdHJva2UtZGFzaGFycmF5Om5vbmUiCiAgICAgICBpZD0icGF0aDEwOTQiCiAgICAgICBjeD0iNTAiCiAgICAgICBjeT0iMTE1IgogICAgICAgcj0iMzAiIC8+CiAgICA8cGF0aAogICAgICAgc3R5bGU9ImZpbGw6bm9uZTtzdHJva2U6IzAwMDBmZjtzdHJva2Utd2lkdGg6MTY7c3Ryb2tlLWRhc2hhcnJheTpub25lIgogICAgICAgZD0ibSA1MCwxMTUgaCA4NSBsIDY1LC03MCIKICAgICAgIGlkPSJwYXRoMTE5NiIKICAgICAgIHNvZGlwb2RpOm5vZGV0eXBlcz0iY2NjIiAvPgogICAgPHBhdGgKICAgICAgIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwZmY7c3Ryb2tlLXdpZHRoOjE4LjQ3NTI7c3Ryb2tlLWRhc2hhcnJheTpub25lIgogICAgICAgZD0iTSAxMzUsMTE1IFYgMjM1IgogICAgICAgaWQ9InBhdGgxMTk4IiAvPgogICAgPHBhdGgKICAgICAgIHN0eWxlPSJvcGFjaXR5OjE7ZmlsbDpub25lO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoxNjtzdHJva2UtZGFzaGFycmF5Om5vbmUiCiAgICAgICBkPSJNIDE2NSwzNSAyMjUsMjAgMjEwLDgwIFoiCiAgICAgICBpZD0icGF0aDIxMjAiIC8+CiAgICA8Y2lyY2xlCiAgICAgICBpZD0icGF0aDg4MCIKICAgICAgIHN0eWxlPSJmaWxsOiMwMDAwMDA7c3Ryb2tlOiMwMDAwMDAiCiAgICAgICBjeD0iMTI0Ljk0ODExIgogICAgICAgY3k9IjExOS45MjE0NiIKICAgICAgIHI9IjAuMTgwNzU0NDUiIC8+CiAgICA8Y2lyY2xlCiAgICAgICBzdHlsZT0ib3BhY2l0eToxO2ZpbGw6I2ZmMDAwMDtzdHJva2U6IzAwMDAwMCIKICAgICAgIGlkPSJwYXRoMTA5NiIKICAgICAgIGN4PSIyMDAiCiAgICAgICBjeT0iNDUuNSIKICAgICAgIHI9IjEyLjUiIC8+CiAgICA8Y2lyY2xlCiAgICAgICBzdHlsZT0ib3BhY2l0eToxO2ZpbGw6I2ZmMDAwMDtzdHJva2U6IzAwMDAwMCIKICAgICAgIGlkPSJwYXRoMTA5Ni0zLTIiCiAgICAgICBjeD0iNTAiCiAgICAgICBjeT0iMTE0LjUiCiAgICAgICByPSIxMi41IiAvPgogICAgPGNpcmNsZQogICAgICAgc3R5bGU9Im9wYWNpdHk6MTtmaWxsOiNmZjAwMDA7c3Ryb2tlOiMwMDAwMDAiCiAgICAgICBpZD0icGF0aDEwOTYtMyIKICAgICAgIGN4PSIxMzUuNSIKICAgICAgIGN5PSIyMDUiCiAgICAgICByPSIxMi41IiAvPgogICAgPHBhdGgKICAgICAgIHN0eWxlPSJvcGFjaXR5OjE7ZmlsbDpub25lO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoxNjtzdHJva2UtZGFzaGFycmF5Om5vbmUiCiAgICAgICBkPSJtIDk1LDE4MSBoIDc1IHYgNTAgSCA5NSBaIgogICAgICAgaWQ9InBhdGg1MTkyIiAvPgogIDwvZz4KPC9zdmc+Cg=="
+        type="image/svg+xml">
+
+    <link rel="stylesheet" type="text/css" href="./lib/StyleBodyLib.css">
+
+
+</head>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js"></script>
+<script src="https://cdn.plot.ly/plotly-2.20.0.min.js" charset="utf-8"></script>
+<script src="./lib/bodyLib.js"></script>
+
+
+<header>
+    <h1>Self-centering of a Kinematic body</h1>
+</header>
+
+<footer style="text-align: left; background-color: rgb(159, 157, 157);">
+    DRAFT <br>
+    version rc0.93 <br> 01-06-2023
+
+</footer>
+
+<main>
+
+
+    <div>
+
+
+        <table>
+
+
+            <tr>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+            </tr>
+            <tr>
+
+                <td class="hold left" colspan="5">
+                    <h2>Calculation tool functionality</h2>
+                    <p>This tool provides a comprehensive analysis of the self-centering properties of a kinematic body
+                        with six degrees of freedom in its constraints. It is divided into several sections:<br>
+                        <br>
+                    <ol>
+                        <li>Input section: This section allows users to input their desired parameters and visualize
+                            them in a 3D representation. </li>
+                        <li>Allowed friction calculation: In this section, the tool calculates the maximum allowable
+                            friction based on the given inputs.</li>
+                        <li>Interface forces, motion matrix, and hysteresis calculation: This section provides
+                            calculations for the interface forces, motion matrix, and hysteresis, giving insights into
+                            the behavior of the system.</li>
+                        <li>Closing force optimization: Users can optimize the direction and location of the closing
+                            force in this section.</li>
+                    </ol>
+                    <br>
+                    Regarding the self-centering condition, it is considered violated when the interface points become
+                    loose, indicated by a negative force on the interface. In this tool, a negative force implies that
+                    the interface needs to exert a pulling force. In the table, the columns represent the force
+                    scenarios in which a specific interface is retracted. These retraction scenarios are highlighted
+                    with red numbers.
+
+                    </p>
+                </td>
+
+                <td class="centered" colspan="5">
+
+                    <!--  <canvas id="plotConfig"></canvas> -->
+                    <table id="plotConfig"></table>
+
+
+                </td>
+            </tr>
+            <tr>
+                <td class="holdright" colspan="5"><i><sub>Mind that error handling is very limited. No results 
+                            probably means wrong inputs. Check the body is actually constrained and make sure the closing
+                            force has connection points to the body. Also make sure all input are numerical values.</sub></i>
+                </td>
+
+
+                <td class="holdright" colspan="5">
+                    <sub>
+                        <span style="color: red;">Red line</span> representing interface normals towards the
+                        <span style="color: blue;">blue dot</span> indicating interface points.
+                        <span style="color: green;">Green line</span> representing a "pulling" force
+                        to the <span style="color: green;">green dot</span> indicating the connection point. No arrows
+                        because plotly.js doesn't provide those.
+                    </sub>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="10">
+                    <div class="resultbar">INPUTS and drawing option</div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="centered" colspan="2">input examples</td>
+                <td class="centered" colspan="2"> <input type="radio" name="options" id="Optiongh" value="gratingHolder"
+                        checked> grating holder </td>
+                <td class="centered" colspan="2"> <input type="radio" name="options" id="Option222" value="vgrooves">
+                    120&deg 2-2-2 </td>
+                <td class="centered" colspan="1"> <input type="radio" name="options" id="Option321"
+                        value="pointgrooveflat"> 3-2-1</td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+            </tr>
+
+            <tr>
+                <td class="centered" colspan="3">
+                    <button type="submit" onclick="drawVectors()"
+                        style="background-color: rgb(6, 60, 11); color: white;">
+                        PRESS --> draw new input vectors and re-calculate</button>
+                </td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+            </tr>
+
+            <tr>
+                <td class="centered" colspan="5">
+                    <label for="surface-normals-input">normals of interfaces [nx ny nz]</label>
+                </td>
+
+                <td class="centered" colspan="5">
+                    <label for="surface-points-input">interfaces points [px py pz]</label>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="centered" colspan="5">
+                    <textarea id="surface-normals-input" rows="6" cols="70"></textarea>
+                </td>
+
+                <td class="centered" colspan="5">
+                    <textarea id="surface-points-input" rows="6" cols="70"></textarea>
+                </td>
+            </tr>
+
+            <td class="centered" colspan="2">
+                <br>
+                Interface stiffness <br> <sub>in normal direction</sub>
+            </td>
+            <td class="centered" colspan="4">
+                <br>
+                closing force [Fx Fy Fz]
+            </td>
+
+            <td class="centered" colspan="4">
+                <br>
+                closing force location [x y z]
+            </td>
+
+            </tr>
+
+            <tr>
+                <td class="centered" colspan="2">
+                    <textarea id="initial-stiffness-input" name="textarea5" rows="6" cols="20"></textarea>
+                </td>
+                <td class="centered" colspan="4">
+                    <textarea id="applied-force-input" name="textarea3" rows="6" cols="55"></textarea>
+                </td>
+
+                <td class="centered" colspan="4">
+                    <textarea id="applied-coordinates-input" name="textarea4" rows="6" cols="55"></textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="10">
+                    <div class="resultbar">CALCULATION RESULTS</div>
+                </td>
+            </tr>
+
+            <tr><!-- calculate standard friction -->
+                <td><!-- empty cell --></td>
+                <td class="holdright" colspan="3">
+                    Max &#956 for min pertubations:<br>
+                    Max &#956 for plus pertubations:
+                </td>
+                <td class="holdleft">
+                    <span id="negative-muMin"></span> <br>
+                    <span id="negative-muPlus"></span>
+                </td>
+                <td class="centered" colspan="1">
+                    <h3>Max &#956 :</h3>
+                </td>
+                <td class="centered">
+                    <h3><span id="MaxMu"></span></h3>
+                </td>
+                <td class="holdright" colspan="1">
+                    accuracy:</td>
+                <td class="centered" colspan="1">
+                    <textarea id="default-accuracy-input" rows="1" cols="6"></textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="10">
+                    <div class="resultbar">INTERFACE FORCES, MOTION MATRIX AND HYSTERESIS OF THE INTERFACE</div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="centered" colspan="2">
+                    <button type="submit" onclick="calcForces()"
+                        style="background-color: rgb(255, 0, 0); color: white;">Press to calculate</button>
+                </td>
+                <td class="centered" colspan="2">
+                    Coefficient of friction
+                </td>
+                <td class="centered" colspan="1">
+                    <textarea id="friction-coefficient-input" rows="1" cols="8"></textarea>
+                </td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+            </tr>
+            <tr>
+                
+                <td class="centered" colspan="5">
+                    <table id="result-table"></table>
+                </td>
+                <td class="centered" colspan="5">
+                    <table id="result-table2"></table>
+                </td>
+                
+            </tr>
+
+
+            <tr>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+
+            </tr>
+
+            <tr>
+                
+                <td class="centered" colspan="5">
+                    <table id="result-table3"></table>
+                </td>
+                <td class="centered" colspan="5">
+                    <table id="result-table4"></table>
+                </td>
+                
+            </tr>
+
+
+            </tr>
+
+            <tr>
+                <td><!-- empty cell --></td>
+                <td class="centered" colspan="2">
+                    <table id="ForcesOnIf"></table>
+                </td>
+                <td><!-- empty cell --></td>
+                <td class="centered" colspan="2">
+                    <table id="DefOffIf"></table>
+                </td>
+                <td><!-- empty cell --></td>
+                <td class="centered" colspan="2">
+                    <table id="DefOffWCS"></table>
+                </td>
+                <td><!-- empty cell --></td>
+
+            </tr>
+            <tr>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+            </tr>
+            <tr>
+                <td colspan="10">
+                    <div class="resultbar">OPTIMIZATION</div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="centered" colspan="5">
+                    <h3>closing force optimization [Fx Fy Fz]</h3>
+                    <span id="newForceVector"></span>
+
+                </td>
+                <td class="centered" colspan="5">
+                    <h3>closing force location optimization [X Y Z]</h3>
+                    <span id="newCoordVector"></span>
+
+
+                </td>
+            </tr>
+
+            <tr>
+                <td> <!-- empty cell --></td>
+                <td class="centered" colspan="1">
+                    scan range
+                </td>
+                <td class="centered" colspan="1">
+                    # points
+                </td>
+
+
+                <td class="centered" colspan="1">
+                    accuracy
+                </td>
+                <td> <!-- empty cell --></td>
+
+                <td> <!-- empty cell --></td>
+                <td class="centered" colspan="1">
+                    scan range
+                </td>
+                <td class="centered" colspan="1">
+                    # points
+                </td>
+
+
+                <td class="centered" colspan="1">
+                    accuracy
+                </td>
+                <td> <!-- empty cell --></td>
+            </tr>
+
+            <tr>
+                <td><!-- empty cell --></td>
+                <td class="centered" colspan="1">
+                    <textarea id="force-scan-range-input" rows="1" cols="6"></textarea>
+                </td>
+                <td class="centered" colspan="1">
+                    <textarea id="force-num-points-input" rows="1" cols="6"></textarea>
+                </td>
+                <td class="centered" colspan="1">
+                    <textarea id="force-accuracy-input" rows="1" cols="6"></textarea>
+                </td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td class="centered" colspan="1">
+                    <textarea id="coord-scan-range-input" rows="1" cols="6"></textarea>
+                </td>
+                <td class="centered" colspan="1">
+                    <textarea id="coord-num-points-input" rows="1" cols="6"></textarea>
+                </td>
+                <td class="centered" colspan="1">
+                    <textarea id="coord-accuracy-input" rows="1" cols="6"></textarea>
+                </td>
+                <td><!-- empty cell --></td>
+            </tr>
+
+            <tr>
+                <td> <!-- empty cell --></td>
+
+                <td class="centered" colspan="3">
+                    <button type="submit" onclick="processForce()" style="background-color: red; color: white;">Press to
+                        calculate</button>
+                </td>
+                <td><!-- empty cell --></td>
+                <td><!-- empty cell --></td>
+                <td class="centered" colspan="3">
+                    <button type="submit" onclick="processCoords()" style="background-color: red; color: white;">Press
+                        to calculate</button>
+                </td>
+                <td><!-- empty cell --></td>
+            </tr>
+
+            <tr>
+                <td><!-- empty cell --></td>
+                <td class="centered" colspan="4">
+                    <table id="plotCell"></table>
+                </td>
+                <td class="centered" colspan="4">
+                    <table id="plotCellCoord"></table>
+                </td>
+                <td><!-- empty cell --></td>
+            </tr>
+
+
+        </table>
+
+    </div>
+
+    <script>
+        let surfaceNormals;;
+        let surfacePoints;
+        let appliedForce;
+        let appliedCoordinates;
+
+        let frictionCoefficient = 0.25;
+        let initialStiffness = [
+            [1e6],
+            [1e6],
+            [1e6],
+            [1e6],
+            [1e6],
+            [1e6]
+        ];
+
+        let defaultAccuracy = 1e-2;
+        let forceScanRange = 0.1;
+        let forceNumPoints = 31;
+        let forceAccuracy = 0.01;
+        let coordScanRange = 0.1;
+        let coordNumPoints = 31;
+        let coordAccuracy = 0.01;
+        let normalizedSurfaceNormals;
+        let normalizedAppliedForce;
+
+
+        function handleOptionChange() {
+
+            if (Option1.checked) {
+                //console.log(Option1.checked)
+                surfaceNormals = [
+                    [0, 1, 0,],
+                    [0, 1, 0,],
+                    [1, 0, 0,],
+                    [0, 0, 1,],
+                    [0, 0, 1,],
+                    [0, 0, 1,]
+                ];
+
+
+                surfacePoints = [
+                    [1, 0, 0],
+                    [5, 0, 0],
+                    [0, 1, 0],
+                    [1, 1, 0],
+                    [5, 1, 0],
+                    [3, 2, 0]
+                ];
+
+                appliedForce = [[-1, -1, -1]];
+                appliedCoordinates = [[2.524, 1.382, 0.159]];
+
+            }
+
+            if (Option2.checked) {
+                //console.log(Option2.checked)
+                // example of a v-groove setup. Optimal openings angle between grooves appears to be between 2*(60 to 65)deg
+                const n = [[0], [0], [1], [0]];
+                const p1 = [[-100e-3], [-0.5], [0], [1]];
+                const p2 = [[100e-3], [-0.5], [0], [1]];
+
+                const beta = math.PI / 180 * 64;
+                const alpha = 0;
+                let gamma = 0;
+
+                const N1 = math.multiply(cTransL(0, 0, 0, alpha, beta, gamma, 0, 0, 0), n);
+                const N2 = math.multiply(cTransL(0, 0, 0, alpha, -beta, gamma, 0, 0, 0), n);
+                const P1 = math.multiply(cTransL(0, 0, 0, alpha, beta, gamma, 0, 0, 0), p1);
+                const P2 = math.multiply(cTransL(0, 0, 0, alpha, -beta, gamma, 0, 0, 0), p2);
+
+                gamma = math.PI / 180 * 120;
+                const N3 = math.multiply(cTransL(0, 0, 0, alpha, beta, gamma, 0, 0, 0), n);
+                const N4 = math.multiply(cTransL(0, 0, 0, alpha, -beta, gamma, 0, 0, 0), n);
+                const P3 = math.multiply(cTransL(0, 0, 0, alpha, beta, gamma, 0, 0, 0), p1);
+                const P4 = math.multiply(cTransL(0, 0, 0, alpha, -beta, gamma, 0, 0, 0), p2);
+
+                gamma = math.PI / 180 * -120;
+                const N5 = math.multiply(cTransL(0, 0, 0, alpha, beta, gamma, 0, 0, 0), n);
+                const N6 = math.multiply(cTransL(0, 0, 0, alpha, -beta, gamma, 0, 0, 0), n);
+                const P5 = math.multiply(cTransL(0, 0, 0, alpha, beta, gamma, 0, 0, 0), p1);
+                const P6 = math.multiply(cTransL(0, 0, 0, alpha, -beta, gamma, 0, 0, 0), p2);
+
+                surfaceNormals = [
+                    [N1[0], N1[1], N1[2]],
+                    [N2[0], N2[1], N2[2]],
+                    [N3[0], N3[1], N3[2]],
+                    [N4[0], N4[1], N4[2]],
+                    [N5[0], N5[1], N5[2]],
+                    [N6[0], N6[1], N6[2]],
+
+                ];
+
+                surfacePoints = [
+                    [P1[0], P1[1], P1[2]],
+                    [P2[0], P2[1], P2[2]],
+                    [P3[0], P3[1], P3[2]],
+                    [P4[0], P4[1], P4[2]],
+                    [P5[0], P5[1], P5[2]],
+                    [P6[0], P6[1], P6[2]],
+
+                ];
+
+                surfaceNormals = surfaceNormals.map(row => row.map(innerArr => innerArr[0]));
+                surfacePoints = surfacePoints.map(row => row.map(innerArr => innerArr[0]));
+
+                appliedForce = [
+                    [0, 0, -1]
+                ];
+
+                appliedCoordinates = [
+                    [0, 0, 0]];
+
+            }
+
+            if (Option3.checked) {
+                //console.log(Option3.checked)
+                // example of a v-groove setup. Optimal openings angle between grooves appears to be between 2*(60 to 65)deg
+                const n = [[0], [0], [1], [0]];
+                const p1 = [[-100e-3], [0], [0], [1]];
+                const p2 = [[100e-3], [0], [0], [1]];
+
+                const beta = math.PI / 180 * 65;
+                const alpha = 0;
+                let gamma = 0;
+
+                const N1 = math.multiply(cTransL(0, 0, 0, alpha, beta, gamma, 0, 0, 0), n);
+                const N2 = math.multiply(cTransL(0, 0, 0, alpha, beta, math.PI / 180 * 120, 0, 0, 0), n);
+                const N3 = math.multiply(cTransL(0, 0, 0, alpha, beta, math.PI / 180 * -120, 0, 0, 0), n);
+                const P1 = math.multiply(cTransL(0, -0.5, 0, alpha, beta, gamma, 0, 0, 0), p1);
+                const P2 = math.multiply(cTransL(0, -0.5, 0, alpha, beta, math.PI / 180 * 120, 0, 0, 0), p1);
+                const P3 = math.multiply(cTransL(0, -0.5, 0, alpha, beta, math.PI / 180 * -120, 0, 0, 0), p1);
+
+                gamma = 0;
+
+                const N4 = math.multiply(cTransL(0, 0, 0, alpha, -beta, gamma, 0, 0, 0), n);
+                const N5 = math.multiply(cTransL(0, 0, 0, alpha, beta, gamma, 0, 0, 0), n);
+                const P4 = math.multiply(cTransL(0.15, 0.5, 0, alpha, 0, gamma, 0, 0, 0), p1);
+                const P5 = math.multiply(cTransL(-0.15, 0.5, 0, alpha, 0, math.PI / 180 * 180, 0, 0, 0), p1);
+
+                gamma = math.PI / 180 * -120;
+
+                const N6 = math.multiply(cTransL(0, 0, 0, 0, 0, 0, 0, 0, 0), n);
+                const P6 = math.multiply(cTransL(-1, 0, 0, 0, 0, 0, 0, 0, 0), p1);
+
+                surfaceNormals = [
+                    [N1[0], N1[1], N1[2]],
+                    [N2[0], N2[1], N2[2]],
+                    [N3[0], N3[1], N3[2]],
+                    [N4[0], N4[1], N4[2]],
+                    [N5[0], N5[1], N5[2]],
+                    [N6[0], N6[1], N6[2]],
+
+                ];
+
+                surfacePoints = [
+                    [P1[0], P1[1], P1[2]],
+                    [P2[0], P2[1], P2[2]],
+                    [P3[0], P3[1], P3[2]],
+                    [P4[0], P4[1], P4[2]],
+                    [P5[0], P5[1], P5[2]],
+                    [P6[0], P6[1], P6[2]],
+
+                ];
+
+                surfaceNormals = surfaceNormals.map(row => row.map(innerArr => innerArr[0]));
+                surfacePoints = surfacePoints.map(row => row.map(innerArr => innerArr[0]));
+
+                appliedForce = [
+                    [0, 0, -1]
+                ];
+
+                appliedCoordinates = [
+                    [-0.063, -0.301, 0]];
+
+            }
+
+            normalizedAppliedForce = normr(appliedForce)
+            fillTextareas()
+
+
+        }
+
+        const Option1 = document.getElementById("Optiongh");
+        const Option2 = document.getElementById("Option222");
+        const Option3 = document.getElementById("Option321");
+
+        // Add event listeners to the option elements
+        Option1.addEventListener("change", handleOptionChange);
+        Option2.addEventListener("change", handleOptionChange);
+        Option3.addEventListener("change", handleOptionChange);
+        handleOptionChange();
+
+        fillTextareas()
+        const boundingBoxSize = calculateBoundingBoxSize(surfacePoints);
+        create3DPlot(normalizedSurfaceNormals, surfacePoints, math.multiply(normalizedAppliedForce, boundingBoxSize.maxDimension * 0.5), appliedCoordinates)
+
+
+
+        function drawVectors() {
+            updateTextareaValues()
+            const boundingBoxSize = calculateBoundingBoxSize(surfacePoints);
+            create3DPlot(normalizedSurfaceNormals, surfacePoints, math.multiply(normalizedAppliedForce, boundingBoxSize.maxDimension * 0.5), appliedCoordinates)
+
+            const mumaxvalueMin = findNegativeForceMuMinRow(normalizedSurfaceNormals, surfacePoints, appliedForce, appliedCoordinates, defaultAccuracy)
+            document.getElementById("negative-muMin").innerHTML = math.abs(mumaxvalueMin).toFixed(3);
+            document.getElementById("negative-muMin").style.fontSize = "14px";
+
+            const mumaxvaluePlus = findNegativeForceMuPlusRow(normalizedSurfaceNormals, surfacePoints, appliedForce, appliedCoordinates, defaultAccuracy)
+            document.getElementById("negative-muPlus").innerHTML = mumaxvaluePlus.toFixed(3);
+            document.getElementById("negative-muPlus").style.fontSize = "14px";
+
+            const MuMaxt = math.min(math.abs(mumaxvalueMin), math.abs(mumaxvaluePlus))
+            document.getElementById("MaxMu").innerHTML = MuMaxt.toFixed(3);
+        }
+
+        function calcForces() {
+            updateTextareaValues()
+
+            mu = frictionCoefficient;
+            stiffnesdiv = math.transpose(replicateArray(reciprocalArray(initialStiffness), 6, 6));
+
+
+            //console.log(normalizedSurfaceNormals, surfacePoints, mu, 1, appliedForce, appliedCoordinates)
+            const [Finterface, WCSdeformT] = kynCalcRow(normalizedSurfaceNormals, surfacePoints, mu, 1, appliedForce, appliedCoordinates)
+            //console.log("Finyterface: ",Finterface)
+            columnNames = ['n1', 'n2', 'n3', 'n4', 'n5', 'n6'];
+            rowNames = ["IF 1", "IF 2", "IF 3", "IF 4", "IF 5", "IF 6"];
+            rowNames
+            populateTable("result-table", math.transpose(Finterface), "12px", "fixed", rowNames, columnNames, "Forces on interfaces (IF) after interface retraction (n)")
+
+            const [FinterfaceMuPlus, _] = kynCalcRow(normalizedSurfaceNormals, surfacePoints, -mu, 1, appliedForce, appliedCoordinates);
+            populateTable("result-table2", math.transpose(FinterfaceMuPlus), "12px", "fixed", rowNames, columnNames, "Forces on interfaces (IF) after interface extension (n)")
+
+
+            def1 = dotMult(math.transpose(Finterface), stiffnesdiv)
+            def2 = dotMult(math.transpose(FinterfaceMuPlus), stiffnesdiv)
+            const A1 = math.multiply((motionAinv(normalizedSurfaceNormals, surfacePoints)), def1)
+            const A2 = math.multiply((motionAinv(normalizedSurfaceNormals, surfacePoints)), def2)
+
+            const concatenatedArray = math.concat(A1, A2, 1);
+            const errorRange = findMinMaxPerRow(concatenatedArray)
+            //(errorRange)
+
+            rowNames = ["X", "Y", "Z", "Rx", "Ry", "Rz"];
+            //columnNames = ["Case 1", "Case 2", "Case 3", "Case 4", "Case 5", "Case 6"];
+            populateTable("result-table3", WCSdeformT, "12px", "exponential", rowNames, columnNames, "Motion Matrix of WCS")
+
+            rowNames = ["X", "Y", "Z", "Rx", "Ry", "Rz"];
+            columnNames = ["Min", "Max", "Error range +/-"];
+
+
+
+
+
+            populateTable("result-table4", errorRange, "12px", "exponential", rowNames, columnNames, "WCS hysteresis of body due to friction and stiffness")
+
+
+        }
+
+        function processForce() {
+
+
+            updateTextareaValues()
+            const yValuesF = calculateMumaxValuesForce(appliedForce, appliedCoordinates, surfaceNormals, surfacePoints, forceAccuracy, forceNumPoints, forceScanRange);
+            //console.log(yValuesF);
+            const xValues = linspace(-forceScanRange / 2, forceScanRange / 2, forceNumPoints + 1);
+            plotGraph(xValues, yValuesF, 'plotCell', "closing force sensitivity", "scan range", "friction [-]", ["Fx", "Fy", "Fz"])
+
+            K = findMaxPerRow(yValuesF)
+            //console.log(K)
+
+
+            KK = calcNewSetpoint(appliedForce, xValues, K);
+
+            //console.log(KK)
+            document.getElementById("newForceVector").innerHTML = KK.join("    ");
+
+
+
+        }
+
+        function processCoords() {
+
+
+            updateTextareaValues()
+            const yValuesF = calculateMumaxValuesCoord(appliedForce, appliedCoordinates, surfaceNormals, surfacePoints, coordAccuracy, coordNumPoints, coordScanRange);
+            //console.log(yValuesF);
+            const xValues = linspace(-coordScanRange / 2, coordScanRange / 2, coordNumPoints + 1);
+            plotGraph(xValues, yValuesF, 'plotCellCoord', "closing force sensitivity", "scan range", "friction [-]", ["Fx", "Fy", "Fz"])
+
+            K = findMaxPerRow(yValuesF)
+            //console.log(K)
+
+
+            KK = calcNewSetpoint(appliedCoordinates, xValues, K);
+
+            //console.log(KK)
+            document.getElementById("newCoordVector").innerHTML = KK.join("    ");
+
+
+
+        }
+
+
+
+
+
+    </script>
+
+
+
+
+</main>
+
+
+
+
+</html>

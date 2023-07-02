@@ -519,7 +519,7 @@
             <tr>
                 <td class="centered" colspan="2">
                     <button type="submit" onclick="calcForces()"
-                        style="background-color: rgb(13, 7, 7); color: white;">Press to calculate</button>
+                        style="background-color: rgb(13, 7, 7); color: white;">Press to calculate friction</button>
                 </td>
                 <td class="centered" colspan="2">
                     Coefficient of friction
@@ -843,8 +843,7 @@
 
                 return af;
             }
-
-            /*             function ForceB(Fc, coordFc) {
+   function ForceB(Fc, coordFc) {
                             const b = [
                                 -Fc[0],
                                 -Fc[1],
@@ -855,9 +854,9 @@
                             ];
             
                             return b;
-                        } */
+                        } 
 
-            function ForceB(Fc, coordFc) {
+/*             function ForceB(Fc, coordFc) {
                 const b = [0, 0, 0, 0, 0, 0];
 
 
@@ -883,7 +882,7 @@
                 
                 return b;
 
-            }
+            } */
 
             function kynCalc(n, p, mu, scale, Fc, coordFc) {
 
